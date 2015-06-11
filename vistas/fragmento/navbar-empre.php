@@ -24,8 +24,8 @@
                     <ul class="dropdown-menu">
                         <li><span class="help-block" id="mover"><i class="fa fa-search"></i> Buscar amigos</span></li>
                         <li class="divider"></li>
-                        <li><a href="../controladores/buscaramigos.php"><i class="fa fa-building-o"></i> Empresas</a></li>
-                        <li><a href=".controladores/buscaramigos.php "><i class="fa fa-users"></i> Usuarios</a></li>
+                        <li><a href="../controladores/buscarempresas.php"><i class="fa fa-building-o"></i> Empresas</a></li>
+                        <li><a href="../controladores/buscarusuarios.php "><i class="fa fa-users"></i> Usuarios</a></li>
                         <li class="divider"></li>
                         <li><a href="../controladores/crearformCambiarcontra-Empre.php"><span class="fui-gear"></span> Cambiar Contraseña</a></li>
                         <li><a href="logout.php"><span class="fui-power"></span> Cerrar sesión</a></li>
