@@ -126,9 +126,9 @@ var $rutaServidor='C:\\xampp\\htdocs\\WorkNet\\portafolio\\';
         $resultado = $db->eliminarRegistro($tabla, $where);
         
         if($resultado)
-            $utilidades->mostrarMensaje('The file was deleted successfuly');
+            $utilidades->mostrarMensaje('El archivo se elimino Exitosamente');
         else
-            $utilidades->mostrarMensaje('Sorry!,something is wrong, please try again');
+            $utilidades->mostrarMensaje('Lo sentimos!, ocurrio un problema, por favor vuelva a intentar');
         
         $utilidades->Redireccionar('controladores/crearPortafolio.php');
     }

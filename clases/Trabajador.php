@@ -63,9 +63,9 @@ class Trabajador {
         }
          
         if (isset($resultado))
-            $utilidades->mostrarMensaje('Congratulations!,The user is Working now!');
+            $utilidades->mostrarMensaje('Felicidades, el usuario se registro exitosamente!');
         else
-            $utilidades->mostrarMensaje('Sorry!, something is wrong, please try again.');                    
+            $utilidades->mostrarMensaje('Lo sentimos!, ocurrio un problema, por favor vuelva a intentar.');                    
          
         $plantilla->verPagina('formularioTrabajador');
     }
