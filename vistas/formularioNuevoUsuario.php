@@ -1,7 +1,7 @@
 <!DOCTYPE>
 <html>
     <head>
-        <title>Sign Up</title>
+        <title>Regístrate</title>
         <meta charset="utf-8">
         <link href="../vistas/recursos/css/bootstrap.css" rel="stylesheet">
         <link href="../vistas/recursos/css/flat-ui.css" rel="stylesheet">  
@@ -11,17 +11,17 @@
         <form action="../controladores/guardarUsuario.php" method="POST">
             <div class="login-form">
                 <div class="from-group">
-                    <center><h3>Sign Up</h3></center>                    
-                    User:<input type="text" class="form-control login-field" name="usuario" placeholder="User" required /><br>
+                    <center><h3>Regístrate</h3></center>                    
+                    Usuario:<input type="text" class="form-control login-field" name="usuario" placeholder="Usuario" required /><br>
                     </div>
                     <div class="from-group">
-                    Password:<input type="password" minlength="5" id="pass" class="form-control login-field" name="pass" placeholder="Password" required /><br>
-                    Confirm Password:<input type="password" id="repass" class="form-control login-field" name="repass" placeholder="Password" required /><br>
+                    Contraseña:<input type="password" minlength="5" id="pass" class="form-control login-field" name="pass" placeholder="Contraseña" required />Confirmar contraseña<br>
+                    Confirmar contraseña:<input type="password" id="repass" class="form-control login-field" name="repass" placeholder="Confirmar contraseña" required /><br>
                     <div id="val"></div>
                     </div>
                     <div class="from-group">
-                    Name:<input type="text"id="letras" onkeydown="return validarLetras(event)" class="form-control login-field" name="name" placeholder="Name" /><br>
-                    Surname:<input type="text"id="letras" onkeydown="return validarLetras(event)" class="form-control login-field" name="ape" placeholder="Surname" required /><br>
+                    Nombre:<input type="text"id="letras" onkeydown="return validarLetras(event)" class="form-control login-field" name="name" placeholder="Nombre" /><br>
+                    Apellido:<input type="text"id="letras" onkeydown="return validarLetras(event)" class="form-control login-field" name="ape" placeholder="Apellido" required /><br>
                     </div>
                     <div class="from-group">
                     E-mail:<input type="email" id="email" class="form-control login-field" name="mail" placeholder="E-mail" required /><br>
@@ -29,10 +29,10 @@
                     <div id="val2"></div>
                     </div>
                     <div class="from-group">
-                    Bith Day (month/day/year):<input type="date" class="form-control login-field" name="birth" placeholder="Bith Day" required /><br>
+                    Bith Day (mes/día/año):<input type="date" class="form-control login-field" name="birth" placeholder="Fecha de nacimiento" required /><br>
                     DUI:<input type="text" class="form-control login-field" id="num" onkeydown="return validarNumeros(event)" maxlength="10" name="dui" placeholder="DUI" required /><br>
                     <p class="text-center">
-                        <input type="submit" name="Registrar" value="Sing Up" class="btn btn-primary btn-lg btn-warning" >
+                        <input type="submit" name="Registrar" value="Registrar" class="btn btn-primary btn-lg btn-warning" >
                         <a href="../controladores/index.php"><input type="button" value="Back" class="btn btn-primary btn-lg btn-danger" ></a>
                     </p>
                 </div>

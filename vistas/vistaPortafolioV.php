@@ -1,7 +1,7 @@
 
 <div class="panel panel-primary" id="portafoliod">
   <div class="panel-heading">
-    <h3 class="panel-title">Portfolio</h3>
+    <h3 class="panel-title">Portafolio</h3>
   </div>
   <div class="panel-body">
       {{listaArchivos}}

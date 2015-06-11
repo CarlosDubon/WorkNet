@@ -7,11 +7,11 @@
                     <span class="fui-chat"></span> Chat
                     <div class="btn-group pull-right">
                         <button type="button" class="btn btn-default btn-xs dropdown-toggle" data-toggle="dropdown">
-                            <span>Menu</span>
+                            <span>Menú</span>
                         </button>
                         <ul class="dropdown-menu">
                             <li><a href="#" onclick="actualizaChat({{miamigo}});return false;" ><span class="fui-info-circle">
-                                    </span>Refresh</a></li>                            
+                                    </span>Actualizar</a></li>                            
                         </ul>
                     </div>
                 </div>

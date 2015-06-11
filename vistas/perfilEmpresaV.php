@@ -15,24 +15,24 @@
     
         <div class="panel panel-default">
             <div class=" panel-heading">
-                <a href="./agregarAmigo.php?idCuenta={{Id}}" class="btn btn-success"><i class="fa fa-user-plus"></i> Add Friend</a>
-                <a href="./crearPortafolioV.php?cuenta_idCuenta={{Id}}" class="btn btn-warning" id="med"><i class="fa fa-suitcase"></i> Portfolio</a>
-                <a href="#" class="btn btn-danger" id="iz"><i class="fui-cross"></i> Complain</a>
+                <a href="./agregarAmigo.php?idCuenta={{Id}}" class="btn btn-success"><i class="fa fa-user-plus"></i> Agregar amigo</a>
+                <a href="./crearPortafolioV.php?cuenta_idCuenta={{Id}}" class="btn btn-warning" id="med"><i class="fa fa-suitcase"></i> Portafolio</a>
+                <a href="#" class="btn btn-danger" id="iz"><i class="fui-cross"></i> Denunciar</a>
 
             </div>
     </div>
     
     <div class="panel panel-default">
             <div class=" panel-heading">
-               <b>General Information</b> 
+               <b>Información General</b> 
             </div>
     </div>
         <div class="panel panel-default" id="az">
           <div class="panel-body">
-            <b>User:</b> {{Usuario}}<br>
-            <b>Company:</b> {{Empresa}}<br>
+            <b>Usuario:</b> {{Usuario}}<br>
+            <b>Empresa:</b> {{Empresa}}<br>
             <b>E-mail:</b> {{Correo}}<br>
-            <b>Fundation Date:</b> {{Fun}}<br>
+            <b>Fecha de fundación:</b> {{Fun}}<br>
             <b>Web Site:</b> {{Web}}<br>
           </div>
     </div>

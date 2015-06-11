@@ -82,7 +82,7 @@ class Ofertas {
         for ($i = 0; $i < count($Ofertas); $i++){
             $oferta .= '<blockquote class="public">
                           <a href="./eliminarOferta.php?idOfertas='.$Ofertas[$i]['id'].'"><small class="text-danger" id="derecha"><i class="fa fa-trash"></i></small></a>
-                          <p>Titulo:</p>
+                          <p>Título:</p>
                           <input type="hidden" value='.$Ofertas[$i]['id'].'>
                           <small>'.$Ofertas[$i]['Titulo'].'</small>
                           <p>Detalle:</p>
@@ -91,7 +91,7 @@ class Ofertas {
                           <small>'.$Ofertas[$i]['Cargo'].'</small>
                           <p>Edad:</p>
                           <small>'.$Ofertas[$i]['Edad'].'</small>
-                          <p>Requerimientos:</p>
+                          <p>Requisitos:</p>
                           <small><i class="fa fa-ellipsis-h"></i> '.$Ofertas[$i]['Requisitos'].'</small>
                         </blockquote>';
         }
@@ -122,7 +122,7 @@ class Ofertas {
         
         for ($i = 0; $i < count($Ofertas); $i++){
             $oferta .= '<blockquote class="public">
-                          <p>Titulo:</p> <small id="derecha">Company: <small class="text-success" id="derecha">' .$Ofertas[$i]['idCuenta'].'</small></small>
+                          <p>Título:</p> <small id="derecha">Empresa: <small class="text-success" id="derecha">' .$Ofertas[$i]['idCuenta'].'</small></small>
                           <small>'.$Ofertas[$i]['Titulo'].'</small>
                           <p>Detalle:</p>
                           <small>'.$Ofertas[$i]['Detalle'].'</small>
@@ -130,7 +130,7 @@ class Ofertas {
                           <small>'.$Ofertas[$i]['Cargo'].'</small>
                           <p>Edad:</p>
                           <small>'.$Ofertas[$i]['Edad'].'</small><a href="#" class="btn btn-success" id="iz">Aplicar</a>
-                          <p>Requerimientos:</p>
+                          <p>Requisitos:</p>
                           <small><i class="fa fa-ellipsis-h"></i> '.$Ofertas[$i]['Requisitos'].'</small>
                         </blockquote>';
         }

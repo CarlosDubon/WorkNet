@@ -25,7 +25,7 @@ var $carpetaSitio='/WorkNet';
 
 
     public function convertirTabla($arreglo = array(), $encabezado = array(),$acciones='') {
-        $encabezado[]="Options";
+        $encabezado[]="Opciones";
         $tabla = '<table id="miTabla" class="display" cellspacing="0" width="100%">';
         $tabla .= '<thead><tr>';
 

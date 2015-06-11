@@ -8,20 +8,20 @@
     </head>
     <body>
         <div id="eventoform" class="login-form">
-            <center><h3>Event</h3></center>                   
+            <center><h3>Eventos</h3></center>                   
             <form action="../controladores/guardarEvento.php" method="POST">
                 <div class='form-group'>     
-                    <label for="Empieza">Starts:</label><br>
-                        <input type='date' class='form-control login-field' name='empieza' placeholder='Starts' required /><br>
-                    <label for="Termina">Ends:</label><br>
-                        <input type='date' class='form-control login-field' name='termina' placeholder='Ends' required /><br>
-                    <label for="Nombre">Event Name:</label><br>
-                        <input type='text' class='form-control login-field' name='nombre' placeholder='Event Name' required  /><br>
-                    <label for="Descripcion">Event Description:</label><br>
-                    <input type='text' class='form-control login-field' name='descripcion' placeholder='Event Description' required  /><br>
+                    <label for="Empieza">Inciio:</label><br>
+                        <input type='date' class='form-control login-field' name='empieza' placeholder='Inicio' required /><br>
+                    <label for="Termina">Finaliza:</label><br>
+                        <input type='date' class='form-control login-field' name='termina' placeholder='Finaliza' required /><br>
+                    <label for="Nombre">Nombre del evento:</label><br>
+                        <input type='text' class='form-control login-field' name='nombre' placeholder='Nombre del evento' required  /><br>
+                    <label for="Descripcion">Descripción del evento:</label><br>
+                    <input type='text' class='form-control login-field' name='descripcion' placeholder='Descripción del evento' required  /><br>
                     <p class="text-center">
-                    <input type='submit' value='Save' class='btn btn-primary btn-lg btn-warning'>
-                    <a href='#'><input type='button' value='Back' class='btn btn-primary btn-lg btn-danger'></a>
+                    <input type='submit' value='Guardar' class='btn btn-primary btn-lg btn-warning'>
+                    <a href='#'><input type='button' value='Regresar' class='btn btn-primary btn-lg btn-danger'></a>
                     </p>
                 </div>
             </form>            
