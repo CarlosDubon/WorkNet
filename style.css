@@ -1,0 +1,310 @@
+#derecha{
+    float: right!important;
+    margin-top: -1% !important;
+    margin-right: 3px !important;
+}
+#perfil {
+        
+        height: 95% !important;
+        width: 100% !important;
+        margin-left: 0 !important;
+}
+
+#newsfeed {
+    float: right !important;
+    width: 79% !important;
+}
+
+#newsfeed2 {
+    float: right !important;
+    width: 100% !important;
+}
+
+#portafolio {
+    width: 100% !important;
+    margin-left: 0 !important;
+}
+
+#portafoliod {
+    width: 75% !important;
+}
+#textRed{
+    color: #e74c3c !important;
+}
+
+#publicacion {
+    height: 100px;      
+}
+#img-chat{
+    width: 50px !important;
+    height: 50px !important;
+}
+
+#publicacionbtn {
+    height: 100px;
+}
+
+#chat {
+    width: 100% !important;
+}
+#img-pub{
+    width: 45px !important;
+    height: 45px !important;
+}
+
+#acciones {
+  padding: 11px 11px !important;
+  font-size: 12px !important;
+}
+#eventoform {
+    width: 80% !important;
+    float: right !important;
+}
+
+#cat {
+    width: 80% !important;
+    float: right !important;
+}
+
+
+
+#chattext {
+    width: 80% !importnat;
+}
+
+#logito {
+    width: 100px; !important;
+    height: 50px !important;
+}
+
+#photo {
+    float: left !important;
+}
+
+#fieldsP {
+    margin-top: 5px !important;
+    width: 51%;
+    float: left !important;
+}
+
+#fieldsPD {
+    margin-top: 6px !important;
+    width: 48%;
+    float: right!important;
+}
+.ec-stars-wrapper {
+	/* Espacio entre los inline-block (los hijos, los `a`) 
+	   http://ksesocss.blogspot.com/2012/03/display-inline-block-y-sus-empeno-en.html */
+	font-size: 0;
+	/* Podríamos quitarlo, 
+		pero de esta manera (siempre que no le demos padding), 
+		sólo aplicará la regla .ec-stars-wrapper:hover a cuando
+		también se esté haciendo hover a alguna estrella */
+	display: inline-block;
+}
+.ec-stars-wrapper a {
+	text-decoration: none;
+	display: inline-block;
+	/* Volver a dar tamaño al texto */
+	font-size: 32px;
+	font-size: 2rem;
+	
+	color: #888;
+}
+
+.ec-stars-wrapper:hover a {
+	color: rgb(241, 196, 15);
+}
+/*
+ * El selector de hijo, es necesario para aumentar la especifidad
+ */
+.ec-stars-wrapper > a:hover ~ a {
+	color: #888;
+}
+
+#w {
+height: 35% !important;
+}
+
+#btnfoto::-webkit-file-upload-button {
+  visibility: hidden;
+    width: 20% !important;
+
+}
+#btnfoto{
+    margin-left: auto !important;
+    margin-top: -25% !important;
+    background: #34495E;
+    opacity: 0.8 !important;
+
+
+}
+#btnfoto::before {
+  border-radius: 3px;
+  outline: none;
+  white-space: nowrap;
+  cursor: pointer;
+  font-size: 10pt;
+    
+
+}
+
+#photot {
+    width: 175px !important;
+    height: 175px !important;
+    border-radius: 50% !important;  
+    
+}
+
+#den {
+    height: 41px !important;
+}
+
+#cen {
+    margin-left: 60px !important;
+}
+
+.public {
+    background: #ECF0F1 !important;
+    border-radius: 30px !important;
+}
+
+.fechapub {
+    font-size: 15px !important;
+}
+
+.fondi{
+    background-image: url(vistas/recursos/images/fondo3.jpg) !important;
+    background-attachment: fixed;
+}
+#btn btn-public {
+    width: 35%;
+    display: none;
+    
+}
+
+
+#edad {
+    width: 15% !important;
+}
+
+#ofer {
+    width: 75% !important;
+}
+.linea{
+    margin-top: -20px;
+}
+#mover{
+    margin-left: 15px;
+}
+.imagenP {
+    width: 178px !important;
+    height: 200px !important; 
+}
+
+
+
+#fa {
+    resize: vertical   ;
+}
+
+#foto-perfil {
+    width: 100% !important;
+    height: 100% !important;
+}
+
+#btnfile {
+   margin-left: 60% !important;
+    background: #34495E;
+    opacity: 0.8 !important;
+
+    
+}
+
+#imgDes {
+    -webkit-filter: blur(5px)  !important;
+  -moz-filter: blur(5px) !important;
+  -o-filter: blur(5px) !important;
+  -ms-filter: blur(5px) !important;
+  filter: blur(5px) !important; 
+    width: 100%;
+    height: 100%;
+}
+
+#az {
+    border-left-color: #2980B9 !important;
+    border-left-width: 5px !important;
+}
+
+
+
+#backimg{
+    position: fixed;
+    z-index: -100;
+    overflow: hidden;
+    }
+
+#imgc {
+    width: 100%;
+    height: 100%;
+}
+
+#iz {
+    float: right !important;
+}
+
+#med {
+    margin-left: 25% !important;
+}
+
+#pr {
+    background: #ecf0f1 !important;
+}
+
+#medre {
+        margin-left: % !important;
+
+}
+
+.search {
+    z-index: 100 !important;
+    position: absolute !important;
+    margin-left: 18% !important;
+    margin-top: 4% !important;
+    width: 195px !important;
+}
+
+.zeti {
+    z-index:auto;
+}
+.boton{
+    font-size: 11px !important;
+    line-height: 0 !important;
+    margin-bottom: 0px !important;
+    margin-left: 0px !important; 
+    background-color: #344E78 !important;
+}
+.seccion{
+    background-color: #BDC3C7;
+
+}
+
+
+#iz {
+  float: left !important;
+}
+<<<<<<< HEAD
+>>>>>>> origin/master
+.boton{
+    font-size: 11px !important;
+    line-height: 0 !important;
+    margin-bottom: 0px !important;
+    margin-left: 0px !important; 
+    background-color: #344E78 !important;
+}
+.seccion{
+    background-color: #BDC3C7;
+
+}
+=======
+>>>>>>> origin/Traduccion-Minero
