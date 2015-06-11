@@ -22,7 +22,7 @@
  */
 
 /*jslint evil: true, undef: true, browser: true */
-/*globals $,require,jQuery,define,_selector_run,_selector_opts,_selector_first,_selector_row_indexes,_ext,_Api,_api_register,_api_registerPlural,_re_new_lines,_re_html,_re_formatted_numeric,_re_escape_regex,_empty,_intVal,_numToDecimal,_isNumber,_isHtml,_htmlNumeric,_pluck,_pluck_order,_range,_stripHtml,_unique,_fnBuildAjax,_fnAjaxUpdate,_fnAjaxParameters,_fnAjaxUpdateDraw,_fnAjaxDataSrc,_fnAddColumn,_fnColumnOptions,_fnAdjustColumnSizing,_fnVisibleToColumnIndex,_fnColumnIndexToVisible,_fnVisbleColumns,_fnGetColumns,_fnColumnTypes,_fnApplyColumnDefs,_fnHungarianMap,_fnCamelToHungarian,_fnLanguageCompat,_fnBrowserDetect,_fnAddData,_fnAddTr,_fnNodeToDataIndex,_fnNodeToColumnIndex,_fnGetCellData,_fnSetCellData,_fnSplitObjNotation,_fnGetObjectDataFn,_fnSetObjectDataFn,_fnGetDataMaster,_fnClearTable,_fnDeleteIndex,_fnInvalidate,_fnGetRowElements,_fnCreateTr,_fnBuildHead,_fnDrawHead,_fnDraw,_fnReDraw,_fnAddOptionsHtml,_fnDetectHeader,_fnGetUniqueThs,_fnFeatureHtmlFilter,_fnFilterComplete,_fnFilterCustom,_fnFilterColumn,_fnFilter,_fnFilterCreateBuscar,_fnEscapeRegex,_fnFilterData,_fnFeatureHtmlInfo,_fnUpdateInfo,_fnInfoMacros,_fnInitialise,_fnInitComplete,_fnLengthChange,_fnFeatureHtmlLength,_fnFeatureHtmlPaginate,_fnPageChange,_fnFeatureHtmlProcessing,_fnProcessingDisplay,_fnFeatureHtmlTable,_fnScrollDraw,_fnApplyToChildren,_fnCalculateColumnWidths,_fnThrottle,_fnConvertToWidth,_fnScrollingWidthAdjust,_fnGetWidestNode,_fnGetMaxLenString,_fnStringToCss,_fnScrollBarWidth,_fnSortFlatten,_fnSort,_fnSortAria,_fnSortListener,_fnSortAttachListener,_fnSortingClasses,_fnSortData,_fnSaveState,_fnLoadState,_fnSettingsFromNode,_fnLog,_fnMap,_fnBindAction,_fnCallbackReg,_fnCallbackFire,_fnLengthOverflow,_fnRenderer,_fnDataSource,_fnRowAttributes*/
+/*globals $,require,jQuery,define,_selector_run,_selector_opts,_selector_first,_selector_row_indexes,_ext,_Api,_api_register,_api_registerPlural,_re_new_lines,_re_html,_re_formatted_numeric,_re_escape_regex,_empty,_intVal,_numToDecimal,_isNumber,_isHtml,_htmlNumeric,_pluck,_pluck_order,_range,_stripHtml,_unique,_fnBuildAjax,_fnAjaxUpdate,_fnAjaxParameters,_fnAjaxUpdateDraw,_fnAjaxDataSrc,_fnAddColumn,_fnColumnOptions,_fnAdjustColumnSizing,_fnVisibleToColumnIndex,_fnColumnIndexToVisible,_fnVisbleColumns,_fnGetColumns,_fnColumnTypes,_fnApplyColumnDefs,_fnHungarianMap,_fnCamelToHungarian,_fnLanguageCompat,_fnBrowserDetect,_fnAddData,_fnAddTr,_fnNodeToDataIndex,_fnNodeToColumnIndex,_fnGetCellData,_fnSetCellData,_fnSplitObjNotation,_fnGetObjectDataFn,_fnSetObjectDataFn,_fnGetDataMaster,_fnClearTable,_fnDeleteIndex,_fnInvalidate,_fnGetRowElements,_fnCreateTr,_fnBuildHead,_fnDrawHead,_fnDraw,_fnReDraw,_fnAddOptionsHtml,_fnDetectHeader,_fnGetUniqueThs,_fnFeatureHtmlFilter,_fnFilterComplete,_fnFilterCustom,_fnFilterColumn,_fnFilter,_fnFilterCreateSearch,_fnEscapeRegex,_fnFilterData,_fnFeatureHtmlInfo,_fnUpdateInfo,_fnInfoMacros,_fnInitialise,_fnInitComplete,_fnLengthChange,_fnFeatureHtmlLength,_fnFeatureHtmlPaginate,_fnPageChange,_fnFeatureHtmlProcessing,_fnProcessingDisplay,_fnFeatureHtmlTable,_fnScrollDraw,_fnApplyToChildren,_fnCalculateColumnWidths,_fnThrottle,_fnConvertToWidth,_fnScrollingWidthAdjust,_fnGetWidestNode,_fnGetMaxLenString,_fnStringToCss,_fnScrollBarWidth,_fnSortFlatten,_fnSort,_fnSortAria,_fnSortListener,_fnSortAttachListener,_fnSortingClasses,_fnSortData,_fnSaveState,_fnLoadState,_fnSettingsFromNode,_fnLog,_fnMap,_fnBindAction,_fnCallbackReg,_fnCallbackFire,_fnLengthOverflow,_fnRenderer,_fnDataSource,_fnRowAttributes*/
 
 (/** @lends <global> */function( window, document, undefined ) {
 
@@ -469,12 +469,12 @@
 	
 		// Column search objects are in an array, so it needs to be converted
 		// element by element
-		var searchCols = init.aoBuscarCols;
+		var searchCols = init.aoSearchCols;
 	
 		if ( searchCols ) {
 			for ( var i=0, ien=searchCols.length ; i<ien ; i++ ) {
 				if ( searchCols[i] ) {
-					_fnCamelToHungarian( DataTable.models.oBuscar, searchCols[i] );
+					_fnCamelToHungarian( DataTable.models.oSearch, searchCols[i] );
 				}
 			}
 		}
@@ -612,8 +612,8 @@
 		// Add search object for column specific search. Note that the `searchCols[ iCol ]`
 		// passed into extend can be undefined. This allows the user to give a default
 		// with only some of the parameters defined, and also not give a default
-		var searchCols = oSettings.aoPreBuscarCols;
-		searchCols[ iCol ] = $.extend( {}, DataTable.models.oBuscar, searchCols[ iCol ] );
+		var searchCols = oSettings.aoPreSearchCols;
+		searchCols[ iCol ] = $.extend( {}, DataTable.models.oSearch, searchCols[ iCol ] );
 	
 		// Use the default column options function to initialise classes etc
 		_fnColumnOptions( oSettings, iCol, $(nTh).data() );
@@ -624,7 +624,7 @@
 	 * Apply options for a column
 	 *  @param {object} oSettings dataTables settings object
 	 *  @param {int} iCol column index to consider
-	 *  @param {object} oOptions object with sType, bVisible and bBuscarable etc
+	 *  @param {object} oOptions object with sType, bVisible and bSearchable etc
 	 *  @memberof DataTable#oApi
 	 */
 	function _fnColumnOptions( oSettings, iCol, oOptions )
@@ -668,9 +668,9 @@
 	
 			// `class` is a reserved word in Javascript, so we need to provide
 			// the ability to use a valid name for the camel case input
-			if ( oOptions.classNombre && ! oOptions.sClass )
+			if ( oOptions.className && ! oOptions.sClass )
 			{
-				oOptions.sClass = oOptions.classNombre;
+				oOptions.sClass = oOptions.className;
 			}
 	
 			$.extend( oCol, oOptions );
@@ -829,7 +829,7 @@
 	 * Get an array of column indexes that match a given property
 	 *  @param {object} oSettings dataTables settings object
 	 *  @param {string} sParam Parameter in aoColumns to look for - typically
-	 *    bVisible or bBuscarable
+	 *    bVisible or bSearchable
 	 *  @returns {array} Array of indexes with matched properties
 	 *  @memberof DataTable#oApi
 	 */
@@ -1622,7 +1622,7 @@
 		if ( td ) {
 			// `tr` element was passed in
 			while ( td ) {
-				name = td.nodeNombre.toUpperCase();
+				name = td.nodeName.toUpperCase();
 	
 				if ( name == "TD" || name == "TH" ) {
 					cellProcess( td );
@@ -1697,7 +1697,7 @@
 				/* Add user defined class */
 				if ( oCol.sClass )
 				{
-					nTd.classNombre += ' '+oCol.sClass;
+					nTd.className += ' '+oCol.sClass;
 				}
 	
 				// Visibility - add or remove as required
@@ -2108,7 +2108,7 @@
 		}
 	
 		if ( filter ) {
-			_fnFilterComplete( settings, settings.oPreviousBuscar );
+			_fnFilterComplete( settings, settings.oPreviousSearch );
 		}
 		else {
 			// No filtering, so we want to just use the display master
@@ -2193,7 +2193,7 @@
 					{
 						var aSplit = sAttr.split('.');
 						nNewNode.id = aSplit[0].substr(1, aSplit[0].length-1);
-						nNewNode.classNombre = aSplit[1];
+						nNewNode.className = aSplit[1];
 					}
 					else if ( sAttr.charAt(0) == "#" )
 					{
@@ -2201,7 +2201,7 @@
 					}
 					else
 					{
-						nNewNode.classNombre = sAttr;
+						nNewNode.className = sAttr;
 					}
 	
 					i += j; /* Move along the position array */
@@ -2320,8 +2320,8 @@
 			/* For every cell in the row... */
 			nCell = nTr.firstChild;
 			while ( nCell ) {
-				if ( nCell.nodeNombre.toUpperCase() == "TD" ||
-				     nCell.nodeNombre.toUpperCase() == "TH" )
+				if ( nCell.nodeName.toUpperCase() == "TD" ||
+				     nCell.nodeName.toUpperCase() == "TH" )
 				{
 					/* Get the col and rowspan attributes from the DOM and sanitise them */
 					iColspan = nCell.getAttribute('colspan') * 1;
@@ -2569,9 +2569,9 @@
 			columns = settings.aoColumns,
 			columnCount = columns.length,
 			features = settings.oFeatures,
-			preBuscar = settings.oPreviousBuscar,
-			preColBuscar = settings.aoPreBuscarCols,
-			i, data = [], dataProp, column, columnBuscar,
+			preSearch = settings.oPreviousSearch,
+			preColSearch = settings.aoPreSearchCols,
+			i, data = [], dataProp, column, columnSearch,
 			sort = _fnSortFlatten( settings ),
 			displayStart = settings._iDisplayStart,
 			displayLength = features.bPaginate !== false ?
@@ -2585,7 +2585,7 @@
 		// DataTables 1.9- compatible method
 		param( 'sEcho',          settings.iDraw );
 		param( 'iColumns',       columnCount );
-		param( 'sColumns',       _pluck( columns, 'sNombre' ).join(',') );
+		param( 'sColumns',       _pluck( columns, 'sName' ).join(',') );
 		param( 'iDisplayStart',  displayStart );
 		param( 'iDisplayLength', displayLength );
 	
@@ -2597,33 +2597,33 @@
 			start:   displayStart,
 			length:  displayLength,
 			search:  {
-				value: preBuscar.sBuscar,
-				regex: preBuscar.bRegex
+				value: preSearch.sSearch,
+				regex: preSearch.bRegex
 			}
 		};
 	
 		for ( i=0 ; i<columnCount ; i++ ) {
 			column = columns[i];
-			columnBuscar = preColBuscar[i];
+			columnSearch = preColSearch[i];
 			dataProp = typeof column.mData=="function" ? 'function' : column.mData ;
 	
 			d.columns.push( {
 				data:       dataProp,
-				name:       column.sNombre,
-				searchable: column.bBuscarable,
+				name:       column.sName,
+				searchable: column.bSearchable,
 				orderable:  column.bSortable,
 				search:     {
-					value: columnBuscar.sBuscar,
-					regex: columnBuscar.bRegex
+					value: columnSearch.sSearch,
+					regex: columnSearch.bRegex
 				}
 			} );
 	
 			param( "mDataProp_"+i, dataProp );
 	
 			if ( features.bFilter ) {
-				param( 'sBuscar_'+i,     columnBuscar.sBuscar );
-				param( 'bRegex_'+i,      columnBuscar.bRegex );
-				param( 'bBuscarable_'+i, column.bBuscarable );
+				param( 'sSearch_'+i,     columnSearch.sSearch );
+				param( 'bRegex_'+i,      columnSearch.bRegex );
+				param( 'bSearchable_'+i, column.bSearchable );
 			}
 	
 			if ( features.bSort ) {
@@ -2632,8 +2632,8 @@
 		}
 	
 		if ( features.bFilter ) {
-			param( 'sBuscar', preBuscar.sBuscar );
-			param( 'bRegex', preBuscar.bRegex );
+			param( 'sSearch', preSearch.sSearch );
+			param( 'bRegex', preSearch.bRegex );
 		}
 	
 		if ( features.bSort ) {
@@ -2668,7 +2668,7 @@
 	 *  @param {int} json.iTotalRecords Number of records in the data set, not accounting for filtering
 	 *  @param {int} json.iTotalDisplayRecords Number of records in the data set, accounting for filtering
 	 *  @param {array} json.aaData The data to display on this page
-	 *  @param {string} [json.sColumns] Column ordering (sNombre, comma separated)
+	 *  @param {string} [json.sColumns] Column ordering (sName, comma separated)
 	 *  @memberof DataTable#oApi
 	 */
 	function _fnAjaxUpdateDraw ( settings, json )
@@ -2749,11 +2749,11 @@
 		var classes = settings.oClasses;
 		var tableId = settings.sTableId;
 		var language = settings.oLanguage;
-		var previousBuscar = settings.oPreviousBuscar;
+		var previousSearch = settings.oPreviousSearch;
 		var features = settings.aanFeatures;
 		var input = '<input type="search" class="'+classes.sFilterInput+'"/>';
 	
-		var str = language.sBuscar;
+		var str = language.sSearch;
 		str = str.match(/_INPUT_/) ?
 			str.replace('_INPUT_', input) :
 			str+input;
@@ -2770,12 +2770,12 @@
 			var val = !this.value ? "" : this.value; // mental IE8 fix :-(
 	
 			/* Now do the filter */
-			if ( val != previousBuscar.sBuscar ) {
+			if ( val != previousSearch.sSearch ) {
 				_fnFilterComplete( settings, {
-					"sBuscar": val,
-					"bRegex": previousBuscar.bRegex,
-					"bSmart": previousBuscar.bSmart ,
-					"bCaseInsensitive": previousBuscar.bCaseInsensitive
+					"sSearch": val,
+					"bRegex": previousSearch.bRegex,
+					"bSmart": previousSearch.bSmart ,
+					"bCaseInsensitive": previousSearch.bCaseInsensitive
 				} );
 	
 				// Need to redraw, without resorting
@@ -2791,8 +2791,8 @@
 				0;
 	
 		var jqFilter = $('input', filter)
-			.val( previousBuscar.sBuscar )
-			.attr( 'placeholder', language.sBuscarPlaceholder )
+			.val( previousSearch.sSearch )
+			.attr( 'placeholder', language.sSearchPlaceholder )
 			.bind(
 				'keyup.DT search.DT input.DT paste.DT cut.DT',
 				searchDelay ?
@@ -2814,7 +2814,7 @@
 				// inside an iframe or frame...
 				try {
 					if ( jqFilter[0] !== document.activeElement ) {
-						jqFilter.val( previousBuscar.sBuscar );
+						jqFilter.val( previousSearch.sSearch );
 					}
 				}
 				catch ( e ) {}
@@ -2828,20 +2828,20 @@
 	/**
 	 * Filter the table using both the global filter and column based filtering
 	 *  @param {object} oSettings dataTables settings object
-	 *  @param {object} oBuscar search information
+	 *  @param {object} oSearch search information
 	 *  @param {int} [iForce] force a research of the master array (1) or not (undefined or 0)
 	 *  @memberof DataTable#oApi
 	 */
 	function _fnFilterComplete ( oSettings, oInput, iForce )
 	{
-		var oPrevBuscar = oSettings.oPreviousBuscar;
-		var aoPrevBuscar = oSettings.aoPreBuscarCols;
+		var oPrevSearch = oSettings.oPreviousSearch;
+		var aoPrevSearch = oSettings.aoPreSearchCols;
 		var fnSaveFilter = function ( oFilter ) {
 			/* Save the filtering values */
-			oPrevBuscar.sBuscar = oFilter.sBuscar;
-			oPrevBuscar.bRegex = oFilter.bRegex;
-			oPrevBuscar.bSmart = oFilter.bSmart;
-			oPrevBuscar.bCaseInsensitive = oFilter.bCaseInsensitive;
+			oPrevSearch.sSearch = oFilter.sSearch;
+			oPrevSearch.bRegex = oFilter.bRegex;
+			oPrevSearch.bSmart = oFilter.bSmart;
+			oPrevSearch.bCaseInsensitive = oFilter.bCaseInsensitive;
 		};
 		var fnRegex = function ( o ) {
 			// Backwards compatibility with the bEscapeRegex option
@@ -2856,14 +2856,14 @@
 		if ( _fnDataSource( oSettings ) != 'ssp' )
 		{
 			/* Global filter */
-			_fnFilter( oSettings, oInput.sBuscar, iForce, fnRegex(oInput), oInput.bSmart, oInput.bCaseInsensitive );
+			_fnFilter( oSettings, oInput.sSearch, iForce, fnRegex(oInput), oInput.bSmart, oInput.bCaseInsensitive );
 			fnSaveFilter( oInput );
 	
 			/* Now do the individual column filter */
-			for ( var i=0 ; i<aoPrevBuscar.length ; i++ )
+			for ( var i=0 ; i<aoPrevSearch.length ; i++ )
 			{
-				_fnFilterColumn( oSettings, aoPrevBuscar[i].sBuscar, i, fnRegex(aoPrevBuscar[i]),
-					aoPrevBuscar[i].bSmart, aoPrevBuscar[i].bCaseInsensitive );
+				_fnFilterColumn( oSettings, aoPrevSearch[i].sSearch, i, fnRegex(aoPrevSearch[i]),
+					aoPrevSearch[i].bSmart, aoPrevSearch[i].bCaseInsensitive );
 			}
 	
 			/* Custom filtering */
@@ -2930,12 +2930,12 @@
 	
 		var data;
 		var display = settings.aiDisplay;
-		var rpBuscar = _fnFilterCreateBuscar( searchStr, regex, smart, caseInsensitive );
+		var rpSearch = _fnFilterCreateSearch( searchStr, regex, smart, caseInsensitive );
 	
 		for ( var i=display.length-1 ; i>=0 ; i-- ) {
 			data = settings.aoData[ display[i] ]._aFilterData[ colIdx ];
 	
-			if ( ! rpBuscar.test( data ) ) {
+			if ( ! rpSearch.test( data ) ) {
 				display.splice( i, 1 );
 			}
 		}
@@ -2954,8 +2954,8 @@
 	 */
 	function _fnFilter( settings, input, force, regex, smart, caseInsensitive )
 	{
-		var rpBuscar = _fnFilterCreateBuscar( input, regex, smart, caseInsensitive );
-		var prevBuscar = settings.oPreviousBuscar.sBuscar;
+		var rpSearch = _fnFilterCreateSearch( input, regex, smart, caseInsensitive );
+		var prevSearch = settings.oPreviousSearch.sSearch;
 		var displayMaster = settings.aiDisplayMaster;
 		var display, invalidated, i;
 	
@@ -2975,19 +2975,19 @@
 			// New search - start from the master array
 			if ( invalidated ||
 				 force ||
-				 prevBuscar.length > input.length ||
-				 input.indexOf(prevBuscar) !== 0 ||
+				 prevSearch.length > input.length ||
+				 input.indexOf(prevSearch) !== 0 ||
 				 settings.bSorted // On resort, the display master needs to be
 				                  // re-filtered since indexes will have changed
 			) {
 				settings.aiDisplay = displayMaster.slice();
 			}
 	
-			// Buscar the display array
+			// Search the display array
 			display = settings.aiDisplay;
 	
 			for ( i=display.length-1 ; i>=0 ; i-- ) {
-				if ( ! rpBuscar.test( settings.aoData[ display[i] ]._sFilterRow ) ) {
+				if ( ! rpSearch.test( settings.aoData[ display[i] ]._sFilterRow ) ) {
 					display.splice( i, 1 );
 				}
 			}
@@ -2997,14 +2997,14 @@
 	
 	/**
 	 * Build a regular expression object suitable for searching a table
-	 *  @param {string} sBuscar string to search for
+	 *  @param {string} sSearch string to search for
 	 *  @param {bool} bRegex treat as a regular expression or not
 	 *  @param {bool} bSmart perform smart filtering or not
 	 *  @param {bool} bCaseInsensitive Do case insensitive matching or not
 	 *  @returns {RegExp} constructed object
 	 *  @memberof DataTable#oApi
 	 */
-	function _fnFilterCreateBuscar( search, regex, smart, caseInsensitive )
+	function _fnFilterCreateSearch( search, regex, smart, caseInsensitive )
 	{
 		search = regex ?
 			search :
@@ -3068,14 +3068,14 @@
 				for ( j=0, jen=columns.length ; j<jen ; j++ ) {
 					column = columns[j];
 	
-					if ( column.bBuscarable ) {
+					if ( column.bSearchable ) {
 						cellData = _fnGetCellData( settings, i, j, 'filter' );
 	
 						if ( fomatters[ column.sType ] ) {
 							cellData = fomatters[ column.sType ]( cellData );
 						}
 	
-						// Buscar in DataTables 1.10 is string based. In 1.11 this
+						// Search in DataTables 1.10 is string based. In 1.11 this
 						// should be altered to also allow strict type checking.
 						if ( cellData === null ) {
 							cellData = '';
@@ -3124,10 +3124,10 @@
 	 *  @returns {object} Inverted object
 	 *  @memberof DataTable#oApi
 	 */
-	function _fnBuscarToCamel ( obj )
+	function _fnSearchToCamel ( obj )
 	{
 		return {
-			search:          obj.sBuscar,
+			search:          obj.sSearch,
 			smart:           obj.bSmart,
 			regex:           obj.bRegex,
 			caseInsensitive: obj.bCaseInsensitive
@@ -3143,10 +3143,10 @@
 	 *  @returns {object} Inverted object
 	 *  @memberof DataTable#oApi
 	 */
-	function _fnBuscarToHung ( obj )
+	function _fnSearchToHung ( obj )
 	{
 		return {
-			sBuscar:          obj.search,
+			sSearch:          obj.search,
 			bSmart:           obj.smart,
 			bRegex:           obj.regex,
 			bCaseInsensitive: obj.caseInsensitive
@@ -3173,7 +3173,7 @@
 			// Update display on each draw
 			settings.aoDrawCallback.push( {
 				"fn": _fnUpdateInfo,
-				"sNombre": "information"
+				"sName": "information"
 			} );
 	
 			n
@@ -3476,7 +3476,7 @@
 						plugin.fnUpdate( settings, redraw );
 					}
 				},
-				"sNombre": "pagination"
+				"sName": "pagination"
 			} );
 		}
 	
@@ -3740,7 +3740,7 @@
 		// On redraw - align columns
 		settings.aoDrawCallback.push( {
 			"fn": _fnScrollDraw,
-			"sNombre": "scrolling"
+			"sName": "scrolling"
 		} );
 	
 		return scroller[0];
@@ -4912,11 +4912,11 @@
 			start:   settings._iDisplayStart,
 			length:  settings._iDisplayLength,
 			order:   $.extend( true, [], settings.aaSorting ),
-			search:  _fnBuscarToCamel( settings.oPreviousBuscar ),
+			search:  _fnSearchToCamel( settings.oPreviousSearch ),
 			columns: $.map( settings.aoColumns, function ( col, i ) {
 				return {
 					visible: col.bVisible,
-					search: _fnBuscarToCamel( settings.aoPreBuscarCols[i] )
+					search: _fnSearchToCamel( settings.aoPreSearchCols[i] )
 				};
 			} )
 		};
@@ -4991,9 +4991,9 @@
 			} );
 		}
 	
-		// Buscar
+		// Search
 		if ( state.search !== undefined ) {
-			$.extend( settings.oPreviousBuscar, _fnBuscarToHung( state.search ) );
+			$.extend( settings.oPreviousSearch, _fnSearchToHung( state.search ) );
 		}
 	
 		// Columns
@@ -5005,9 +5005,9 @@
 				columns[i].bVisible = col.visible;
 			}
 	
-			// Buscar
+			// Search
 			if ( col.search !== undefined ) {
-				$.extend( settings.aoPreBuscarCols[i], _fnBuscarToHung( col.search ) );
+				$.extend( settings.aoPreSearchCols[i], _fnSearchToHung( col.search ) );
 			}
 		}
 	
@@ -5078,10 +5078,10 @@
 	 *  @param {object} ret target object
 	 *  @param {object} src source object
 	 *  @param {string} name property
-	 *  @param {string} [mappedNombre] name to map too - optional, name used if not given
+	 *  @param {string} [mappedName] name to map too - optional, name used if not given
 	 *  @memberof DataTable#oApi
 	 */
-	function _fnMap( ret, src, name, mappedNombre )
+	function _fnMap( ret, src, name, mappedName )
 	{
 		if ( $.isArray( name ) ) {
 			$.each( name, function (i, val) {
@@ -5096,12 +5096,12 @@
 			return;
 		}
 	
-		if ( mappedNombre === undefined ) {
-			mappedNombre = name;
+		if ( mappedName === undefined ) {
+			mappedName = name;
 		}
 	
 		if ( src[name] !== undefined ) {
-			ret[mappedNombre] = src[name];
+			ret[mappedName] = src[name];
 		}
 	}
 	
@@ -5183,18 +5183,18 @@
 	 * Register a callback function. Easily allows a callback function to be added to
 	 * an array store of callback functions that can then all be called together.
 	 *  @param {object} oSettings dataTables settings object
-	 *  @param {string} sStore Nombre of the array storage for the callbacks in oSettings
+	 *  @param {string} sStore Name of the array storage for the callbacks in oSettings
 	 *  @param {function} fn Function to be called back
-	 *  @param {string} sNombre Identifying name for the callback (i.e. a label)
+	 *  @param {string} sName Identifying name for the callback (i.e. a label)
 	 *  @memberof DataTable#oApi
 	 */
-	function _fnCallbackReg( oSettings, sStore, fn, sNombre )
+	function _fnCallbackReg( oSettings, sStore, fn, sName )
 	{
 		if ( fn )
 		{
 			oSettings[sStore].push( {
 				"fn": fn,
-				"sNombre": sNombre
+				"sName": sName
 			} );
 		}
 	}
@@ -5206,9 +5206,9 @@
 	 * fire off triggers in time sensitive applications (for example cell creation)
 	 * as its slow.
 	 *  @param {object} settings dataTables settings object
-	 *  @param {string} callbackArr Nombre of the array storage for the callbacks in
+	 *  @param {string} callbackArr Name of the array storage for the callbacks in
 	 *      oSettings
-	 *  @param {string} event Nombre of the jQuery custom event to trigger. If null no
+	 *  @param {string} event Name of the jQuery custom event to trigger. If null no
 	 *      trigger is fired
 	 *  @param {array} args Array of arguments to pass to the callback function /
 	 *      trigger
@@ -5718,7 +5718,7 @@
 			var api = this.api( true );
 		
 			if ( src !== undefined ) {
-				var type = src.nodeNombre ? src.nodeNombre.toLowerCase() : '';
+				var type = src.nodeName ? src.nodeName.toLowerCase() : '';
 		
 				return col !== undefined || type == 'td' || type == 'th' ?
 					api.cell( src, col ).data() :
@@ -5788,12 +5788,12 @@
 		this.fnGetPosition = function( node )
 		{
 			var api = this.api( true );
-			var nodeNombre = node.nodeNombre.toUpperCase();
+			var nodeName = node.nodeName.toUpperCase();
 		
-			if ( nodeNombre == 'TR' ) {
+			if ( nodeName == 'TR' ) {
 				return api.row( node ).index();
 			}
-			else if ( nodeNombre == 'TD' || nodeNombre == 'TH' ) {
+			else if ( nodeName == 'TD' || nodeName == 'TH' ) {
 				var cell = api.cell( node ).index();
 		
 				return [
@@ -6090,9 +6090,9 @@
 			
 			
 			/* Sanity check */
-			if ( this.nodeNombre.toLowerCase() != 'table' )
+			if ( this.nodeName.toLowerCase() != 'table' )
 			{
-				_fnLog( null, 0, 'Non-table node initialisation ('+this.nodeNombre+')', 2 );
+				_fnLog( null, 0, 'Non-table node initialisation ('+this.nodeName+')', 2 );
 				return;
 			}
 			
@@ -6227,8 +6227,8 @@
 				"renderer",
 				"searchDelay",
 				[ "iCookieDuration", "iStateDuration" ], // backwards compat
-				[ "oBuscar", "oPreviousBuscar" ],
-				[ "aoBuscarCols", "aoPreBuscarCols" ],
+				[ "oSearch", "oPreviousSearch" ],
+				[ "aoSearchCols", "aoPreSearchCols" ],
 				[ "iDisplayLength", "_iDisplayLength" ],
 				[ "bJQueryUI", "bJUI" ]
 			] );
@@ -6360,7 +6360,7 @@
 			 */
 			var anThs = [];
 			var aoColumnsInit;
-			var nThead = this.getElementsByTagNombre('thead');
+			var nThead = this.getElementsByTagName('thead');
 			if ( nThead.length !== 0 )
 			{
 				_fnDetectHeader( oSettings.aoHeader, nThead[0] );
@@ -6640,7 +6640,7 @@
 			// DataTables settings object
 			return [ mixed ];
 		}
-		else if ( mixed.nodeNombre && mixed.nodeNombre.toLowerCase() === 'table' ) {
+		else if ( mixed.nodeName && mixed.nodeName.toLowerCase() === 'table' ) {
 			// Table node
 			idx = $.inArray( mixed, tables );
 			return idx !== -1 ? [ settings[idx] ] : null;
@@ -7140,10 +7140,10 @@
 	};
 	
 	
-	_Api.registerPlural = _api_registerPlural = function ( pluralNombre, singularNombre, val ) {
-		_Api.register( pluralNombre, val );
+	_Api.registerPlural = _api_registerPlural = function ( pluralName, singularName, val ) {
+		_Api.register( pluralName, val );
 	
-		_Api.register( singularNombre, function () {
+		_Api.register( singularName, function () {
 			var ret = val.apply( this, arguments );
 	
 			if ( ret === this ) {
@@ -7708,7 +7708,7 @@
 			);
 	
 			// Selector - node
-			if ( sel.nodeNombre ) {
+			if ( sel.nodeName ) {
 				if ( $.inArray( sel, nodes ) !== -1 ) {
 					return [ sel._DT_RowIndex ]; // sel is a TR node that is in the table
 					                             // and DataTables adds a prop for fast lookup
@@ -7819,7 +7819,7 @@
 				for ( i=0, ien=rows.length ; i<ien ; i++ ) {
 					row = rows[i];
 	
-					if ( row.nodeNombre && row.nodeNombre.toUpperCase() === 'TR' ) {
+					if ( row.nodeName && row.nodeName.toUpperCase() === 'TR' ) {
 						out.push( _fnAddTr( settings, row )[0] );
 					}
 					else {
@@ -7887,7 +7887,7 @@
 		}
 	
 		var rows = this.iterator( 'table', function ( settings ) {
-			if ( row.nodeNombre && row.nodeNombre.toUpperCase() === 'TR' ) {
+			if ( row.nodeName && row.nodeName.toUpperCase() === 'TR' ) {
 				return _fnAddTr( settings, row )[0];
 			}
 			return _fnAddData( settings, row );
@@ -7914,7 +7914,7 @@
 	
 			// If we get a TR element, then just add it directly - up to the dev
 			// to add the correct number of columns etc
-			if ( r.nodeNombre && r.nodeNombre.toLowerCase() === 'tr' ) {
+			if ( r.nodeName && r.nodeName.toLowerCase() === 'tr' ) {
 				rows.push( r );
 			}
 			else {
@@ -8151,7 +8151,7 @@
 	{
 		var
 			columns = settings.aoColumns,
-			names = _pluck( columns, 'sNombre' ),
+			names = _pluck( columns, 'sName' ),
 			nodes = _pluck( columns, 'nTh' );
 	
 		return _selector_run( selector, function ( s ) {
@@ -8684,7 +8684,7 @@
 		if ( input === undefined ) {
 			// get
 			return ctx.length !== 0 ?
-				ctx[0].oPreviousBuscar.sBuscar :
+				ctx[0].oPreviousSearch.sSearch :
 				undefined;
 		}
 	
@@ -8694,8 +8694,8 @@
 				return;
 			}
 	
-			_fnFilterComplete( settings, $.extend( {}, settings.oPreviousBuscar, {
-				"sBuscar": input+"",
+			_fnFilterComplete( settings, $.extend( {}, settings.oPreviousSearch, {
+				"sSearch": input+"",
 				"bRegex":  regex === null ? false : regex,
 				"bSmart":  smart === null ? true  : smart,
 				"bCaseInsensitive": caseInsen === null ? true : caseInsen
@@ -8709,11 +8709,11 @@
 		'column().search()',
 		function ( input, regex, smart, caseInsen ) {
 			return this.iterator( 'column', function ( settings, column ) {
-				var preBuscar = settings.aoPreBuscarCols;
+				var preSearch = settings.aoPreSearchCols;
 	
 				if ( input === undefined ) {
 					// get
-					return preBuscar[ column ].sBuscar;
+					return preSearch[ column ].sSearch;
 				}
 	
 				// set
@@ -8721,14 +8721,14 @@
 					return;
 				}
 	
-				$.extend( preBuscar[ column ], {
-					"sBuscar": input+"",
+				$.extend( preSearch[ column ], {
+					"sSearch": input+"",
 					"bRegex":  regex === null ? false : regex,
 					"bSmart":  smart === null ? true  : smart,
 					"bCaseInsensitive": caseInsen === null ? true : caseInsen
 				} );
 	
-				_fnFilterComplete( settings, settings.oPreviousBuscar, 1 );
+				_fnFilterComplete( settings, settings.oPreviousSearch, 1 );
 			} );
 		}
 	);
@@ -9123,7 +9123,7 @@
 	 * search information for the global filter and individual column filters.
 	 *  @namespace
 	 */
-	DataTable.models.oBuscar = {
+	DataTable.models.oSearch = {
 		/**
 		 * Flag to indicate if the filtering should be case insensitive or not
 		 *  @type boolean
@@ -9136,7 +9136,7 @@
 		 *  @type string
 		 *  @default <i>Empty string</i>
 		 */
-		"sBuscar": "",
+		"sSearch": "",
 	
 		/**
 		 * Flag to indicate if the search term should be interpreted as a
@@ -9228,7 +9228,7 @@
 		/**
 		 * Cache of the class name that DataTables has applied to the row, so we
 		 * can quickly look at this variable rather than needing to do a DOM check
-		 * on classNombre for the nTr property.
+		 * on className for the nTr property.
 		 *  @type string
 		 *  @default <i>Empty string</i>
 		 *  @private
@@ -9294,7 +9294,7 @@
 		 * in the filtering or not.
 		 *  @type boolean
 		 */
-		"bBuscarable": null,
+		"bSearchable": null,
 	
 		/**
 		 * Flag to indicate if the column is sortable or not.
@@ -9435,11 +9435,11 @@
 		"sDefaultContent": null,
 	
 		/**
-		 * Nombre for the column, allowing reference to the column by name as well as
+		 * Name for the column, allowing reference to the column by name as well as
 		 * by index (needs a lookup to work by name).
 		 *  @type string
 		 */
-		"sNombre": null,
+		"sName": null,
 	
 		/**
 		 * Custom sorting data type - defines which of the available plug-ins in
@@ -9873,7 +9873,7 @@
 		 *      } );
 		 *    } )
 		 */
-		"aoBuscarCols": [],
+		"aoSearchCols": [],
 	
 	
 		/**
@@ -10349,7 +10349,7 @@
 		 *    $(document).ready( function() {
 		 *      $('#example').dataTable( {
 		 *        "footerCallback": function( tfoot, data, start, end, display ) {
-		 *          tfoot.getElementsByTagNombre('th')[0].innerHTML = "Starting index is "+start;
+		 *          tfoot.getElementsByTagName('th')[0].innerHTML = "Starting index is "+start;
 		 *        }
 		 *      } );
 		 *    } )
@@ -10413,7 +10413,7 @@
 		 *    $(document).ready( function() {
 		 *      $('#example').dataTable( {
 		 *        "fheaderCallback": function( head, data, start, end, display ) {
-		 *          head.getElementsByTagNombre('th')[0].innerHTML = "Displaying "+(end-start)+" records";
+		 *          head.getElementsByTagName('th')[0].innerHTML = "Displaying "+(end-start)+" records";
 		 *        }
 		 *      } );
 		 *    } )
@@ -10649,7 +10649,7 @@
 		 *      $('#example').dataTable( {
 		 *        "stateSave": true,
 		 *        "stateLoadParams": function (settings, data) {
-		 *          data.oBuscar.sBuscar = "";
+		 *          data.oSearch.sSearch = "";
 		 *        }
 		 *      } );
 		 *    } );
@@ -10684,7 +10684,7 @@
 		 *      $('#example').dataTable( {
 		 *        "stateSave": true,
 		 *        "stateLoaded": function (settings, data) {
-		 *          alert( 'Saved filter was: '+data.oBuscar.sBuscar );
+		 *          alert( 'Saved filter was: '+data.oSearch.sSearch );
 		 *        }
 		 *      } );
 		 *    } );
@@ -10750,7 +10750,7 @@
 		 *      $('#example').dataTable( {
 		 *        "stateSave": true,
 		 *        "stateSaveParams": function (settings, data) {
-		 *          data.oBuscar.sBuscar = "";
+		 *          data.oSearch.sSearch = "";
 		 *        }
 		 *      } );
 		 *    } );
@@ -11327,7 +11327,7 @@
 			 * control over where it appears in the string. If "_INPUT_" is not given
 			 * then the input box is appended to the string automatically.
 			 *  @type string
-			 *  @default Buscar:
+			 *  @default Search:
 			 *
 			 *  @dtopt Language
 			 *  @name DataTable.defaults.language.search
@@ -11352,7 +11352,7 @@
 			 *      } );
 			 *    } );
 			 */
-			"sBuscar": "Buscar:",
+			"sSearch": "Search:",
 	
 	
 			/**
@@ -11363,7 +11363,7 @@
 			 *  @dtopt Language
 			 *  @name DataTable.defaults.language.searchPlaceholder
 			 */
-			"sBuscarPlaceholder": "",
+			"sSearchPlaceholder": "",
 	
 	
 			/**
@@ -11423,7 +11423,7 @@
 		 * DataTables will use it's smart filtering methods (to word match at
 		 * any point in the data), when false this will not be done.
 		 *  @namespace
-		 *  @extends DataTable.models.oBuscar
+		 *  @extends DataTable.models.oSearch
 		 *
 		 *  @dtopt Options
 		 *  @name DataTable.defaults.search
@@ -11435,7 +11435,7 @@
 		 *      } );
 		 *    } )
 		 */
-		"oBuscar": $.extend( {}, DataTable.models.oBuscar ),
+		"oSearch": $.extend( {}, DataTable.models.oSearch ),
 	
 	
 		/**
@@ -11533,7 +11533,7 @@
 	
 	
 		/**
-		 * Buscar delay option. This will throttle full table searches that use the
+		 * Search delay option. This will throttle full table searches that use the
 		 * DataTables provided search input element (it does not effect calls to
 		 * `dt-api search()`, providing a delay before the search is made.
 		 *  @type integer
@@ -11813,7 +11813,7 @@
 		 *        ] } );
 		 *    } );
 		 */
-		"bBuscarable": true,
+		"bSearchable": true,
 	
 	
 		/**
@@ -12174,7 +12174,7 @@
 		 *        "columnDefs": [ {
 		 *          "targets": [ 0 ],
 		 *          "data": null, // Use the full data source object for the renderer's source
-		 *          "render": "browserNombre()"
+		 *          "render": "browserName()"
 		 *        } ]
 		 *      } );
 		 *    } );
@@ -12393,7 +12393,7 @@
 		 *      } );
 		 *    } );
 		 */
-		"sNombre": "",
+		"sName": "",
 	
 	
 		/**
@@ -12856,18 +12856,18 @@
 		 * Note that this parameter will be set by the initialisation routine. To
 		 * set a default use {@link DataTable.defaults}.
 		 *  @namespace
-		 *  @extends DataTable.models.oBuscar
+		 *  @extends DataTable.models.oSearch
 		 */
-		"oPreviousBuscar": {},
+		"oPreviousSearch": {},
 	
 		/**
 		 * Store the applied search for each column - see
-		 * {@link DataTable.models.oBuscar} for the format that is used for the
+		 * {@link DataTable.models.oSearch} for the format that is used for the
 		 * filtering information for each column.
 		 *  @type array
 		 *  @default []
 		 */
-		"aoPreBuscarCols": [],
+		"aoPreSearchCols": [],
 	
 		/**
 		 * Sorting that is applied to the table. Note that the inner arrays are
@@ -13069,7 +13069,7 @@
 		"sDom": null,
 	
 		/**
-		 * Buscar delay (in mS)
+		 * Search delay (in mS)
 		 *  @type integer
 		 *  @default null
 		 */
@@ -13101,7 +13101,7 @@
 		 *       and the JSON string to save that has been thus far created. Returns
 		 *       a JSON string to be inserted into a json object
 		 *       (i.e. '"param": [ 0, 1, 2]')</li>
-		 *     <li>string:sNombre - name of callback</li>
+		 *     <li>string:sName - name of callback</li>
 		 *   </ul>
 		 *  @type array
 		 *  @default []
@@ -13114,7 +13114,7 @@
 		 *   <ul>
 		 *     <li>function:fn - function to call. Takes two parameters, oSettings
 		 *       and the object stored. May return false to cancel state loading</li>
-		 *     <li>string:sNombre - name of callback</li>
+		 *     <li>string:sName - name of callback</li>
 		 *   </ul>
 		 *  @type array
 		 *  @default []
@@ -13548,7 +13548,7 @@
 		 * and your logic decides if it should be included in the searching data set
 		 * or not.
 		 *
-		 * Buscaring functions have the following input parameters:
+		 * Searching functions have the following input parameters:
 		 *
 		 * 1. `{object}` DataTables settings object: see
 		 *    {@link DataTable.models.oSettings}
@@ -13942,7 +13942,7 @@
 	$.extend( _ext, {
 		afnFiltering: _ext.search,
 		aTypes:       _ext.type.detect,
-		ofnBuscar:    _ext.type.search,
+		ofnSearch:    _ext.type.search,
 		oSort:        _ext.type.order,
 		afnSortData:  _ext.order,
 		aoFeatures:   _ext.feature,
@@ -14293,7 +14293,7 @@
 	
 	
 	
-	// Filter formatting functions. See model.ext.ofnBuscar for information about
+	// Filter formatting functions. See model.ext.ofnSearch for information about
 	// what is required from these methods.
 	// 
 	// Note that additional search methods are added for the html numbers and
@@ -14640,7 +14640,7 @@
 		_fnFilterCustom: _fnFilterCustom,
 		_fnFilterColumn: _fnFilterColumn,
 		_fnFilter: _fnFilter,
-		_fnFilterCreateBuscar: _fnFilterCreateBuscar,
+		_fnFilterCreateSearch: _fnFilterCreateSearch,
 		_fnEscapeRegex: _fnEscapeRegex,
 		_fnFilterData: _fnFilterData,
 		_fnFeatureHtmlInfo: _fnFeatureHtmlInfo,
@@ -14722,7 +14722,7 @@
 	 */
 
 	/**
-	 * Buscar event, fired when the searching applied to the table (using the
+	 * Search event, fired when the searching applied to the table (using the
 	 * built-in global search, or column filters) is altered.
 	 *  @name DataTable#search.dt
 	 *  @event

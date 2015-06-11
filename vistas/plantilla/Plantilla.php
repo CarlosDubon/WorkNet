@@ -1,4 +1,3 @@
-<html>
     <head>
         <title>WorkNet</title>        
         <meta charset="utf-8">
@@ -24,7 +23,7 @@
                     {{menuSuperior}}                                        
                 </div>
             </div>
-            <br/><br>            
+            <br/><br/>            
             <div class="row">
                 <div class="col-md-4">
                     {{menuLateral}}                    
