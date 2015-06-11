@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 08-06-2015 a las 19:43:38
+-- Tiempo de generación: 12-06-2015 a las 01:45:15
 -- Versión del servidor: 5.6.21
 -- Versión de PHP: 5.6.3
 
@@ -277,7 +277,7 @@ CREATE TABLE IF NOT EXISTS `portafolio` (
   `FechaSubida` date NOT NULL,
   `Size` int(11) NOT NULL,
   `cuenta_idCuenta` int(11) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -291,23 +291,24 @@ CREATE TABLE IF NOT EXISTS `publicaciones` (
   `imgPub` varchar(30) NOT NULL,
   `Fecha` date NOT NULL,
   `cuenta_idCuenta` int(11) NOT NULL,
-  `Usuario_cuenta` varchar(45) NOT NULL
+  `Usuario_cuenta` varchar(45) NOT NULL,
+  `works` int(11) NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8 COMMENT='	';
 
 --
 -- Volcado de datos para la tabla `publicaciones`
 --
 
-INSERT INTO `publicaciones` (`idPub`, `Texto`, `imgPub`, `Fecha`, `cuenta_idCuenta`, `Usuario_cuenta`) VALUES
-(1, 'hola soy nuevo aqui! :D', '', '2015-05-14', 3, ''),
-(2, 'sdcwdedcweddew', '', '2015-05-14', 3, ''),
-(3, 'hola', '', '2015-05-14', 3, ''),
-(8, 'hola', '', '2015-05-14', 3, 'cn'),
-(9, 'Holi', '', '2015-05-14', 3, 'cn'),
-(10, 'gghs', '', '2015-05-14', 3, 'cn'),
-(11, 'Cn', '', '2015-05-14', 3, 'cn'),
-(12, 'as', '', '2015-05-14', 3, 'cn'),
-(13, ':D', '', '2015-05-14', 3, 'cn');
+INSERT INTO `publicaciones` (`idPub`, `Texto`, `imgPub`, `Fecha`, `cuenta_idCuenta`, `Usuario_cuenta`, `works`) VALUES
+(1, 'hola soy nuevo aqui! :D', '', '2015-05-14', 3, '', 0),
+(2, 'sdcwdedcweddew', '', '2015-05-14', 3, '', 0),
+(3, 'hola', '', '2015-05-14', 3, '', 0),
+(8, 'hola', '', '2015-05-14', 3, 'cn', 0),
+(9, 'Holi', '', '2015-05-14', 3, 'cn', 0),
+(10, 'gghs', '', '2015-05-14', 3, 'cn', 0),
+(11, 'Cn', '', '2015-05-14', 3, 'cn', 0),
+(12, 'as', '', '2015-05-14', 3, 'cn', 0),
+(13, ':D', '', '2015-05-14', 3, 'cn', 8);
 
 -- --------------------------------------------------------
 
@@ -486,7 +487,7 @@ MODIFY `idPerfil` int(11) NOT NULL AUTO_INCREMENT;
 -- AUTO_INCREMENT de la tabla `portafolio`
 --
 ALTER TABLE `portafolio`
-MODIFY `idPortafolio` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
+MODIFY `idPortafolio` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT de la tabla `publicaciones`
 --
