@@ -27,7 +27,7 @@ class Categoria {
             
          if($this->validarCategoriaUnica($cat)){
             $resultado = $bd->insertarRegistro($tabla, $columnas, $valores);
-             $utilidades->mostrarMensaje('La ategoria!');
+             $utilidades->mostrarMensaje('La se agrego correctamente categoria!');
             $plantilla->verPagina('');
          }else{
             $utilidades->mostrarMensaje('Lo sentimos, La categoria existe actualmente, por favor intente de nuevo.');
@@ -55,7 +55,7 @@ class Categoria {
         $query = 'SELECT idCategorias as id, NombreCat FROM categorias';
         $result = $db->consulta($query);
         
-        $acciones = '<center><a href="#" class="btn btn-danger"><span class="fui-trash"></span></a>';   
+        $acciones = '<center><a href="./eliminarCategoria.php?idCategorias={{id}}" class="btn btn-danger"><span class="fui-trash"></span></a>';   
         
         $encabezado = ['ID' , 'Categoria'];
         
@@ -67,6 +67,7 @@ class Categoria {
     public function eliminarCategoria($id){
         $db = new MySQL();
         $plantilla = new Plantilla();
+        $utilidades = new Utilidades();
         
         $tabla = 'categorias';
         $where = 'idCategorias='.$id;
@@ -74,6 +75,7 @@ class Categoria {
         $result = $db->eliminarRegistro($tabla, $where);
         
         if($result)
-            $utilidades->mostrarMensaje('');
+            $utilidades->mostrarMensaje('La categoria se elimino correctamente');
+        $utilidades->Redireccionar('controladores/vercat.php');
     }
 }

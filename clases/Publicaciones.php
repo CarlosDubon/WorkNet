@@ -39,8 +39,9 @@ class Publicaciones {
         $plantilla = new Plantilla();
         $mysql = new MySQL();
         $sesion = new Sesion();
-
-         $query = 'SELECT idPub as id,Texto,ImgPub,Fecha,Usuario_cuenta,works FROM publicaciones ORDER BY idPub DESC';
+         
+         $idUsuario = $sesion->obtenerVariableSesion('idUsuario');
+         $query = 'SELECT p.idPub as id,p.Texto,p.ImgPub,p.Fecha,p.Usuario_cuenta,p.works FROM publicaciones p ORDER BY idPub DESC';
         
         $resultado = $mysql->consulta($query);
 
@@ -69,7 +70,7 @@ class Publicaciones {
                         <p><b>'.$Pub[$i]['Texto'].'</b></p>
                         <a href="../controladores/works.php?idPub='.$Pub[$i]['id'].'" class="btn btn-default boton" id="btn btn"><i class="fa fa-suitcase"></i> Work</a >
                         <button type="button" class="btn btn-default boton" ><span class="fui-chat"></span></i> Comentar </button>
-                        <button type="button" class="btn btn-default boton" id=""><span class="fui-cross"></span></i>Denuncia </button>
+                        <button type="button" class="btn btn-default boton" id=""><span class="fui-cross"></span></i>Denuncia </button><span class="badge" id="de">Esta publicion tiene ' .$Pub[$i]['works'].' work(s)</span>
                     </blockquote>';      
                 }
         return $pub;
@@ -102,7 +103,6 @@ class Publicaciones {
     public function work($id){
         $db = new MySQL();
         $utilidades = new Utilidades();
-        $plantilla = new Plantilla();
         
         $query = 'SELECT works FROM publicaciones WHERE idPub='.$id;
         $result = $db->consulta($query);
@@ -113,6 +113,7 @@ class Publicaciones {
         $where = 'idPub='.$id;
         
         $resultado = $db->modificarRegistro($tabla,$cambio,$where);
+        $utilidades->Redireccionar("controladores/publicar.php");
         
         
     }

@@ -9,9 +9,9 @@
                 <div class="form-group">
                   <label class="control-label">Escribe algo</label>
                   <div class="input-group">
-                    <input type="text" name="texto" class="form-control" id="publicacion">
+                      <textarea type="text" name="texto" class="form-control" id="publicacion" required></textarea>
                     <span class="input-group-btn">
-                      <input class="btn btn-default" value="Compartir" id="publicacionbtn" type="submit">
+                      <input class="btn btn-default" value="Compartir" id="publicacionbtn" type="submit" >
                     </span>
                   </div>
                 </div>        

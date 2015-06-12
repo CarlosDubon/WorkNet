@@ -28,7 +28,7 @@ class Trabajador {
         $pass=$datosTrabajador['pass'];
         $repass=$datosTrabajador['repass'];
         $img = 'default.jpg';
-        $empresa = 'no definida';        
+        $empresa = $sesion->obtenerVariableSesion('nombreUsuario');        
         $name=$datosTrabajador['name'];
         $ape=$datosTrabajador['ape'];
         $birth=$datosTrabajador['birth'];        

@@ -84,7 +84,7 @@ if($dateNow > $birth)
         $idUsuario = $sesion->obtenerVariableSesion('idUsuario');
 
         $consulta = 'select idCuenta as id,Usuario,Nombre,Apellido,Empresa from cuenta '
-                . ' where idCuenta not in( select idCuentaAmigo from Amigo where idCuenta =' . $idUsuario . ' ) AND Tipo = 2';
+                . ' where idCuenta not in( select idCuentaAmigo from Amigo where idCuenta =' . $idUsuario . ' ) AND Tipo = 2 AND idCuenta !='.$idUsuario.' ';
         $listaUsuarios = $mysql->consulta($consulta);
         $encabezado = array('ID', 'Usuario', 'Nombre', 'Apellido', 'Empresa');
 
