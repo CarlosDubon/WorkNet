@@ -166,11 +166,13 @@ height: 35% !important;
 
 .public {
     background: #ECF0F1 !important;
-    border-radius: 30px !important;
+    border-radius: 10px !important;
 }
 
 .fechapub {
     font-size: 15px !important;
+    float: right !important;
+    
 }
 
 .fondi{
@@ -283,6 +285,7 @@ height: 35% !important;
     margin-bottom: 0px !important;
     margin-left: 0px !important; 
     background-color: #344E78 !important;
+    width: 20% !important;
 }
 .seccion{
     background-color: #BDC3C7;

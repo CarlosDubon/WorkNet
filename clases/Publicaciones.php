@@ -40,7 +40,7 @@ class Publicaciones {
         $mysql = new MySQL();
         $sesion = new Sesion();
 
-         $query = 'SELECT idPub as id,Texto,ImgPub,Fecha,Usuario_cuenta FROM publicaciones ORDER BY idPub DESC';
+         $query = 'SELECT idPub as id,Texto,ImgPub,Fecha,Usuario_cuenta,works FROM publicaciones ORDER BY idPub DESC';
         
         $resultado = $mysql->consulta($query);
 
@@ -64,8 +64,8 @@ class Publicaciones {
 
         for ($i = 0; $i < count($Pub); $i++) {
             $pub.=  '<blockquote class="public"><input type="hidden" value="'.$Pub[$i]['id'].'" name="idPub">
-                       <a href="#"><small>'.$Pub[$i]['Usuario_cuenta'].'</cite></small></a><img src="../fotos/'.$sesion->obtenerVariableSesion('nombreUsuario').'/'.$photo.'" class="img-circle" id="img-pub">
-                        <small class="fechapub">'.$Pub[$i]['Fecha'].'</small>
+                       <a href="#"><small class="col-xs-3">'.$Pub[$i]['Usuario_cuenta'].'</cite></small></a>                        <small class="fechapub">'.$Pub[$i]['Fecha'].'</small>
+                       <br><img src="../fotos/'.$sesion->obtenerVariableSesion('nombreUsuario').'/'.$photo.'" class="img-circle" id="img-pub">
                         <p><b>'.$Pub[$i]['Texto'].'</b></p>
                         <a href="../controladores/works.php?idPub='.$Pub[$i]['id'].'" class="btn btn-default boton" id="btn btn"><i class="fa fa-suitcase"></i> Work</a >
                         <button type="button" class="btn btn-default boton" ><span class="fui-chat"></span></i> Comentar </button>
@@ -102,6 +102,7 @@ class Publicaciones {
     public function work($id){
         $db = new MySQL();
         $utilidades = new Utilidades();
+        $plantilla = new Plantilla();
         
         $query = 'SELECT works FROM publicaciones WHERE idPub='.$id;
         $result = $db->consulta($query);
@@ -112,8 +113,8 @@ class Publicaciones {
         $where = 'idPub='.$id;
         
         $resultado = $db->modificarRegistro($tabla,$cambio,$where);
-        $utilidades->Redireccionar('controladores/publicar.php');
         
         
     }
+
 }
