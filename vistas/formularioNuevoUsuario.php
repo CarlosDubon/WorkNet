@@ -15,7 +15,7 @@
                     Usuario:<input type="text" class="form-control login-field" name="usuario" placeholder="Usuario" required /><br>
                     </div>
                     <div class="from-group">
-                    Contraseña:<input type="password" minlength="5" id="pass" class="form-control login-field" name="pass" placeholder="Contraseña" required />Confirmar contraseña<br>
+                    Contraseña:<input type="password" minlength="5" id="pass" class="form-control login-field" name="pass" placeholder="Contraseña" required /> <br>
                     Confirmar contraseña:<input type="password" id="repass" class="form-control login-field" name="repass" placeholder="Confirmar contraseña" required /><br>
                     <div id="val"></div>
                     </div>
@@ -24,16 +24,16 @@
                     Apellido:<input type="text"id="letras" onkeydown="return validarLetras(event)" class="form-control login-field" name="ape" placeholder="Apellido" required /><br>
                     </div>
                     <div class="from-group">
-                    E-mail:<input type="email" id="email" class="form-control login-field" name="mail" placeholder="E-mail" required /><br>
-                    Confirm e-mail:<input type="email" id="remail" class="form-control login-field" name="remail" placeholder="E-mail" required /><br>
+                    Correo Electronico:<input type="email" id="email" class="form-control login-field" name="mail" placeholder="Correo Electronico" required /><br>
+                    Confirmar Electronico:<input type="email" id="remail" class="form-control login-field" name="remail" placeholder="Confirmar Correo Electronico" required /><br>
                     <div id="val2"></div>
                     </div>
                     <div class="from-group">
-                    Bith Day (mes/día/año):<input type="date" class="form-control login-field" name="birth" placeholder="Fecha de nacimiento" required /><br>
+                    Fecha de Nacimiento (mes/día/año):<input type="date" class="form-control login-field" name="birth" placeholder="Fecha de nacimiento" required /><br>
                     DUI:<input type="text" class="form-control login-field" id="num" onkeydown="return validarNumeros(event)" maxlength="10" name="dui" placeholder="DUI" required /><br>
                     <p class="text-center">
                         <input type="submit" name="Registrar" value="Registrar" class="btn btn-primary btn-lg btn-warning" >
-                        <a href="../controladores/index.php"><input type="button" value="Back" class="btn btn-primary btn-lg btn-danger" ></a>
+                        <a href="../controladores/index.php"><input type="button" value="Regresar" class="btn btn-primary btn-lg btn-danger" ></a>
                     </p>
                 </div>
             </div>   
