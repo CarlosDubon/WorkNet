@@ -69,35 +69,12 @@ class Publicaciones {
                        <br><img src="../fotos/'.$sesion->obtenerVariableSesion('nombreUsuario').'/'.$photo.'" class="img-circle" id="img-pub">
                         <p><b>'.$Pub[$i]['Texto'].'</b></p>
                         <a href="../controladores/works.php?idPub='.$Pub[$i]['id'].'" class="btn btn-default boton" id="btn btn"><i class="fa fa-suitcase"></i> Work</a >
-                        <button type="button" class="btn btn-default boton" ><span class="fui-chat"></span></i> Comentar </button>
+                        <a href="./mostrarPubCom.php?idPub='.$Pub[$i]['id'].'" class="btn btn-default boton" ><span class="fui-chat"></span></i> Comentar </a>
                         <button type="button" class="btn btn-default boton" id=""><span class="fui-cross"></span></i>Denuncia </button><span class="badge" id="de">Esta publicion tiene ' .$Pub[$i]['works'].' work(s)</span>
                     </blockquote>';      
                 }
         return $pub;
 
-    }
-    
-    public function guardarComentarioPub($comentarios){
-        $db = new MySQL();
-        $sesion = new Sesion();
-        
-        $tabla = 'comentarios';
-        $columnas = 'Usuario,imgUsuario,Comentario,idPub';
-        
-        $id = $sesion->obtenerVariableSesion('idUsuario');
-        $query = 'SELECT imgCuenta FROM cuenta WHERE idCuenta ='.$id;
-        $result = $db->consulta($query);
-        
-        $imgUsuario = $result[0]['imgCuenta'];
-        $usuario = $sesion->obtenerVariableSesion('nombreUsuario');
-        $comentario = $comentarios['comentario'];
-        
-        $valores = '"'.$usuario.'","'
-                      .$imgUsuario.'","'
-                      .$comentario.'","'
-                      .$idPub.'"';
-        $db->insertarRegistro($tabla, $columnas, $valores);
-        
     }
     
     public function work($id){

@@ -1,6 +1,6 @@
 <?php
-require_once realpath(dirname(__FILE__) . '/../clases/Publicaciones.php');
+require_once realpath(dirname(__FILE__) . '/../clases/Comentarios.php');
 
-$publicacion = new Publicaciones();
-$comentarios = $_POST;
-$publicacion->guardarComentarioPub($comentarios);
+$comentarios = new Comentarios();
+$coment = $_POST;
+$comentarios->guardarComentario($coment);
