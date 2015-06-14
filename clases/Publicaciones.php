@@ -16,13 +16,16 @@ class Publicaciones {
         $sesion = new Sesion();
         
         $tabla = 'publicaciones';
-        $columnas = 'Texto,imgPub,Fecha,cuenta_idCuenta,Usuario_cuenta';
+        $columnas = 'Texto,imgUsuario,Fecha,cuenta_idCuenta,Usuario_cuenta';
 
         $FechaPub= date("Y").'-'.date("m").'-'.date("d") ;
         $Texto=$datosPub['texto'];
         $usuario = $sesion->obtenerVariableSesion('nombreUsuario');
         $id = $sesion->obtenerVariableSesion('idUsuario');        
-        $img = "";
+        
+        $query2 = 'SELECT imgCuenta FROM cuenta WHERE idCuenta ='.$id;
+        $result = $bd->consulta($query2);
+        $img = $result[0]['imgCuenta'];
 
         $valores = '"'.$Texto.'","'
                     .$img.'","'
@@ -41,7 +44,7 @@ class Publicaciones {
         $sesion = new Sesion();
          
          $idUsuario = $sesion->obtenerVariableSesion('idUsuario');
-         $query = 'SELECT p.idPub as id,p.Texto,p.ImgPub,p.Fecha,p.Usuario_cuenta,p.works FROM publicaciones p ORDER BY idPub DESC';
+         $query = 'SELECT p.idPub as id,p.Texto,p.ImgUsuario,p.Fecha,p.cuenta_idCuenta,p.Usuario_cuenta,p.works FROM publicaciones p ORDER BY idPub DESC';
         
         $resultado = $mysql->consulta($query);
 
@@ -55,18 +58,13 @@ class Publicaciones {
         $db = new MySQL();
         $sesion = new Sesion();
         $id = $sesion->obtenerVariableSesion('idUsuario');
-
-        $query = "SELECT imgCuenta FROM cuenta WHERE idCuenta=$id";
-        $result = $db->consulta($query);
-        
-        $photo = $result[0]['imgCuenta'];
         
         $pub = '';        
 
         for ($i = 0; $i < count($Pub); $i++) {
             $pub.=  '<blockquote class="public"><input type="hidden" value="'.$Pub[$i]['id'].'" name="idPub">
                        <a href="#"><small class="col-xs-3">'.$Pub[$i]['Usuario_cuenta'].'</cite></small></a>                        <small class="fechapub">'.$Pub[$i]['Fecha'].'</small>
-                       <br><img src="../fotos/'.$sesion->obtenerVariableSesion('nombreUsuario').'/'.$photo.'" class="img-circle" id="img-pub">
+                       <br><img src="../fotos/'.$Pub[$i]['Usuario_cuenta'].'/'.$Pub[$i]['ImgUsuario'].'" class="img-circle" id="img-pub">
                         <p><b>'.$Pub[$i]['Texto'].'</b></p>
                         <a href="../controladores/works.php?idPub='.$Pub[$i]['id'].'" class="btn btn-default boton" id="btn btn"><i class="fa fa-suitcase"></i> Work</a >
                         <a href="./mostrarPubCom.php?idPub='.$Pub[$i]['id'].'" class="btn btn-default boton" ><span class="fui-chat"></span></i> Comentar </a>
