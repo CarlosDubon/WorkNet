@@ -78,19 +78,44 @@ class Publicaciones {
     public function work($id){
         $db = new MySQL();
         $utilidades = new Utilidades();
+        $sesion = new Sesion();
+        
+        $idUser=$sesion->obtenerVariableSesion('idUsuario');
+        $query2 = 'SELECT work_count FROM cuenta WHERE idCuenta ='.$idUser;
+        $result2 = $db->consulta($query2);
+        $work_count = $result2[0]['work_count'];
         
         $query = 'SELECT works FROM publicaciones WHERE idPub='.$id;
         $result = $db->consulta($query);
         $works = $result[0]['works'];
+        
+        if($work_count == 0){
         
         $tabla = 'publicaciones';
         $cambio = 'works ='.$result[0]['works'].'+'. '1';
         $where = 'idPub='.$id;
         
         $resultado = $db->modificarRegistro($tabla,$cambio,$where);
-        $utilidades->Redireccionar("controladores/publicar.php");
         
-        
-    }
+        $tabla1 = 'cuenta';
+        $cambio1 = 'work_count = 1';
+        $where1 = 'idCuenta='.$idUser;
+        $result = $db->modificarRegistro($tabla1,$cambio1,$where1);
 
+        }elseif($work_count == 1){
+        $tabla = 'cuenta';
+        $cambio = 'work_count = 0';
+        $where = 'idCuenta='.$idUser;
+        $result = $db->modificarRegistro($tabla,$cambio,$where);
+       
+        $cant = 1;
+        $tabla1 = 'publicaciones';
+        $cambio1 = 'works ='.$result[0]['works'].'--'.'1';
+        $where1 = 'idPub='.$id;
+        
+        $resultado = $db->modificarRegistro($tabla1,$cambio1,$where1);
+        }
+        $utilidades->Redireccionar('controladores/publicar.php');
+
+    }
 }
