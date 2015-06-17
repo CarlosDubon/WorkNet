@@ -33,7 +33,8 @@
 }
 
 #publicacion {
-    height: 100px;      
+    height: 100px;
+    resize: vertical;
 }
 #img-chat{
     width: 50px !important;

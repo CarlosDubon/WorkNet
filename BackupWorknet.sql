@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 14-06-2015 a las 03:18:56
+-- Tiempo de generación: 17-06-2015 a las 23:19:03
 -- Versión del servidor: 5.6.21
 -- Versión de PHP: 5.6.3
 
@@ -88,7 +88,15 @@ CREATE TABLE IF NOT EXISTS `comentarios` (
   `imgUsuario` varchar(70) NOT NULL,
   `Comentario` tinytext NOT NULL,
   `idPub` int(11) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+
+--
+-- Volcado de datos para la tabla `comentarios`
+--
+
+INSERT INTO `comentarios` (`idComentario`, `Usuario`, `imgUsuario`, `Comentario`, `idPub`) VALUES
+(1, 'cn', 'elefantes-bebe.jpg', 'que tal?\r\n', 3),
+(2, 'cn', 'elefantes-bebe.jpg', 'Que tal?\r\n', 4);
 
 -- --------------------------------------------------------
 
@@ -112,6 +120,7 @@ CREATE TABLE IF NOT EXISTS `cuenta` (
   `Telefono` varchar(9) NOT NULL,
   `SitioWeb` varchar(100) NOT NULL,
   `Estado` varchar(1) NOT NULL,
+  `work_count` varchar(1) NOT NULL DEFAULT '0',
   `cuenta_cuenta` int(11) NOT NULL
 ) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
 
@@ -119,11 +128,11 @@ CREATE TABLE IF NOT EXISTS `cuenta` (
 -- Volcado de datos para la tabla `cuenta`
 --
 
-INSERT INTO `cuenta` (`idCuenta`, `Tipo`, `Usuario`, `Correo`, `Password`, `ImgCuenta`, `Empresa`, `Nombre`, `Apellido`, `FechaNac`, `DUI`, `Direc`, `Telefono`, `SitioWeb`, `Estado`, `cuenta_cuenta`) VALUES
-(1, '1', 'admin', 'admin@admin.com', 'admin', '', 'admin', 'admin', 'admin', '0000-00-00', '', '', '', '', '', 0),
-(3, '2', 'cn', 'karloz_minero@hotmail.com', 'cn', '2015.jpg', 'CorpNet', 'Carlos', 'Minero', '2002-02-05', '123456', 'cn', '22222222', 'https://www.facebook.com/groups/1422689947974430/?fref=nf', '0', 0),
-(4, '2', 'wn', 'wn@wn.com', 'work1', 'Squirtle.jpg', 'WorkNet', 'ffdasfds', 'sdfdsaf', '2015-05-01', '654567654', 'sdfafsda', '2354123', '', '1', 0),
-(6, '3', 'carlos98', 'carlosminerodubon@gmail.com', 'WorkNet2015', 'default.jpg', 'no definida', 'Carlos', 'Minero', '2015-05-29', '34567890-9', 'no definida', '0000', 'no definida', '0', 3);
+INSERT INTO `cuenta` (`idCuenta`, `Tipo`, `Usuario`, `Correo`, `Password`, `ImgCuenta`, `Empresa`, `Nombre`, `Apellido`, `FechaNac`, `DUI`, `Direc`, `Telefono`, `SitioWeb`, `Estado`, `work_count`, `cuenta_cuenta`) VALUES
+(1, '1', 'admin', 'admin@admin.com', 'admin', '', 'admin', 'admin', 'admin', '0000-00-00', '', '', '', '', '', '0', 0),
+(3, '2', 'cn', 'karloz_minero@hotmail.com', 'cn', 'elefantes-bebe.jpg', 'CorpNet', 'Carlos', 'Minero', '2002-02-05', '123456', 'cn', '22222222', 'https://www.facebook.com/groups/1422689947974430/?fref=nf', '0', '1', 0),
+(4, '2', 'wn', 'wn@wn.com', 'work1', 'Squirtle.jpg', 'WorkNet', 'ffdasfds', 'sdfdsaf', '2015-05-01', '654567654', 'sdfafsda', '2354123', '', '1', '0', 0),
+(6, '3', 'carlos98', 'carlosminerodubon@gmail.com', 'WorkNet2015', 'hgcyhgchfgvhdf.gif', 'cn', 'Carlos', 'Minero', '2015-05-29', '34567890-9', 'no definida', '0000', 'no definida', '0', '0', 3);
 
 -- --------------------------------------------------------
 
@@ -260,14 +269,16 @@ CREATE TABLE IF NOT EXISTS `publicaciones` (
   `cuenta_idCuenta` int(11) NOT NULL,
   `Usuario_cuenta` varchar(45) NOT NULL,
   `works` int(11) NOT NULL DEFAULT '0'
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COMMENT='	';
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8 COMMENT='	';
 
 --
 -- Volcado de datos para la tabla `publicaciones`
 --
 
 INSERT INTO `publicaciones` (`idPub`, `Texto`, `imgUsuario`, `Fecha`, `cuenta_idCuenta`, `Usuario_cuenta`, `works`) VALUES
-(2, 'Hola soy nuevo aqui!', '2015.jpg', '2015-06-14', 3, 'cn', 0);
+(2, 'Hola soy nuevo aqui!', '2015.jpg', '2015-06-14', 3, 'cn', 0),
+(3, 'hola', 'elefantes-bebe.jpg', '2015-06-15', 3, 'cn', 1),
+(4, 'hola\r\n', 'hgcyhgchfgvhdf.gif', '2015-06-17', 6, 'carlos98', 2);
 
 -- --------------------------------------------------------
 
@@ -411,7 +422,7 @@ MODIFY `idChat` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=34;
 -- AUTO_INCREMENT de la tabla `comentarios`
 --
 ALTER TABLE `comentarios`
-MODIFY `idComentario` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=5;
+MODIFY `idComentario` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT de la tabla `cuenta`
 --
@@ -451,7 +462,7 @@ MODIFY `idPortafolio` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
 -- AUTO_INCREMENT de la tabla `publicaciones`
 --
 ALTER TABLE `publicaciones`
-MODIFY `idPub` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
+MODIFY `idPub` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=5;
 --
 -- AUTO_INCREMENT de la tabla `seguidores`
 --

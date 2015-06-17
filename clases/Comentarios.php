@@ -12,7 +12,7 @@ class Comentarios {
         $bd = new MySQL();
         $plantilla = new Plantilla();
         
-        $query = 'SELECT idPub as id,Texto,Fecha,Usuario_cuenta,works FROM publicaciones WHERE idPub ='.$idPub;
+        $query = 'SELECT idPub as id,Texto,Fecha,ImgUsuario,Usuario_cuenta,works FROM publicaciones WHERE idPub ='.$idPub;
         $resultado = $bd->consulta($query);
        
         $query2 = 'SELECT idComentario,Usuario,imgUsuario,Comentario FROM comentarios WHERE idPub='.$idPub;
@@ -42,7 +42,7 @@ class Comentarios {
         for ($i = 0; $i < count($Pub); $i++) {
             $pub.=  '<blockquote class="public"><input type="hidden" value="'.$Pub[$i]['id'].'" name="idPub">
                        <a href="#"><small class="col-xs-3">'.$Pub[$i]['Usuario_cuenta'].'</cite></small></a><small class="fechapub">'.$Pub[$i]['Fecha'].'</small>
-                       <br><img src="../fotos/'.$sesion->obtenerVariableSesion('nombreUsuario').'/'.$photo.'" class="img-circle" id="img-pub">
+                       <br><img src="../fotos/'.$Pub[$i]['Usuario_cuenta'].'/'.$Pub[$i]['ImgUsuario'].'" class="img-circle" id="img-pub">
                         <p><b>'.$Pub[$i]['Texto'].'</b></p>
                     </blockquote>';      
                 }
