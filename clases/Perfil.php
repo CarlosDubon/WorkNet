@@ -161,4 +161,56 @@ class Perfil {
         
         $plantilla->verPagina('perfilUsuarioV',$variables);
     }
+    public function mostrarPerfilTrabajador() {
+        $plantilla = new Plantilla();
+        $mysql = new MySQL();
+        $sesion = new Sesion();
+
+        $consulta = ' select c.ImgCuenta,c.Empresa,c.FechaNac, c.Nombre,c.Apellido, c.idCuenta, c.tipo, c.usuario, c.correo, c.apellido,c.dui from cuenta c where c.idCuenta = ' . $sesion->obtenerVariableSesion('idUsuario');        
+        
+        $resultado = $mysql->consulta($consulta);
+
+        //print_r($resultado);
+        $variables['Id'] = $resultado[0]['idCuenta'];
+        $variables['DUI'] = $resultado[0]['dui'];
+        $variables['Usuario'] = $resultado[0]['usuario'];
+        $variables['Nombre'] = $resultado[0]['Nombre'];
+        $variables['Empresa'] = $resultado[0]['Empresa'];
+        $variables['Nac'] = $resultado[0]['FechaNac'];
+        $variables['Apellido'] = $resultado[0]['Apellido'];
+        $variables['Correo'] = $resultado[0]['correo'];
+        $variables['photo'] = '../fotos/'.$resultado[0]['usuario'].'\\'.$resultado[0]['ImgCuenta'];
+        
+        
+        $plantilla->verPagina('perfilTrabajador',$variables);
+    }
+         public function subirFotoTrabajador($archivo){
+                $bd = new MySQL();
+                $sesion = new Sesion();
+                $utilidades= new Utilidades();
+                $plantilla = new Plantilla();
+                $id = $sesion->obtenerVariableSesion('idUsuario');
+                $carpeta=$sesion->obtenerVariableSesion('nombreUsuario');
+        
+                $foto = str_replace(' ','_',$archivo['file']['name']);
+         
+                $tabla = 'cuenta';
+                $cambio =' ImgCuenta="'.$foto.'"';
+                $where = ' idCuenta="'.$id.'"';
+         
+                $resultado = $bd->modificarRegistro($tabla, $cambio, $where);
+                
+                $utilidades-> mostrarMensaje('La foto se actualizo correctamente');
+                
+                if ($archivo['file']['error']>0){
+                    $utilidades->mostrarMensaje('Lo sentimos!, Ocurrio un problema, por favor intente de nuevo.');
+                    $plantilla->verPagina('perfilTrabajador');
+                }else{
+                    $this->crearDirectorio($carpeta);
+                    //echo $this->rutaServidor.$carpeta."\\";
+                    move_uploaded_file(str_replace(' ',':_',$archivo['file']['tmp_name']),$this->rutaServidor.$carpeta."\\".$foto);
+                    
+                    $utilidades->Redireccionar('controladores/verPerfilTrabajador.php');
+                }
+            }
 }
