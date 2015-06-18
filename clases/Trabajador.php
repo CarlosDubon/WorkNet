@@ -56,7 +56,7 @@ class Trabajador {
     if ($pass == $repass)
        if($this->validarNombreUnico($usuario))
         if($this->validarNombreUsuario($name))
-                $if($this->validarNombreUsuario($ape))
+                if($this->validarNombreUsuario($ape))
                     $resultado = $bd->insertarRegistro($tabla, $columnas, $valores);
         else{
             $utilidades->mostrarMensaje('El usuario ya está registrado. Por favor intente con un usuario diferente.');
