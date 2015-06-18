@@ -25,11 +25,11 @@
     </div>
         <div class="panel panel-default" id="az">
           <div class="panel-body">
-            <b>Usuario:</b> {{Usuario}}<br>
+            <b>Usuario:</b> {{Usuario}} <br>
             <b>Empresa:</b> {{Empresa}}<br>
-            <b>E-mail:</b> {{Correo}}<br>
+            <b>E-mail:</b> {{Correo}} <small id="de"><a href =""  data-toggle="modal" data-target="#ChangeE-mail">Editar<i class="fa fa-pencil"> </i></a></small><br>
             <b>Fecha de fundación:</b> {{Fun}}<br>
-            <b>Web Site:</b> {{Web}}<br>
+            <b>Web Site:</b> {{Web}} <small id="de"><a href ="">Editar<i class="fa fa-pencil"> </i></a></small><br>
           </div>
     </div>
     
@@ -46,6 +46,33 @@
         <img src="{{photo}}" id="imgc">
       </div>
     </div>
+  </div>
+</div>
+
+<div class="modal fade" id="ChangeE-mail" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">Cambiar Correo Electronico</h4>
+      </div>
+      <div class="modal-body">
+        <form action="./cambiarContraseña.php" method="POST">
+          <div class="form-group">
+             <label class="control-label" for="disabledInput">Correo Anterior</label>
+             <input class="form-control" id="disabledInput" value="{{Correo}}" type="text" placeholder="Disabled input here..." disabled="">
+        </div>
+          <div class="form-group">
+              <label class="control-label" for="focusedInput">Nuevo Correo</label>
+              <input class="form-control" name="newEmail" id="focusedInput" type="email" required>
+            </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+        <input type="submit" class="btn btn-primary" value="Guardar Cambios">
+      </div>
+    </div>
+     </form>
   </div>
 </div>
 

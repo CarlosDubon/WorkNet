@@ -314,3 +314,7 @@ height: 35% !important;
     margin-bottom:inherit!important;
     border-radius: 5px !important;
 }
+
+.iznore {
+    border-top-right-radius: 0px !important;
+}
