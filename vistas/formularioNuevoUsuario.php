@@ -30,7 +30,7 @@
                     </div>
                     <div class="from-group">
                     Fecha de Nacimiento (mes/día/año):<input type="date" class="form-control login-field" name="birth" placeholder="Fecha de nacimiento" required /><br>
-                    DUI:<input type="text" class="form-control login-field" onkeyup="mascara(this,'-',patron,true)" id="num" onkeydown="return validarNumeros(event)" maxlength="10" name="dui" placeholder="DUI" required /><br>
+                    DUI:<input type="text" class="form-control login-field" onkeyup="mascara(this,'-',patron3,true)" id="num" onkeydown="return validarNumeros(event)" maxlength="10" name="dui" placeholder="DUI" required /><br>
                     <p class="text-center">
                         <input type="submit" name="Registrar" value="Registrar" class="btn btn-primary btn-lg btn-warning" >
                         <a href="../controladores/index.php"><input type="button" value="Regresar" class="btn btn-primary btn-lg btn-danger" ></a>
@@ -98,22 +98,9 @@
 		return patron.test(te); // prueba
 	}
 </script>
-<script type="text/javascript">
-  function validarLetras(e) { // 1
-    tecla = (document.all) ? e.keyCode : e.which; 
-    if (tecla==8) return true; // backspace
-		if (tecla==32) return true; // espacio
-		if (e.ctrlKey && tecla==67) { return true;} //Ctrl c
-		if (e.ctrlKey && tecla==88) { return true;} //Ctrl x
- 
-		patron = /[a-zA-Z]/; //patron
- 
-		te = String.fromCharCode(tecla); 
-		return patron.test(te); // prueba de patron
-	}	
-</script>
+
 <script>
-    var patron = new Array(8,1);
+    var patron3 = new Array(8,1);
         function mascara(d,sep,pat,nums){
             if(d.valant != d.value){
                 val = d.value

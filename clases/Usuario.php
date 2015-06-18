@@ -355,4 +355,18 @@ class Usuario {
                     return false;
             }
     }
+    private function validarMayorEdad($edad){
+        $date= new DateTime();
+        $dateNow = $date->format('Y-m-d');
+        $anioAc = substr($dateNow,0,-6);
+        $anioEdad = substr($edad,0,-6);
+        $checkAge = ($anioEdad - $anioAc);
+        
+        if ($checkAge <= 18)
+            return false;
+        elseif($checkAge >= 18)
+            return true;
+        
+
+    }
 }
