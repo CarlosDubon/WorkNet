@@ -217,15 +217,37 @@ class Perfil {
     public function editarCorreo($editor){
         $db = new MySQL();
         $sesion = new Sesion();
+        $utilidades = new Utilidades();
         
         $id = $sesion->ObtenerVariableSesion('idUsuario');
         $newEmail = $editor['newEmail'];
         
         $tabla = 'cuenta';
-        $cambio = 'Correo ='.$newEmail;
+        $cambio = 'Correo ="'.$newEmail.'"';
         $where = 'idCuenta='.$id;
         
         $resultado = $db->modificarRegistro($tabla,$cambio,$where);
-        $utilidades = Redireccionar('controladores/publicar.php');
+        
+        if($resultado)
+            $utilidades-> mostrarMensaje('El correo se ha actualizado correctamente');
+        $utilidades -> Redireccionar('controladores/perfil_Mostrar.php');
+    }
+    
+    public function editarWeb($editor){
+        $db = new MySQL();
+        $sesion = new Sesion();
+        $utilidades = new Utilidades();
+        
+        $id = $sesion->ObtenerVariableSesion('idUsuario');
+        $newWeb = $editor['newWeb'];
+        
+        $tabla = 'cuenta';
+        $cambio = 'SitioWeb="'.$newWeb.'"';
+        $where = 'idCuenta='.$id;
+        $resultado = $db->modificarRegistro($tabla,$cambio,$where);
+        
+        if($resultado)
+            $utilidades-> mostrarMensaje('El correo se ha actualizado correctamente');
+        $utilidades -> Redireccionar('controladores/perfil_Mostrar.php');
     }
 }
