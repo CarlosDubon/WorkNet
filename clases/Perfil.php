@@ -213,4 +213,19 @@ class Perfil {
                     $utilidades->Redireccionar('controladores/verPerfilTrabajador.php');
                 }
             }
+    
+    public function editarCorreo($editor){
+        $db = new MySQL();
+        $sesion = new Sesion();
+        
+        $id = $sesion->ObtenerVariableSesion('idUsuario');
+        $newEmail = $editor['newEmail'];
+        
+        $tabla = 'cuenta';
+        $cambio = 'Correo ='.$newEmail;
+        $where = 'idCuenta='.$id;
+        
+        $resultado = $db->modificarRegistro($tabla,$cambio,$where);
+        $utilidades = Redireccionar('controladores/publicar.php');
+    }
 }

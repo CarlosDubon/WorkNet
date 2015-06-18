@@ -1,21 +1,15 @@
-<!DOCTYPE html>
-<html>
-<head>
-	<script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+<form action="pruebas.php" method="POST">
+<input type="date" name="edad">
+<input type="submit">
+</form>
+<?php      
+$date=new DateTime();
+$dateNow = $date->format('Y-m-d');
+$anio = substr($dateNow,0,-6);
+$edad = $_POST['edad'];
+$anioEdad = substr($edad,0,-6);
+echo $anio;
+echo $anioEdad;
 
-	<script type="text/javascript">
-	
-	function getStates(value){
 
-		$.post("getStates.php", {partialState:value}, function(data) {
-			$("#results").html(data);
-		});
-	}
-	</script>	
-</head>
-<body>
-	<input type="text" onkeyup="getStates(this.value)"/>
-	<br>
-	<div id="results"></div>  
-</body>
-</html>
+        

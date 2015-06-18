@@ -56,7 +56,9 @@ class Usuario {
         //validando el nombre de usuario
     if ($pass == $repass && $mail == $remail)
         if($this->validarNombreUnico($usuario))
-            $resultado = $bd->insertarRegistro($tabla, $columnas, $valores);
+                if($this->validarNombreUsuario($name))
+                        if($this->validarNombreUsuario($ape))
+                            $resultado = $bd->insertarRegistro($tabla, $columnas, $valores);
         else{
             $utilidades->mostrarMensaje('El usuario ya está registrado. Por favor intente con un usuario diferente.');
             $plantilla->verPaginaSinPlantilla('formularioNuevoUsuario');
@@ -343,5 +345,28 @@ class Usuario {
 
         $sesion->agregarVariableSesion('permisoAgregarAmigo', '1');
         $plantilla->verPagina('listaPersonas', $variables);
+    }
+        private function validarNombreUsuario ($nombreUsuario){
+        $permitidos = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+            for ($i = 0; $i<strlen($nombreUsuario); $i++){
+                if(strpos($permitidos, substr($nombreUsuario, $i, 1)))
+                    return true;
+                else
+                    return false;
+            }
+    }
+    private function validarMayorEdad($edad){
+        $date= new DateTime();
+        $dateNow = $date->format('Y-m-d');
+        $anioAc = substr($dateNow,0,-6);
+        $anioEdad = substr($edad,0,-6);
+        $checkAge = ($anioEdad - $anioAc);
+        
+        if ($checkAge <= 18)
+            return false;
+        elseif($checkAge >= 18)
+            return true;
+        
+
     }
 }
