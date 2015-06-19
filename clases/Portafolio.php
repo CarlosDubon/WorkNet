@@ -25,20 +25,18 @@ var $rutaServidor='C:\\xampp\\htdocs\\WorkNet\\portafolio\\';
                 $carpeta=$sesion->obtenerVariableSesion('nombreUsuario');
         
                 $tabla = 'portafolio';
-                $columnas = 'NombreArchivo,FechaSubida,Size,cuenta_idCuenta';
+                $columnas = 'NombreArchivo,Size,cuenta_idCuenta';
         
                 $nombre = str_replace(' ','_',$archivo['file']['name']);
                 $size = $archivo['file']['size'];
                 $cuenta_idCuenta = $sesion->obtenerVariableSesion('idUsuario');
-                $fecha = '00-00-0000';
         
-                $valores = '"'.$nombre.'","'.$fecha.'","'.$size.'","'.$cuenta_idCuenta.'"';
+                $valores = '"'.$nombre.'","'.$size.'","'.$cuenta_idCuenta.'"';
         
                 $resultado = $bd->insertarRegistro($tabla, $columnas, $valores);
                 
                 $utilidades-> mostrarMensaje('El archivo se subio exitosamente!');
-        
-                $plantilla->verPagina();
+                $utilidades-> Redireccionar('controladores/crearPortafolio.php');
         
                 if ($archivo['file']['error']>0){
                     $utilidades->mostrarMensaje('Lo sentimos, Ocurrio un error, intente de nuevo por favor.');
@@ -47,7 +45,7 @@ var $rutaServidor='C:\\xampp\\htdocs\\WorkNet\\portafolio\\';
                     //echo $this->rutaServidor.$carpeta."\\";
                     move_uploaded_file(str_replace(' ',':_',$archivo['file']['tmp_name']),$this->rutaServidor.$carpeta."\\".$nombre);
                     
-                    $plantilla->verPagina();
+                    $utilidades-> Redireccionar('controladores/crearPortafolio.php');
                 }
             }
      public function VerArchivos() {

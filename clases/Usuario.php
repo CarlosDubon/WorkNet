@@ -53,16 +53,19 @@ class Usuario {
                     $estado . '"';
 
         
+        //validando el nombre de usuario
     if ($pass == $repass && $mail == $remail)
         if($this->validarNombreUnico($usuario))
-            $resultado = $bd->insertarRegistro($tabla, $columnas, $valores);
+                if($this->validarNombreUsuario($name))
+                        if($this->validarNombreUsuario($ape))
+                            $resultado = $bd->insertarRegistro($tabla, $columnas, $valores);
         else{
             $utilidades->mostrarMensaje('El usuario ya está registrado. Por favor intente con un usuario diferente.');
             $plantilla->verPaginaSinPlantilla('formularioNuevoUsuario');
             return 0;
         }
          
-        if ($resultado){
+        if (isset($resultado)){
             $utilidades->mostrarMensaje('¡Felicitaciones! Ya eres parte de WorkNet.');
             $plantilla->verPaginaSinPlantilla('index');
         }
@@ -103,7 +106,7 @@ class Usuario {
         $utilidades = new Utilidades();
         
 
-        $consulta = 'select idCuenta as id,Usuario,Nombre,Apellido,if(Estado = 1,"Active","Inactive") as Estado from cuenta where Tipo!=1';
+        $consulta = 'select idCuenta as id,Usuario,Nombre,Apellido,if(Estado = 1,"Activo","Inactivo") as Estado from cuenta where Tipo!=1';
         $listaUsuarios = $mysql->consulta($consulta);
         $encabezado = array('ID', 'Usuario', 'Nombre', 'Apellido', 'Estado');
         
@@ -328,7 +331,7 @@ class Usuario {
         $idUsuario = $sesion->obtenerVariableSesion('idUsuario');
 
         $consulta = 'select idCuenta as id,Usuario,Nombre,Apellido,Correo from cuenta '
-                . ' where idCuenta not in( select idCuentaAmigo from Amigo where idCuenta =' . $idUsuario . ' ) AND Tipo = 4 AND idCuenta !='.$idUsuario.'';
+                . ' where idCuenta not in( select idCuentaAmigo from Amigo where idCuenta =' . $idUsuario . ' ) AND Tipo = 4';
         $listaUsuarios = $mysql->consulta($consulta);
         $encabezado = array('ID', 'Usuario', 'Nombre', 'Apellido', 'E-mail');
 
@@ -343,5 +346,27 @@ class Usuario {
         $sesion->agregarVariableSesion('permisoAgregarAmigo', '1');
         $plantilla->verPagina('listaPersonas', $variables);
     }
+        private function validarNombreUsuario ($nombreUsuario){
+        $permitidos = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+            for ($i = 0; $i<strlen($nombreUsuario); $i++){
+                if(strpos($permitidos, substr($nombreUsuario, $i, 1)))
+                    return true;
+                else
+                    return false;
+            }
+    }
+    private function validarMayorEdad($edad){
+        $date= new DateTime();
+        $dateNow = $date->format('Y-m-d');
+        $anioAc = substr($dateNow,0,-6);
+        $anioEdad = substr($edad,0,-6);
+        $checkAge = ($anioEdad - $anioAc);
+        
+        if ($checkAge <= 18)
+            return false;
+        elseif($checkAge >= 18)
+            return true;
+        
 
+    }
 }

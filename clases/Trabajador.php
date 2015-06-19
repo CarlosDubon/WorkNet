@@ -55,14 +55,16 @@ class Trabajador {
                     $cuenta. '"';
     if ($pass == $repass)
        if($this->validarNombreUnico($usuario))
-            $resultado = $bd->insertarRegistro($tabla, $columnas, $valores);
+        if($this->validarNombreUsuario($name))
+                if($this->validarNombreUsuario($ape))
+                    $resultado = $bd->insertarRegistro($tabla, $columnas, $valores);
         else{
             $utilidades->mostrarMensaje('El usuario ya está registrado. Por favor intente con un usuario diferente.');
             $plantilla->verPagina('formularioTrabajador');
             return 0;
         }
          
-        if ($resultado)
+        if (isset($resultado))
             $utilidades->mostrarMensaje('Felicidades, el usuario se registro exitosamente!');
         else
             $utilidades->mostrarMensaje('Lo sentimos!, ocurrio un problema, por favor vuelva a intentar.');                    
@@ -80,5 +82,13 @@ class Trabajador {
             return true;
          
     }
-
+            private function validarNombreUsuario ($nombreUsuario){
+                $permitidos = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+                    for ($i = 0; $i<strlen($nombreUsuario); $i++){
+                        if(strpos($permitidos, substr($nombreUsuario, $i, 1)))
+                            return true;
+                        else
+                            return false;
+            }
+    }
 }
