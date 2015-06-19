@@ -120,4 +120,54 @@ class Reportes{
         $pdf->MultiCell(120,7, utf8_decode('Usuario que emitió reporte:').$Usuario, 0,1,0);
         $pdf->Output();
     }
+    public function reportesPortafolio(){
+        $db = new MySQL();
+        $sesion = new Sesion();
+        $pdf = new FPDF();
+
+        $pdf->AddPage();
+        $pdf->Image('../vistas/recursos/images/reporteArchivos.jpg',10,10,190);
+        $pdf->SetFont('Arial', 'B', 10);
+        $x = $pdf->GetX();
+        $y = $pdf->GetY();
+        $pdf->SetXY($x, $y = 120);
+        $pdf->MultiCell(20,7, 'ID Archivo', 1);
+        $pdf->SetXY($x + 20,$y);
+        $pdf->MultiCell(34,7, 'Nombre Archivo', 1);
+        $pdf->SetXY($x +54,$y);
+        $pdf->MultiCell(44,7, utf8_decode('Útima Actualización'), 1);
+        $pdf->SetXY($x + 98,$y);
+        $pdf->MultiCell(22,7,utf8_decode('Tamaño'), 1);
+        $pdf->SetXY($x + 120,$y);
+        $pdf->MultiCell(22,7, 'Usuario', 1);
+        $query='Select portafolio.idPortafolio, portafolio.NombreArchivo, portafolio.FechaSubida, portafolio.Size, cuenta.Usuario FROM portafolio INNER JOIN cuenta ON portafolio.cuenta_idCuenta=cuenta.idCuenta';
+        $resul= $db->consulta($query);
+        
+        for($i=0; $i<count($resul); $i++){
+            $x = $pdf->GetX();
+            $y = $pdf->GetY();
+            $pdf->SetXY($x, $y);
+        $pdf->MultiCell(20,7, $resul[$i]['idPortafolio'], 1);
+        $pdf->SetXY($x + 20,$y);
+        $pdf->MultiCell(34,7, $resul[$i]['NombreArchivo'], 1);
+        $pdf->SetXY($x +54,$y);
+        $pdf->MultiCell(44,7, $resul[$i]['FechaSubida'], 1);
+        $pdf->SetXY($x + 98,$y);
+        $pdf->MultiCell(22,7, $resul[$i]['Size'].' Kb', 1);
+        $pdf->SetXY($x + 120,$y);
+        $pdf->MultiCell(22,7, $resul[$i]['Usuario'], 1);
+            }
+        $Date = new DateTime();
+        $DateNow = $Date->format('d-m-Y');
+        $Hora = date("h:i");
+        $Usuario= $sesion->obtenerVariableSesion('nombreUsuario');
+        $pdf->SetY(265);
+        $pdf->MultiCell(22,7,$DateNow);
+        $pdf->SetY(269);
+        $pdf->MultiCell(22,7,$Hora);
+        $pdf->SetXY($x+120, $y=260);
+        $pdf->MultiCell(120,7, utf8_decode('Usuario que emitió reporte:').$Usuario, 0,1,0);
+        $pdf->Output();
+    
+    }
 }
