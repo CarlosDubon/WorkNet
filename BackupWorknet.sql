@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 17-06-2015 a las 23:19:03
+-- Tiempo de generación: 19-06-2015 a las 23:11:37
 -- Versión del servidor: 5.6.21
 -- Versión de PHP: 5.6.3
 
@@ -184,7 +184,7 @@ CREATE TABLE IF NOT EXISTS `eventos` (
   `FechaFin` date NOT NULL,
   `Nombre` varchar(30) NOT NULL,
   `Descripcion` tinytext NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
 
 --
 -- Volcado de datos para la tabla `eventos`
@@ -192,7 +192,8 @@ CREATE TABLE IF NOT EXISTS `eventos` (
 
 INSERT INTO `eventos` (`idEventos`, `idCuenta`, `FechaIni`, `FechaFin`, `Nombre`, `Descripcion`) VALUES
 (1, 1, '2015-04-16', '2015-04-17', 'sdfa', 'dasf'),
-(2, 1, '2015-04-16', '2015-04-17', 'sdfa', 'dasf');
+(2, 1, '2015-04-16', '2015-04-17', 'sdfa', 'dasf'),
+(5, 3, '2015-06-20', '2015-06-23', 'Semana de Juventud', 'sdfasdf');
 
 -- --------------------------------------------------------
 
@@ -243,7 +244,7 @@ CREATE TABLE IF NOT EXISTS `perfil` (
 CREATE TABLE IF NOT EXISTS `portafolio` (
 `idPortafolio` int(11) NOT NULL,
   `NombreArchivo` varchar(30) NOT NULL,
-  `FechaSubida` date NOT NULL,
+  `FechaSubida` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   `Size` int(11) NOT NULL,
   `cuenta_idCuenta` int(11) NOT NULL
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
@@ -253,7 +254,7 @@ CREATE TABLE IF NOT EXISTS `portafolio` (
 --
 
 INSERT INTO `portafolio` (`idPortafolio`, `NombreArchivo`, `FechaSubida`, `Size`, `cuenta_idCuenta`) VALUES
-(1, '4740907330_c89aa4f53c_b1.jpg', '0000-00-00', 1201534, 4);
+(1, '4740907330_c89aa4f53c_b1.jpg', '0000-00-00 00:00:00', 1201534, 4);
 
 -- --------------------------------------------------------
 
@@ -442,7 +443,7 @@ MODIFY `idDenuncias` int(11) NOT NULL AUTO_INCREMENT;
 -- AUTO_INCREMENT de la tabla `eventos`
 --
 ALTER TABLE `eventos`
-MODIFY `idEventos` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
+MODIFY `idEventos` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=6;
 --
 -- AUTO_INCREMENT de la tabla `ofertas`
 --
