@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 19-06-2015 a las 23:11:37
+-- Tiempo de generación: 19-06-2015 a las 23:36:34
 -- Versión del servidor: 5.6.21
 -- Versión de PHP: 5.6.3
 
@@ -244,17 +244,17 @@ CREATE TABLE IF NOT EXISTS `perfil` (
 CREATE TABLE IF NOT EXISTS `portafolio` (
 `idPortafolio` int(11) NOT NULL,
   `NombreArchivo` varchar(30) NOT NULL,
-  `FechaSubida` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `FechaSubida` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   `Size` int(11) NOT NULL,
   `cuenta_idCuenta` int(11) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
 
 --
 -- Volcado de datos para la tabla `portafolio`
 --
 
 INSERT INTO `portafolio` (`idPortafolio`, `NombreArchivo`, `FechaSubida`, `Size`, `cuenta_idCuenta`) VALUES
-(1, '4740907330_c89aa4f53c_b1.jpg', '0000-00-00 00:00:00', 1201534, 4);
+(4, 'script.txt', '2015-06-19 21:20:36', 794, 3);
 
 -- --------------------------------------------------------
 
@@ -458,7 +458,7 @@ MODIFY `idPerfil` int(11) NOT NULL AUTO_INCREMENT;
 -- AUTO_INCREMENT de la tabla `portafolio`
 --
 ALTER TABLE `portafolio`
-MODIFY `idPortafolio` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
+MODIFY `idPortafolio` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=5;
 --
 -- AUTO_INCREMENT de la tabla `publicaciones`
 --
