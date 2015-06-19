@@ -21,11 +21,11 @@
             </div>
             <div class="form-group">
                 <label for="Nombre">Nombre:</label>
-                <input type="text" class="form-control login-field" id="letras" onkeydown="return validarLetras(event)" name="name" placeholder="Nombre" required />
+                <input type="text" class="form-control login-field" id="letras" onkeypress="return numeros(event)" name="name" placeholder="Nombre" required />
             </div>
             <div class="form-group">
                 <label for="Apellido">Apellido:</label>
-                <input type="text" class="form-control login-field" id="letras" onkeydown="return validarLetras(event)" name="ape" placeholder="Apellido" required />
+                <input type="text" class="form-control login-field" id="letras" onkeypress="return numeros(event)" name="ape" placeholder="Apellido" required />
             </div>
             <div class="form-group">
                 <label for="FechaNacimiento">Fecha de nacimiento (mes/día/año):</label>
@@ -33,7 +33,7 @@
             </div>
             <div class="form-group">
                 <label for="DUI">DUI:</label>
-                <input type="text" maxlength="10" class="form-control login-field" id="num" onkeydown="return validarNumeros(event)" name="dui" placeholder="DUI" required />
+                <input type="text" maxlength="10" onkeyup="mascara(this,'-',patronDUI,true)" class="form-control login-field" id="num" onkeydown="return validarNumeros(event)" name="dui" placeholder="DUI" required />
             </div>
             <div class="form-group">
                 <p class="text-center">
@@ -85,3 +85,61 @@
 	}
 </script>
 
+<script>
+    var patronDUI = new Array(8,1);
+        function mascara(d,sep,pat,nums){
+            if(d.valant != d.value){
+                val = d.value
+                largo = val.length
+                val = val.split(sep)
+                val2 = ''
+                for(r=0;r<val.length;r++){
+                    val2 += val[r]	
+                }
+                if(nums){
+                    for(z=0;z<val2.length;z++){
+                        if(isNaN(val2.charAt(z))){
+                            letra = new RegExp(val2.charAt(z),"g")
+                            val2 = val2.replace(letra,"")
+                        }
+                    }
+                }
+                val = ''
+                val3 = new Array()
+                for(s=0; s<pat.length; s++){
+                    val3[s] = val2.substring(0,pat[s])
+                    val2 = val2.substr(pat[s])
+                }
+                for(q=0;q<val3.length; q++){
+                    if(q ==0){
+                      val = val3[q]
+                    }else{
+                        if(val3[q] != ""){
+                            val += sep + val3[q]
+                        }
+                    }
+                }
+                    d.value = val
+                    d.valant = val
+            }
+}
+</script>
+<script>
+    function numeros(e){
+    key = e.keyCode || e.which;
+    tecla = String.fromCharCode(key).toLowerCase();
+    letras = " abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
+    especiales = [8,37,39,46];
+ 
+    tecla_especial = false
+    for(var i in especiales){
+ if(key == especiales[i]){
+     tecla_especial = true;
+     break;
+        } 
+    }
+ 
+    if(letras.indexOf(tecla)==-1 && !tecla_especial)
+        return false;
+}
+</script>

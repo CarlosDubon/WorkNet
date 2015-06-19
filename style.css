@@ -318,3 +318,34 @@ height: 35% !important;
 .iznore {
     border-top-right-radius: 0px !important;
 }
+
+.menuRp {
+    float: left;
+    margin-left: 10px;
+    border-color: #95a5a6;
+    paf
+}
+
+#RpUser {
+    float: left !important;
+    border-top-color: #fff !important;
+    border-left-color: #fff !important;
+    border-right-color: #fff !important;
+    border-bottom-color:#7f8c8d !important;
+    border-bottom-width: 3px !important; 
+    border-radius: 0px !important;
+    margin-left: 20px !important;
+    width: 30% !important;
+    }
+
+#RpUserc {
+    float: left !important;
+    border-top-color: #fff !important;
+    border-left-color: #fff !important;
+    border-right-color: #fff !important;
+    border-bottom-color:#3498db !important;
+    border-bottom-width: 3px !important; 
+    border-radius: 0px !important;
+    margin-left: 20px !important;
+    width: 30% !important;
+    }
