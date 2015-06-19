@@ -18,6 +18,7 @@ class Evento {
         $plantilla = new Plantilla();
         $dateNow = new DateTime();
         $date = $dateNow->format('Y-m-d');
+        $Sesion = new Sesion();
         
         
         $tabla = 'eventos';
@@ -27,7 +28,7 @@ class Evento {
         $FechaFin=$datosEvento['termina'];
         $Nombre=$datosEvento['nombre'];
         $Descripcion=$datosEvento['descripcion'];
-        $idCuenta=1;
+        $idCuenta=$Sesion->obtenerVariableSesion('idUsuario');
         
         $valores = '"'.$idCuenta. '","' . 
                     $FechaIni. '","' . 

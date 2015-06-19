@@ -7,5 +7,5 @@ $usuariosPermitidos = array('1');
 
 $administrarUsuario->verificarSesion($usuariosPermitidos);
 
-$reporte = new ReporteEventos();
-$reporte -> reporteUsuario();
+$reporte = new Reportes();
+$reporte -> reportesEventos();
