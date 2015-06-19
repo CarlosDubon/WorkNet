@@ -11,7 +11,7 @@
               <a href="vercat.php" class="list-group-item"><span class="fui-list-thumbnailed"></span> Categorías
 
               </a>
-              <a href="#" class="list-group-item"><span class="fui-document"></span> Reportes
+              <a href="./reporteUsuario.php" class="list-group-item"><span class="fui-document"></span> Reportes
               </a>
               <a href="logout.php" class="list-group-item"><span class="fui-power"></span> Cerrar Sesión
               </a>
