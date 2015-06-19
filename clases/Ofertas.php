@@ -30,15 +30,16 @@ class Ofertas {
         $requisitos = $datosOferta['requisitos'];
 
         $valores = '"'.$idCuenta.'","'.$titulo.'","'.$detalle.'","'.$cargo.'","'.$edad.'","'.$requisitos.'"'; 
-            
-        $resultado = $bd->insertarRegistro($tabla, $columnas, $valores);
+        
+        if($edad >= '18')
+            $resultado = $bd->insertarRegistro($tabla, $columnas, $valores);
 
-        if ($resultado)
+        if (isset($resultado))
             $utilidades->mostrarMensaje('La oferta de trabjado se creo correctamente!');
         else
             $utilidades->mostrarMensaje('Lo sentimos!,Ocurrio un error, por favor intente de nuevo.');                
         
-        $plantilla->verPagina();
+        $utilidades->Redireccionar('controladores/formOfertas.php');
     }
    /* 
     public function VerOfertas() {
@@ -82,13 +83,12 @@ class Ofertas {
         for ($i = 0; $i < count($Ofertas); $i++){
             $oferta .= '<blockquote class="public">
                           <a href="./eliminarOferta.php?idOfertas='.$Ofertas[$i]['id'].'"><small class="text-danger" id="derecha"><i class="fa fa-trash"></i></small></a>
-                          <a href="./editarOferta.php?idOfertas='.$Ofertas[$i]['id'].'"><small class="text-info" id="derecha"><i class="fa fa-pencil"></i></small></a>
                           <p>Título:</p>
                           <input type="hidden" value='.$Ofertas[$i]['id'].'>
                           <small>'.$Ofertas[$i]['Titulo'].'</small>
                           <p>Detalle:</p>
                           <small>'.$Ofertas[$i]['Detalle'].'</small>
-                          <p>Cargo:</p>
+                          <p>Cargo::</p>
                           <small>'.$Ofertas[$i]['Cargo'].'</small>
                           <p>Edad:</p>
                           <small>'.$Ofertas[$i]['Edad'].'</small>
@@ -158,11 +158,6 @@ class Ofertas {
             $utilidades->mostrarMensaje('Lo sentimos, Ocurrio un error, por favor intentelo de nuevo.');
             $utilidades->Redireccionar('controladores/ofertas_empre.php');
         }
-    }
-    
-    public function editarOferta($id){
-        $db = new MySQL();
-        
     }
        
 }

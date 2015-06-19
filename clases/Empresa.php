@@ -45,19 +45,17 @@ class Empresa {
 if($dateNow > $birth)
     if ($password == $repassword && $email == $remail)
         if($this->validarNombreUnico($user))
-            if($this->validarNombreUsuario($name))
-              if($this->validarNombreUsuario($ape))
-                $resultado = $bd->insertarRegistro($tabla, $columnas, $valores);
+            $resultado = $bd->insertarRegistro($tabla, $columnas, $valores);
         else{
-            $utilidades->mostrarMensaje('El usuario existe actualmente o el campo Nombre contiene caracteres numericos, por favor intente de nuevo');
+            $utilidades->mostrarMensaje('El usuario existe actualmente, por favor intente de nuevo');
             $utilidades->Redireccionar('controladores/formNuevaEmpresa.php');
             return 0;
         }
     
       
-        if (isset($resultado)){
+        if ($resultado){
             $utilidades->mostrarMensaje('Felicidades! usted es parte de WorkNet ahora!');
-            $utilidades->Redireccionar('index');
+            $utilidades->Redireccionar('controladores/index.php');
         }
         else{
             $utilidades->mostrarMensaje('Lo sentimos!, Ocurrio un error, por favor intente de nuevo');                    
@@ -86,7 +84,7 @@ if($dateNow > $birth)
         $idUsuario = $sesion->obtenerVariableSesion('idUsuario');
 
         $consulta = 'select idCuenta as id,Usuario,Nombre,Apellido,Empresa from cuenta '
-                . ' where idCuenta not in( select idCuentaAmigo from Amigo where idCuenta =' . $idUsuario . ' ) AND Tipo = 2 AND idCuenta !='.$idUsuario.' ';
+                . ' where idCuenta not in( select idCuentaAmigo from Amigo where idCuenta =' . $idUsuario . ' ) AND Tipo = 2 AND idCuenta  !='.$idUsuario.' ';
         $listaUsuarios = $mysql->consulta($consulta);
         $encabezado = array('ID', 'Usuario', 'Nombre', 'Apellido', 'Empresa');
 
@@ -102,13 +100,4 @@ if($dateNow > $birth)
         $plantilla->verPagina('listaPersonas', $variables);
     }
     
-    private function validarNombreUsuario ($nombreUsuario){
-        $permitidos = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
-            for ($i = 0; $i<strlen($nombreUsuario); $i++){
-                if(strpos($permitidos, substr($nombreUsuario, $i, 1)))
-                    return true;
-                else
-                    return false;
-            }
-    }
 }

@@ -27,9 +27,9 @@
                     <div id="val"></div>
                     </div>
                     <label for="Nombre">Nombre:</label><br>
-                    <input type='text' class='form-control login-field' id="letras" onkeydown="return validarLetras(event)" name='name' placeholder='Nombre'  required /><br>
+                    <input type='text' class='form-control login-field' onkeypress="return numeros(event)" id="letras" name='name' placeholder='Nombre'  required /><br>
                     <label for="Apellido">Apellido:</label><br>
-                    <input type='text' class='form-control login-field' id="letras" onkeydown="return validarLetras(event)" name='ape' placeholder='Apellido' required /><br>
+                    <input type='text' class='form-control login-field' id="letras" onkeypress="return numeros(event)" name='ape' placeholder='Apellido' required /><br>
                     <label for="DUI">DUI:</label><br>
                     <input type='text' onkeyup="mascara(this,'-',patron2,true)" maxlength="10"id="num" onkeydown="return validarNumeros(event)" class='form-control login-field' name='dui' placeholder='DUI' required /><br>
                     <label for="FechaNacimiento"> Fecha de fundación (mes/día/año):</label><br>
@@ -150,4 +150,22 @@
             }
 }
 </script>
+<script>
+    function numeros(e){
+    key = e.keyCode || e.which;
+    tecla = String.fromCharCode(key).toLowerCase();
+    letras = " abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
+    especiales = [8,37,39,46];
+ 
+    tecla_especial = false
+    for(var i in especiales){
+ if(key == especiales[i]){
+     tecla_especial = true;
+     break;
+        } 
+    }
+ 
+    if(letras.indexOf(tecla)==-1 && !tecla_especial)
+        return false;
+}
 </script>
