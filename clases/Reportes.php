@@ -28,7 +28,7 @@ class Reportes{
         $pdf->MultiCell(75,7, 'Correo', 1, 'C');
         $pdf->SetXY($x + 156,$y);
         $pdf->MultiCell(22,7, 'Estado', 1);
-        $query='Select idCuenta, Usuario, Nombre, Apellido, Correo, SitioWeb, Telefono, Estado FROM cuenta';
+        $query='Select idCuenta, Usuario, Nombre, Apellido, Correo, SitioWeb, Telefono, Estado FROM cuenta WHERE idCuenta !=1';
         $resul= $db->consulta($query);
         
         for($i=0; $i<count($resul); $i++){
