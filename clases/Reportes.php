@@ -5,6 +5,12 @@ require_once realpath(dirname(__FILE__) . '/./Plantilla.php');
 include_once ('../vistas/recursos/fpdf/fpdf.php');
 
 class Reportes{
+    public function mostrarMenu(){
+        $plantilla = new Plantilla();
+        
+        
+        $plantilla->verPagina('menuReportes');
+    }
 
     public function reporteUsuario(){
         $db = new MySQL();
