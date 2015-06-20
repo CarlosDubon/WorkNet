@@ -20,7 +20,7 @@ class Categoria {
         $tabla = 'categorias';
         $columnas = 'NombreCat,cuenta_idCuenta';
 
-        $cat = $datosCategoria['cat'];
+        $cat = trim($datosCategoria['cat']);
         $idCuenta = 1;
 
         $valores = '"'.$cat.'","'.$idCuenta.'"'; 
