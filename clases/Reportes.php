@@ -12,7 +12,7 @@ class Reportes{
         $plantilla->verPagina('menuReportes');
     }
 
-    public function reporteUsuario(){
+    public function reporteUsuario(){ 
         $db = new MySQL();
         $sesion = new Sesion();
         $pdf = new FPDF();
@@ -119,30 +119,20 @@ class Reportes{
         $pdf->SetXY($x+120, $y=260);
         $pdf->MultiCell(120,7, utf8_decode('Usuario que emitió reporte:').$Usuario, 0,1,0);
         $pdf->Output();
-    }
-<<<<<<< HEAD
-    public function reportesPortafolio(){
-=======
-    
+    }    
     public function reportesArchivos(){
->>>>>>> origin/reportes
         $db = new MySQL();
         $sesion = new Sesion();
         $pdf = new FPDF();
 
         $pdf->AddPage();
-<<<<<<< HEAD
         $pdf->Image('../vistas/recursos/images/reporteArchivos.jpg',10,10,190);
-=======
-        $pdf->Image('../vistas/recursos/images/reporteEventos.jpg',10,10,190);
->>>>>>> origin/reportes
         $pdf->SetFont('Arial', 'B', 10);
         $x = $pdf->GetX();
         $y = $pdf->GetY();
         $pdf->SetXY($x, $y = 120);
         $pdf->MultiCell(20,7, 'ID Archivo', 1);
         $pdf->SetXY($x + 20,$y);
-<<<<<<< HEAD
         $pdf->MultiCell(34,7, 'Nombre Archivo', 1);
         $pdf->SetXY($x +54,$y);
         $pdf->MultiCell(44,7, utf8_decode('Útima Actualización'), 1);
@@ -150,7 +140,6 @@ class Reportes{
         $pdf->MultiCell(22,7,utf8_decode('Tamaño'), 1);
         $pdf->SetXY($x + 120,$y);
         $pdf->MultiCell(22,7, 'Usuario', 1);
-=======
         $pdf->MultiCell(22,7, 'Nombre', 1);
         $pdf->SetXY($x +42,$y);
         $pdf->MultiCell(36,7, 'Fecha Subida', 1);
@@ -158,7 +147,6 @@ class Reportes{
         $pdf->MultiCell(35,7, utf8_decode('Tamaño'), 1);
         $pdf->SetXY($x + 113,$y);
         $pdf->MultiCell(80,7, 'Cuenta', 1);
->>>>>>> origin/reportes
         $query='Select portafolio.idPortafolio, portafolio.NombreArchivo, portafolio.FechaSubida, portafolio.Size, cuenta.Usuario FROM portafolio INNER JOIN cuenta ON portafolio.cuenta_idCuenta=cuenta.idCuenta';
         $resul= $db->consulta($query);
         
@@ -166,7 +154,6 @@ class Reportes{
             $x = $pdf->GetX();
             $y = $pdf->GetY();
             $pdf->SetXY($x, $y);
-<<<<<<< HEAD
         $pdf->MultiCell(20,7, $resul[$i]['idPortafolio'], 1);
         $pdf->SetXY($x + 20,$y);
         $pdf->MultiCell(34,7, $resul[$i]['NombreArchivo'], 1);
@@ -176,7 +163,6 @@ class Reportes{
         $pdf->MultiCell(22,7, $resul[$i]['Size'].' Kb', 1);
         $pdf->SetXY($x + 120,$y);
         $pdf->MultiCell(22,7, $resul[$i]['Usuario'], 1);
-=======
             $pdf->MultiCell(20, 7, $resul[$i]['idPortafolio'],1,1,0);
             $pdf->SetXY($x+20, $y);
             $pdf->MultiCell(22, 7, $resul[$i]['NombreArchivo'],1,1,0);
@@ -186,7 +172,6 @@ class Reportes{
             $pdf->MultiCell(35, 7, $resul[$i]['Size'],1,1,0);
             $pdf->SetXY($x+113, $y);
             $pdf->MultiCell(80, 7, $resul[$i]['Usuario'],1,1,0);
->>>>>>> origin/reportes
             }
         $Date = new DateTime();
         $DateNow = $Date->format('d-m-Y');
@@ -199,9 +184,7 @@ class Reportes{
         $pdf->SetXY($x+120, $y=260);
         $pdf->MultiCell(120,7, utf8_decode('Usuario que emitió reporte:').$Usuario, 0,1,0);
         $pdf->Output();
-<<<<<<< HEAD
     
-=======
->>>>>>> origin/reportes
+
     }
 }
