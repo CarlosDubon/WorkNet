@@ -68,11 +68,11 @@ var $rutaServidor='C:\\xampp\\htdocs\\WorkNet\\portafolio\\';
         
          $acciones.='<a id="textRed" href="./eliminarArchivo.php?idPortafolio={{id}}" > <i class="fui-cross"></i></a></div></center>';
          $acciones .= '<center><div class="ec-stars-wrapper">
-                    <a href="./votar1.php?idPortafolio='.$idPorta.'" data-value="1" title="Votar con 1 estrellas">&#9733;</a>
-                    <a href="./votar2.php?idPortafolio='.$idPorta.'" data-value="2" title="Votar con 2 estrellas">&#9733;</a>
-                    <a href="./votar3.php?idPortafolio='.$idPorta.'" data-value="3" title="Votar con 3 estrellas">&#9733;</a>
-                    <a href="./votar4.php?idPortafolio='.$idPorta.'" data-value="4" title="Votar con 4 estrellas">&#9733;</a>
-                    <a href="./votar5.php?idPortafolio='.$idPorta.'" data-value="5" title="Votar con 5 estrellas">&#9733;</a>
+                    <a href="#" data-value="1" title="Votar con 1 estrellas">&#9733;</a>
+                    <a href="#" data-value="2" title="Votar con 2 estrellas">&#9733;</a>
+                    <a href="#" data-value="3" title="Votar con 3 estrellas">&#9733;</a>
+                    <a href="#" data-value="4" title="Votar con 4 estrellas">&#9733;</a>
+                    <a href="#" data-value="5" title="Votar con 5 estrellas">&#9733;</a>
                     </div>';
 
          

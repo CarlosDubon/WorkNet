@@ -6,19 +6,19 @@
     <div class="panel panel-default" id="RpUser">
          <div class="panel-body">
              <label><h6>Reporte de Usuarios</h6></label><br>
-             <a href="#" class="btn btn-default">Generar</a>
+             <a href="./reporteUsuario.php" class="btn btn-default">Generar</a>
         </div>
   </div>
     <div class="panel panel-default" id="RpUserc">
          <div class="panel-body">
              <label><h6>Reporte de Eventos</h6></label><br>
-             <a href="#" class="btn btn-info">Generar</a>
+             <a href="reporteEventos.php" class="btn btn-info">Generar</a>
         </div>
   </div>
     <div class="panel panel-default" id="RpEventos">
          <div class="panel-body">
              <label><h6>Reporte de archivos</h6></label><br>
-             <a href="#" class="btn btn-success">Generar</a>
+             <a href="reporteArchivos.php" class="btn btn-success">Generar</a>
         </div>
   </div>
     <div class="panel panel-default" id="RpCategrias">
