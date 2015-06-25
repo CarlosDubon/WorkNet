@@ -348,3 +348,43 @@ height: 35% !important;
     margin-left: 20px !important;
     width: 30% !important;
     }
+
+#RpEventos {
+    float: left !important;
+    border-top-color: #fff !important;
+    border-left-color: #fff !important;
+    border-right-color: #fff !important;
+    border-bottom-color:#29b865 !important;
+    border-bottom-width: 3px !important; 
+    border-radius: 0px !important;
+    margin-left: 20px !important;
+    width: 30% !important;
+}
+
+#btn btn-azul {
+    background: #2c3e50;
+}
+
+#RpCategrias {
+    float: left !important;
+    border-top-color: #fff !important;
+    border-left-color: #fff !important;
+    border-right-color: #fff !important;
+    border-bottom-color:#2c3e50 !important;
+    border-bottom-width: 3px !important; 
+    border-radius: 0px !important;
+    margin-left: 20px !important;
+    width: 30% !important;
+}
+
+#RpDenuncias {
+    float: left !important;
+    border-top-color: #fff !important;
+    border-left-color: #fff !important;
+    border-right-color: #fff !important;
+    border-bottom-color:#c0392b !important;
+    border-bottom-width: 3px !important; 
+    border-radius: 0px !important;
+    margin-left: 20px !important;
+    width: 30% !important;   
+}

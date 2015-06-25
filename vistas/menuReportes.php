@@ -15,4 +15,22 @@
              <a href="#" class="btn btn-info">Generar</a>
         </div>
   </div>
+    <div class="panel panel-default" id="RpEventos">
+         <div class="panel-body">
+             <label><h6>Reporte de archivos</h6></label><br>
+             <a href="#" class="btn btn-success">Generar</a>
+        </div>
+  </div>
+    <div class="panel panel-default" id="RpCategrias">
+         <div class="panel-body">
+             <label><h6>Reporte de categorias</h6></label><br>
+             <a href="#" class="btn btn-primary">Generar</a>
+        </div>
+  </div>
+    <div class="panel panel-default" id="RpDenuncias">
+         <div class="panel-body">
+             <label><h6>Reporte de denuncias</h6></label><br>
+             <a href="#" class="btn btn-danger">Generar</a>
+        </div>
+  </div>
 </div>
