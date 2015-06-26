@@ -67,7 +67,7 @@ class Reportes{
         $pdf->SetY(269);
         $pdf->MultiCell(22,7,$Hora);
         $pdf->SetXY($x+120, $y=260);
-        $pdf->MultiCell(120,7, utf8_decode('Usuario que emitió reporte:').$Usuario, 0,1,0);
+        $pdf->MultiCell(120,7, utf8_decode('Reporte generado por:').$Usuario, 0,1,0);
         $pdf->Output();
     }
     
@@ -117,7 +117,7 @@ class Reportes{
         $pdf->SetY(269);
         $pdf->MultiCell(22,7,$Hora);
         $pdf->SetXY($x+120, $y=260);
-        $pdf->MultiCell(120,7, utf8_decode('Usuario que emitió reporte:').$Usuario, 0,1,0);
+        $pdf->MultiCell(120,7, utf8_decode('Reporte generado por:').$Usuario, 0,1,0);
         $pdf->Output();
     }    
     public function reportesArchivos(){
@@ -166,7 +166,7 @@ class Reportes{
         $pdf->SetY(269);
         $pdf->MultiCell(22,7,$Hora);
         $pdf->SetXY($x+120, $y=260);
-        $pdf->MultiCell(120,7, utf8_decode('Usuario que emitió reporte:').$Usuario, 0,1,0);
+        $pdf->MultiCell(120,7, utf8_decode('Reporte generado por:').$Usuario, 0,1,0);
         $pdf->Output();
     
 
@@ -208,7 +208,7 @@ class Reportes{
         $pdf->SetY(269);
         $pdf->MultiCell(22,7,$Hora);
         $pdf->SetXY($x+120, $y=260);
-        $pdf->MultiCell(120,7, utf8_decode('Usuario que emitió reporte:').$Usuario, 0,1,0);
+        $pdf->MultiCell(120,7, utf8_decode('Reporte generado por:').$Usuario, 0,1,0);
         $pdf->Output();
     
 
