@@ -11,6 +11,8 @@
               <a href="vercat.php" class="list-group-item"><span class="fui-list-thumbnailed"></span> Categorías
 
               </a>
+                <a href="./verDenuncias.php" class="list-group-item"><span class="fui-cross"></span> Denuncias
+              </a>
               <a href="./tiposReporte.php" class="list-group-item"><span class="fui-document"></span> Reportes
               </a>
               <a href="logout.php" class="list-group-item"><span class="fui-power"></span> Cerrar Sesión

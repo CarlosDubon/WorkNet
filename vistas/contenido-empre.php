@@ -27,18 +27,20 @@
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
         <h4 class="modal-title" id="myModalLabel">Denuncia</h4>
       </div>
+        <form action="./denunciar.php" method="POST">
       <div class="modal-body">
-          <h6>Por favor escriba la razon de su denuncia</h6>
+          <h6>Por favor escriba la razon de su denuncia</h6><input type="hidden" name="id" value="{{id}}">
            <div class="form-group">
                 <div class="col-lg-10">
-                    <textarea class="form-control" rows="3" id="textArea"></textarea>
+                    <textarea required class="form-control" name="razon" rows="3" id="publicacion" id="textArea"></textarea>
                 </div>
     </div>
         
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
-        <button type="button" class="btn btn-primary">Denunciar</button>
+        <input type="submit" class="btn btn-primary" value="Denunciar">
+    </form>
       </div>
     </div>
   </div>
