@@ -67,13 +67,7 @@ var $rutaServidor='C:\\xampp\\htdocs\\WorkNet\\portafolio\\';
         $acciones = '<a href="../portafolio/'.$nombreUsuario.'/{{id}}" ><center><i class="fa fa-download"></i></a>';
         
          $acciones.='<a id="textRed" href="./eliminarArchivo.php?idPortafolio={{id}}" > <i class="fui-cross"></i></a></div></center>';
-         $acciones .= '<center><div class="ec-stars-wrapper">
-                    <a href="#" data-value="1" title="Votar con 1 estrellas">&#9733;</a>
-                    <a href="#" data-value="2" title="Votar con 2 estrellas">&#9733;</a>
-                    <a href="#" data-value="3" title="Votar con 3 estrellas">&#9733;</a>
-                    <a href="#" data-value="4" title="Votar con 4 estrellas">&#9733;</a>
-                    <a href="#" data-value="5" title="Votar con 5 estrellas">&#9733;</a>
-                    </div>';
+
 
          
         $variables['listaArchivos'] = $utilidades->convertirTabla($listaArchivos, $encabezado, $acciones);

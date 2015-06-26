@@ -171,4 +171,46 @@ class Reportes{
     
 
     }
+    public function reportesCategorias(){
+        $db = new MySQL();
+        $sesion = new Sesion();
+        $pdf = new FPDF();
+
+        $pdf->AddPage();
+        $pdf->Image('../vistas/recursos/images/reporteArchivos.jpg',10,10,190);
+        $pdf->SetFont('Arial', 'B', 10);
+        $x = $pdf->GetX();
+        $y = $pdf->GetY();
+        $pdf->SetXY($x, $y = 120);
+        $pdf->MultiCell(33,7, 'ID Categoria', 1);
+        $pdf->SetXY($x + 33,$y);
+        $pdf->MultiCell(40,7, 'Nombre Categoria', 1);
+        
+        $query='Select idCategorias, NombreCat FROM categorias';
+        $resul= $db->consulta($query);
+        
+        for($i=0; $i<count($resul); $i++){
+            $x = $pdf->GetX();
+            $y = $pdf->GetY();
+            $pdf->SetXY($x, $y);
+        $pdf->MultiCell(33,7, $resul[$i]['idCategorias'], 1);
+        $pdf->SetXY($x + 33,$y);
+        $pdf->MultiCell(40,7, $resul[$i]['NombreCat'], 1);
+        
+            
+            }
+        $Date = new DateTime();
+        $DateNow = $Date->format('d-m-Y');
+        $Hora = date("h:i");
+        $Usuario= $sesion->obtenerVariableSesion('nombreUsuario');
+        $pdf->SetY(265);
+        $pdf->MultiCell(22,7,$DateNow);
+        $pdf->SetY(269);
+        $pdf->MultiCell(22,7,$Hora);
+        $pdf->SetXY($x+120, $y=260);
+        $pdf->MultiCell(120,7, utf8_decode('Usuario que emitió reporte:').$Usuario, 0,1,0);
+        $pdf->Output();
+    
+
+    }
 }

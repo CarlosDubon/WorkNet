@@ -5,8 +5,9 @@
   </div>
   <div class="panel-body">
       {{listaArchivos}}
-      
+            
       <div class="login-form" id="portafolio">
+
           <form action="../controladores/subirArchivo.php" method="POST" enctype="multipart/form-data">
               <h5><center>Subir archivo</center></h5>
               <br>
@@ -23,4 +24,10 @@
     $(document).ready(function() {
         $('#miTabla').DataTable();
     });
+</script>
+<script src="../vistas/recursos/rating-master/jquery.barrating.js"></script>
+<script type="text/javascript">
+   $(function() {
+      $('#example').barrating();
+   });
 </script>

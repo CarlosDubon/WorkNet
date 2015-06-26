@@ -20,26 +20,26 @@
   </div>
 </div>
     
-<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title" id="myModalLabel">Comentarios</h4>
+        <h4 class="modal-title" id="myModalLabel">Denuncia</h4>
       </div>
       <div class="modal-body">
-          {{comentarios}}
+          <h6>Por favor escriba la razon de su denuncia</h6>
+           <div class="form-group">
+                <div class="col-lg-10">
+                    <textarea class="form-control" rows="3" id="textArea"></textarea>
+                </div>
+    </div>
+        
       </div>
-            <form action="../controladores/guardarComentario.php" method="POST">
-        <div class="modal-footer">
-        <div class="form-group">
-          <label class="control-label" id="iz">Comentario</label>
-          <input class="form-control input-lg" type="text" name="comentario" id="inputLarge">
-        </div>
-        <input type="submit" class="btn btn-primary" value="Comentar">
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+        <button type="button" class="btn btn-primary">Denunciar</button>
       </div>
-        </form>
-
     </div>
   </div>
 </div>

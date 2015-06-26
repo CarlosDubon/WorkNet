@@ -24,7 +24,7 @@
     <div class="panel panel-default" id="RpCategrias">
          <div class="panel-body">
              <label><h6>Reporte de categorias</h6></label><br>
-             <a href="#" class="btn btn-primary">Generar</a>
+             <a href="./reporteCategorias.php" class="btn btn-primary">Generar</a>
         </div>
   </div>
     <div class="panel panel-default" id="RpDenuncias">
