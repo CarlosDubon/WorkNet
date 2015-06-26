@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 19-06-2015 a las 23:36:34
+-- Tiempo de generación: 26-06-2015 a las 02:46:26
 -- Versión del servidor: 5.6.21
 -- Versión de PHP: 5.6.3
 
@@ -130,7 +130,7 @@ CREATE TABLE IF NOT EXISTS `cuenta` (
 
 INSERT INTO `cuenta` (`idCuenta`, `Tipo`, `Usuario`, `Correo`, `Password`, `ImgCuenta`, `Empresa`, `Nombre`, `Apellido`, `FechaNac`, `DUI`, `Direc`, `Telefono`, `SitioWeb`, `Estado`, `work_count`, `cuenta_cuenta`) VALUES
 (1, '1', 'admin', 'admin@admin.com', 'admin', '', 'admin', 'admin', 'admin', '0000-00-00', '', '', '', '', '', '0', 0),
-(3, '2', 'cn', 'karloz_minero@hotmail.com', 'cn', 'elefantes-bebe.jpg', 'CorpNet', 'Carlos', 'Minero', '2002-02-05', '123456', 'cn', '22222222', 'https://www.facebook.com/groups/1422689947974430/?fref=nf', '0', '1', 0),
+(3, '2', 'cn', 'karloz_minero@hotmail.com', 'cn', 'elefantes-bebe.jpg', 'CorpNet', 'Carlos', 'Minero', '2002-02-05', '123456', 'cn', '22222222', 'https://www.facebook.com/groups/1422689947974430/?fref=nf', '0', '0', 0),
 (4, '2', 'wn', 'wn@wn.com', 'work1', 'Squirtle.jpg', 'WorkNet', 'ffdasfds', 'sdfdsaf', '2015-05-01', '654567654', 'sdfafsda', '2354123', '', '1', '0', 0),
 (6, '3', 'carlos98', 'carlosminerodubon@gmail.com', 'WorkNet2015', 'hgcyhgchfgvhdf.gif', 'cn', 'Carlos', 'Minero', '2015-05-29', '34567890-9', 'no definida', '0000', 'no definida', '0', '0', 3);
 
@@ -166,10 +166,18 @@ CREATE TABLE IF NOT EXISTS `curriculum` (
 CREATE TABLE IF NOT EXISTS `denuncias` (
 `idDenuncias` int(11) NOT NULL,
   `Motivo` tinytext NOT NULL,
-  `FechaRealizada` date NOT NULL,
+  `FechaRealizada` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `UserEmpresa` varchar(30) NOT NULL,
   `cuenta_idCuenta` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+
+--
+-- Volcado de datos para la tabla `denuncias`
+--
+
+INSERT INTO `denuncias` (`idDenuncias`, `Motivo`, `FechaRealizada`, `UserEmpresa`, `cuenta_idCuenta`) VALUES
+(1, 'Este comentario tiene lenguaje ofensivo', '2015-06-26 00:31:12', '4', 3),
+(2, 'Este comentario tiene lenguaje ofensivo', '2015-06-26 00:32:27', '4', 3);
 
 -- --------------------------------------------------------
 
@@ -277,9 +285,9 @@ CREATE TABLE IF NOT EXISTS `publicaciones` (
 --
 
 INSERT INTO `publicaciones` (`idPub`, `Texto`, `imgUsuario`, `Fecha`, `cuenta_idCuenta`, `Usuario_cuenta`, `works`) VALUES
-(2, 'Hola soy nuevo aqui!', '2015.jpg', '2015-06-14', 3, 'cn', 0),
+(2, 'Hola soy nuevo aqui!', '2015.jpg', '2015-06-14', 3, 'cn', 1),
 (3, 'hola', 'elefantes-bebe.jpg', '2015-06-15', 3, 'cn', 1),
-(4, 'hola\r\n', 'hgcyhgchfgvhdf.gif', '2015-06-17', 6, 'carlos98', 2);
+(4, 'hola\r\n', 'hgcyhgchfgvhdf.gif', '2015-06-17', 6, 'carlos98', 1);
 
 -- --------------------------------------------------------
 
@@ -438,7 +446,7 @@ MODIFY `idCurriculum` int(11) NOT NULL AUTO_INCREMENT;
 -- AUTO_INCREMENT de la tabla `denuncias`
 --
 ALTER TABLE `denuncias`
-MODIFY `idDenuncias` int(11) NOT NULL AUTO_INCREMENT;
+MODIFY `idDenuncias` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT de la tabla `eventos`
 --
