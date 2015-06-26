@@ -28,7 +28,7 @@
                     <center>
                         <input class="btn btn-primary btn-lg btn-danger" type="submit" value="Inicia Sesión">
                         </div>
-                <a class="login-link" href="php/olvido.php">¿Olvidaste tu contraseña?</a>
+                <a class="login-link" href="./formRecuperar.php">¿Olvidaste tu contraseña?</a>
 
                 </div><br>
                 <div class="login-form">
