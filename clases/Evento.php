@@ -51,6 +51,6 @@ class Evento {
         else
             $utilidades->mostrarMensaje('Lo sentimos!,Oucrrio un problema, por favor intentelo de nuevo!0');                    
         
-        $plantilla->verPagina();
-  }
+        $utilidades->Redireccionar('controladores/formEventos.php');
+     }
 }

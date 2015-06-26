@@ -142,7 +142,7 @@ class Usuario {
         else
             $utilidades->mostrarMensaje('Lo sentimos, algo ha salido mal. Por favor intenta de nuevo.');
         
-        $plantilla->verPagina();
+        $utilidades->Redireccionar('controladores/usuarios_admin.php');
     }
     
     public function desactivarUsuario($id){
@@ -162,7 +162,7 @@ class Usuario {
         else
             $utilidades->mostrarMensaje('Lo sentimos, algo ha salido mal. Por favor intenta de nuevo.');
         
-        $plantilla->verPagina();
+        $utilidades->Redireccionar('controladores/usuarios_admin.php');
     }
     
     public function recuperarClave($id){
@@ -182,7 +182,7 @@ class Usuario {
         else
             $utilidades->mostrarMensaje('Lo sentimos, algo ha salido mal. Por favor intenta de nuevo.');
         
-        $plantilla->verPagina();
+        $utilidades->Redireccionar('controladores/usuarios_admin.php');
     }
     
 
@@ -203,7 +203,7 @@ class Usuario {
         else
             $utilidades->mostrarMensaje('Lo sentimos, algo ha salido mal. Por favor intenta de nuevo.');
         
-        $plantilla->verPagina();
+        $utilidades->Redireccionar('controladores/usuarios_admin.php');
     }
 
 
