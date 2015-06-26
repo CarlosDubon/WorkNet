@@ -58,7 +58,7 @@ class Trabajador {
             $resultado = $bd->insertarRegistro($tabla, $columnas, $valores);
         else{
             $utilidades->mostrarMensaje('El usuario ya está registrado. Por favor intente con un usuario diferente.');
-            $plantilla->verPagina('formularioTrabajador');
+            $utilidades->Redireccionar('controladores/creartrabajador.php');
             return 0;
         }
          
@@ -67,9 +67,9 @@ class Trabajador {
         else
             $utilidades->mostrarMensaje('Lo sentimos!, ocurrio un problema, por favor vuelva a intentar.');                    
          
-        $plantilla->verPagina('formularioTrabajador');
-    }
-     private function validarNombreUnico($nombreUsuario) {
+            $utilidades->Redireccionar('controladores/creartrabajador.php');    }
+     
+    private function validarNombreUnico($nombreUsuario) {
         $db = new MySQL();
          
         $consulta = 'select idCuenta from cuenta where Usuario = "'. $nombreUsuario .'"';

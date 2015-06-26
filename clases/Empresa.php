@@ -59,8 +59,7 @@ if($dateNow > $birth)
         }
         else{
             $utilidades->mostrarMensaje('Lo sentimos!, Ocurrio un error, por favor intente de nuevo');                    
-         
-        $plantilla->verPaginaSinPlantilla('formularioEmpresa');
+         $utilidades->Redireccionar('controladores/formNuevaEmpresa.php');
         }
     }
         

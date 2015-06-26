@@ -69,7 +69,7 @@ class Usuario {
         else{
             $utilidades->mostrarMensaje('Lo sentimos, algo ha salido mal. Por favor intenta de nuevo.');                    
          
-        $plantilla->verPaginaSinPlantilla('formularioNuevoUsuario');
+            $utilidades->Redireccionar('controladores/index.php');
         }
     }
     
