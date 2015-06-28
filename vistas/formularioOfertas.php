@@ -5,7 +5,7 @@
     <div class="panel-body">
         <form action="../controladores/guardarOfertas.php" method="POST">    
             <div class="form-group">
-                <label for="Titulo">Titulo:</label>
+                <label for="Titulo">Plaza:</label>
                 <input type="text" class="form-control login-field" name="titulo" placeholder="Titulo" required />
 
                 <label for="Requisitos">Detalle:</label>
@@ -18,12 +18,14 @@
                 <select name="genero" class="form-control" id="select">
                     <option value="M">Masculino</option>
                     <option value="F">Femenino</option>
+                    <option value="A">Ambos</option>
                 </select>
                 <label for="salario">Salario</label>
                 <div class="input-group">
-                    <span class="input-group-addon">$</span>
+                    <span class="input-group-addon ">$</span>
                     <input type="text" class="form-control" name="salario" onkeypress="mascara(this,'.',patSalario,true)" minlength="5" required>
                 </div>
+                <span class="help-block">Salario por hora</span>
                 <label for="direccion">Dirección</label>
                 <textarea type="text" id="publicacion" class="form-control login-field" name="adress" placeholder="Dirección" required></textarea>
                 <label for="Info">Requirientos:</label>

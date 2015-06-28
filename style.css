@@ -775,3 +775,15 @@ height: 35% !important;
     position: absolute !important;
     margin-left: 20% !important;
 }
+
+#enfren {
+    z-index: 100 !important;
+    position: relative!important;
+    float: right !important;
+}
+
+#deE {
+
+    float: right!important;
+    margin-top: -15px !important;
+}

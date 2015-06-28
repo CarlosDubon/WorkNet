@@ -70,7 +70,7 @@ class Ofertas {
         
         
         $idu = $sesion->obtenerVariableSesion('idUsuario');
-        $query = 'SELECT idOfertas as id,idCuenta,Titulo,Detalle,Cargo,Edad,Requisitos FROM ofertas WHERE idCuenta = "' .$idu. '"';
+        $query = 'SELECT idOfertas as id,idCuenta,Titulo,Detalle,Genero,Salario,Direccion,Cargo,Edad,Requisitos FROM ofertas WHERE idCuenta = "' .$idu. '"';
         $result = $db->consulta($query);
         
         $variables['listaOfertas'] = $this->convertirOferHTML($result);
@@ -83,21 +83,42 @@ class Ofertas {
         $sesion = new Sesion();
         $oferta = '';
         
+        
         for ($i = 0; $i < count($Ofertas); $i++){
-            $oferta .= '<blockquote class="public">
-                          <a href="./eliminarOferta.php?idOfertas='.$Ofertas[$i]['id'].'"><small class="text-danger" id="derecha"><i class="fa fa-trash"></i></small></a>
-                          <p>Título:</p>
-                          <input type="hidden" value='.$Ofertas[$i]['id'].'>
-                          <small>'.$Ofertas[$i]['Titulo'].'</small>
-                          <p>Detalle:</p>
-                          <small>'.$Ofertas[$i]['Detalle'].'</small>
-                          <p>Cargo::</p>
-                          <small>'.$Ofertas[$i]['Cargo'].'</small>
-                          <p>Edad:</p>
-                          <small>'.$Ofertas[$i]['Edad'].'</small>
-                          <p>Requisitos:</p>
-                          <small><i class="fa fa-ellipsis-h"></i> '.$Ofertas[$i]['Requisitos'].'</small>
-                        </blockquote>';
+            
+            switch($Ofertas[0]['Genero']){
+                case 'F':
+                $genero = "Femenino";
+                break;
+                
+                case 'A':
+                $genero = "Ambos";
+                break;
+                
+                case 'M':
+                $genero = "Masculino";
+                break;
+            }
+            $oferta .= '<div class="panel panel-default"><input type="hidden" value="'.$Ofertas[0]['id'].'" name="idOfer">
+                          <div class="panel-heading">
+                            <h3 class="panel-title"><center>'.$Ofertas[0]['Titulo'].'</center></h3><a href="#" class="dropdown-toggle" id="deE" data-toggle="dropdown"><i class="fa fa-cogs"></i></a>
+                                                                                                    <ul class="dropdown-menu" id="enfren">
+                                                                                                    <li><a href="./eliminarOferta.php?idOfertas='.$Ofertas[0]['id'].'"><i class="fa fa-trash-o"></i> Eliminar Oferta</a></li>
+                                                                                                    </ul>
+                          </div>
+                          <div class="panel-body">
+                            <p>'.$Ofertas[0]['Detalle'].'</p>
+                            <br>
+                            <p><b>Genero: </b>'.$genero.'</p>
+                            <p><b>Salario: $</b>'.$Ofertas[0]['Salario'].'
+                            <span class="help-block">Salario por hora</span></p>
+                            <p><b>Cargo: </b>'.$Ofertas[0]['Cargo'].'</p>
+                            <p><b>Edad: </b>'.$Ofertas[0]['Edad'].'</p>
+                            <p><b>Direccion: </b>'.$Ofertas[0]['Direccion'].'</p>
+                          </div>
+                        </div>';
+                        
+            
         }
         return $oferta;
         
