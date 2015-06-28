@@ -131,7 +131,7 @@ class Ofertas {
         $plantilla = new Plantilla();
         
         
-        $query = 'SELECT idOfertas as id,idCuenta,Titulo,Detalle,Cargo,Edad,Requisitos FROM ofertas';
+        $query = 'SELECT idOfertas as id,idCuenta,Titulo,Detalle,Genero,Salario,Direccion,Cargo,Edad,Requisitos FROM ofertas';
         $result = $db->consulta($query);
         
         $variables['listaOfertasUsuario'] = $this->convertirOferUsuarioHTML($result);
@@ -146,18 +146,38 @@ class Ofertas {
         $oferta = '';
         
         for ($i = 0; $i < count($Ofertas); $i++){
-            $oferta .= '<blockquote class="public">
-                          <p>Título:</p> <small id="derecha">Empresa: <small class="text-success" id="derecha">' .$Ofertas[$i]['idCuenta'].'</small></small>
-                          <small>'.$Ofertas[$i]['Titulo'].'</small>
-                          <p>Detalle:</p>
-                          <small>'.$Ofertas[$i]['Detalle'].'</small>
-                          <p>Cargo:</p>
-                          <small>'.$Ofertas[$i]['Cargo'].'</small>
-                          <p>Edad:</p>
-                          <small>'.$Ofertas[$i]['Edad'].'</small><a href="#" class="btn btn-success" id="iz">Aplicar</a>
-                          <p>Requisitos:</p>
-                          <small><i class="fa fa-ellipsis-h"></i> '.$Ofertas[$i]['Requisitos'].'</small>
-                        </blockquote>';
+            switch($Ofertas[0]['Genero']){
+                case 'F':
+                $genero = "Femenino";
+                break;
+                
+                case 'A':
+                $genero = "Ambos";
+                break;
+                
+                case 'M':
+                $genero = "Masculino";
+                break;
+            }
+            $oferta .= '<div class="panel panel-default"><input type="hidden" value="'.$Ofertas[0]['id'].'" name="idOfer">
+                          <div class="panel-heading">
+                            <h3 class="panel-title"><center>'.$Ofertas[0]['Titulo'].'</center></h3><a href="#" class="dropdown-toggle" id="deE" data-toggle="dropdown"><i class="fa fa-caret-down"></i></a>
+                                                                                                    <ul class="dropdown-menu" id="enfren">
+                                                                                                    <li><a href="#"><i class="fa fa-plus-circle"></i> Aplicar</a></li>
+                                                                                                    <li><a href="verPerfilAmigo.php?idCuenta='.$Ofertas[0]['idCuenta'].'"><i class="fa fa-eye"></i> Ver Perfil Empresa</a></li>
+                                                                                                    </ul>
+                          </div>
+                          <div class="panel-body">
+                            <p>'.$Ofertas[0]['Detalle'].'</p>
+                            <br>
+                            <p><b>Genero: </b>'.$genero.'</p>
+                            <p><b>Salario: $</b>'.$Ofertas[0]['Salario'].'
+                            <span class="help-block">Salario por hora</span></p>
+                            <p><b>Cargo: </b>'.$Ofertas[0]['Cargo'].'</p>
+                            <p><b>Edad: </b>'.$Ofertas[0]['Edad'].'</p>
+                            <p><b>Direccion: </b>'.$Ofertas[0]['Direccion'].'</p>
+                          </div>
+                        </div>';
         }
         return $oferta;
         
