@@ -9,13 +9,24 @@
                 <input type="text" class="form-control login-field" name="titulo" placeholder="Titulo" required />
 
                 <label for="Requisitos">Detalle:</label>
-                <input type="text" class="form-control login-field" name="detalle" placeholder="Detalle" required />
-                <!-- <textarea class="form-control login-field" name="requisitos" placeholder="Requisitos" required /></textarea><br> -->
+                <textarea type="text" id="publicacion" class="form-control login-field" name="detalle" placeholder="Detalle" required></textarea>
                 <label for="Info">Cargo:</label>
                 <input type="text" class="form-control login-field" name="cargo" placeholder="Cargo" required />
                 <label for="Info">Edad:</label>
                 <input type="text" id="edad" onkeydown="return validarNumeros(event)" class="form-control login-field" name="edad" placeholder="Edad" maxlength="2" required />
-                <label for="Info">Requiriemtos:</label>
+                <label for="Genero">Genero:</label>
+                <select name="genero" class="form-control" id="select">
+                    <option value="M">Masculino</option>
+                    <option value="F">Femenino</option>
+                </select>
+                <label for="salario">Salario</label>
+                <div class="input-group">
+                    <span class="input-group-addon">$</span>
+                    <input type="text" class="form-control" name="salario" onkeypress="mascara(this,'.',patSalario,true)" minlength="5" required>
+                </div>
+                <label for="direccion">Dirección</label>
+                <textarea type="text" id="publicacion" class="form-control login-field" name="adress" placeholder="Dirección" required></textarea>
+                <label for="Info">Requirientos:</label>
                 <input type="text"  class="form-control login-field" name="requisitos" placeholder="Requerimientos" required /><br>
                 <input type="submit" value="Crear" class="btn btn-primary btn-lg btn-warning">                
                 <a href="./publicar.php" class="btn btn-danger">Cancelar</a>
@@ -39,4 +50,43 @@
 		te = String.fromCharCode(tecla); 
 		return patron.test(te); // prueba
 	}
+</script>
+<script>
+    var patSalario = new Array(2,1);
+        function mascara(d,sep,pat,nums){
+            if(d.valant != d.value){
+                val = d.value
+                largo = val.length
+                val = val.split(sep)
+                val2 = ''
+                for(r=0;r<val.length;r++){
+                    val2 += val[r]	
+                }
+                if(nums){
+                    for(z=0;z<val2.length;z++){
+                        if(isNaN(val2.charAt(z))){
+                            letra = new RegExp(val2.charAt(z),"g")
+                            val2 = val2.replace(letra,"")
+                        }
+                    }
+                }
+                val = ''
+                val3 = new Array()
+                for(s=0; s<pat.length; s++){
+                    val3[s] = val2.substring(0,pat[s])
+                    val2 = val2.substr(pat[s])
+                }
+                for(q=0;q<val3.length; q++){
+                    if(q ==0){
+                      val = val3[q]
+                    }else{
+                        if(val3[q] != ""){
+                            val += sep + val3[q]
+                        }
+                    }
+                }
+                    d.value = val
+                    d.valant = val
+            }
+}
 </script>

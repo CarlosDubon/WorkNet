@@ -20,16 +20,19 @@ class Ofertas {
         $sesion = new Sesion();
         
         $tabla = 'ofertas';
-        $columnas = 'idCuenta,Titulo,Detalle,Cargo,Edad,Requisitos';
+        $columnas = 'idCuenta,Titulo,Detalle,Genero,Salario,Direccion,Cargo,Edad,Requisitos';
 
         $idCuenta = $sesion->obtenerVariableSesion('idUsuario');
         $titulo = $datosOferta['titulo'];
         $detalle = $datosOferta['detalle'];
+        $genero = $datosOferta['genero'];
+        $salario = $datosOferta['salario'];
+        $direccion = $datosOferta['adress'];
         $cargo = $datosOferta['cargo'];
         $edad = $datosOferta['edad'];
         $requisitos = $datosOferta['requisitos'];
 
-        $valores = '"'.$idCuenta.'","'.$titulo.'","'.$detalle.'","'.$cargo.'","'.$edad.'","'.$requisitos.'"'; 
+        $valores = '"'.$idCuenta.'","'.$titulo.'","'.$detalle.'","'.$genero.'","'.$salario.'","'.$direccion.'","'.$cargo.'","'.$edad.'","'.$requisitos.'"'; 
         
         if($edad >= '18')
             $resultado = $bd->insertarRegistro($tabla, $columnas, $valores);
