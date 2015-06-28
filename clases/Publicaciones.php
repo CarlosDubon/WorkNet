@@ -47,7 +47,6 @@ class Publicaciones {
          $query = 'SELECT p.idPub as id,p.Texto,p.ImgUsuario,p.Fecha,p.cuenta_idCuenta,p.Usuario_cuenta,p.works FROM publicaciones p ORDER BY idPub DESC';
         
         $resultado = $mysql->consulta($query);
-        $variables['id'] = $resultado[0]['id'];
 
         //print_r($resultado);
         $variables['publicaciones'] = $this->convertirPubHTML($resultado);

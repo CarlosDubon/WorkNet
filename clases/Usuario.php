@@ -83,8 +83,8 @@ class Usuario {
         $query = "SELECT idCuenta as id, Usuario, Nombre, Apellido FROM cuenta where Tipo = '3' AND cuenta_cuenta=$cuenta";
         $listaUsuarios = $mysql->consulta($query);
         $encabezado = array('ID', 'Usuario', 'Nombre','Apellido');
-        $acciones = '<center><a href="./eliminarUsuario.php?idCuenta={{id}}" class="btn btn-danger"><span class="fui-trash"></span></a>';
-        $acciones .= ' <a href="./recuperarClave.php?idCuenta={{id}}" class = "btn btn-info" ><span class="fui-new"></span></a><br><br>';
+        $acciones = '<center><a data-toggle="modal" data-target="#deleteUser" class="btn btn-danger"><span class="fui-trash"></span></a>';
+        $acciones .= ' <a data-toggle="modal" data-target="#recoverPass " class = "btn btn-info" ><span class="fui-new"></span></a><br><br>';
         
         if(count($listaUsuarios) >= 1 ){
             $variables['listaUsuarios'] = $utilidades->convertirTabla($listaUsuarios, $encabezado, $acciones);
@@ -107,15 +107,15 @@ class Usuario {
         $listaUsuarios = $mysql->consulta($consulta);
         $encabezado = array('ID', 'Usuario', 'Nombre', 'Apellido', 'Estado');
         
-        $acciones = '<center><a href="./activarUsuario.php?idCuenta={{id}}" class="btn btn-success" id="acciones"><span class="fui-check"></span></a>';
-        $acciones .= ' <a href="./desactivarUsuario.php?idCuenta={{id}}" class = "btn btn-danger" id="acciones"><span class="fui-cross"></span></a>';
-        $acciones .= ' <a href="./recuperarClave.php?idCuenta={{id}}" class = "btn btn-info" id="acciones" ><span class="fui-new"></span></a>';
-        $acciones .= ' <a href="./eliminarUsuario.php?idCuenta={{id}}" class="btn btn-danger" id="acciones"><span class="fui-trash"></span></a></center>';
+        $acciones = '<center><a data-toggle="modal" data-target="#activarUser" class="btn btn-success" id="acciones"><span class="fui-check"></span></a>';
+        $acciones .= ' <a  data-toggle="modal" data-target="#descativarUser" class = "btn btn-danger" id="acciones"><span class="fui-cross"></span></a>';
+        $acciones .= ' <a  data-toggle="modal" data-target="#recoverPass" class = "btn btn-info" id="acciones" ><span class="fui-new"></span></a>';
+        $acciones .= ' <a  data-toggle="modal" data-target="#deleteUser" class="btn btn-danger" id="acciones"><span class="fui-trash"></span></a></center>';
         
 
       
         $variables['listaUsuarios'] = $utilidades->convertirTabla($listaUsuarios, $encabezado, $acciones);
-
+        $variables['id'] = $listaUsuarios[0]['id'];
         /*
          * Mostramos la pagina en el navegador         
          * 
