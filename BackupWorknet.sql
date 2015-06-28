@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 28-06-2015 a las 06:10:58
+-- Tiempo de generación: 28-06-2015 a las 21:31:42
 -- Versión del servidor: 5.6.21
 -- Versión de PHP: 5.6.3
 
@@ -40,6 +40,27 @@ INSERT INTO `amigo` (`idAmigo`, `idCuenta`, `idCuentaAmigo`) VALUES
 (3, 3, 2),
 (11, 3, 4),
 (12, 4, 3);
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `aplicadores`
+--
+
+CREATE TABLE IF NOT EXISTS `aplicadores` (
+`idAplicacion` int(11) NOT NULL,
+  `idOferta` int(11) NOT NULL,
+  `idEmpresa` int(11) NOT NULL,
+  `Usuario` varchar(45) NOT NULL,
+  `idUsuario` int(11) NOT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+
+--
+-- Volcado de datos para la tabla `aplicadores`
+--
+
+INSERT INTO `aplicadores` (`idAplicacion`, `idOferta`, `idEmpresa`, `Usuario`, `idUsuario`) VALUES
+(2, 1, 3, 'CarlosM', 7);
 
 -- --------------------------------------------------------
 
@@ -124,7 +145,7 @@ CREATE TABLE IF NOT EXISTS `cuenta` (
   `Estado` varchar(1) NOT NULL,
   `work_count` varchar(1) NOT NULL DEFAULT '0',
   `cuenta_cuenta` int(11) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8;
 
 --
 -- Volcado de datos para la tabla `cuenta`
@@ -134,7 +155,8 @@ INSERT INTO `cuenta` (`idCuenta`, `Tipo`, `Usuario`, `Correo`, `Password`, `ImgC
 (1, '1', 'admin', 'admin@admin.com', 'admin', '', 'admin', 'admin', 'admin', '0000-00-00', '', '', '', '', '', '0', 0),
 (3, '2', 'cn', 'karloz_minero@hotmail.com', 'cn', 'elefantes-bebe.jpg', 'CorpNet', 'Carlos', 'Minero', '2002-02-05', '123456', 'cn', '22222222', 'https://www.facebook.com/groups/1422689947974430/?fref=nf', '0', '0', 0),
 (4, '2', 'wn', 'wn@wn.com', 'work1', 'Squirtle.jpg', 'WorkNet', 'ffdasfds', 'sdfdsaf', '2015-05-01', '654567654', 'sdfafsda', '2354123', '', '1', '0', 0),
-(6, '3', 'carlos98', 'carlosminerodubon@gmail.com', 'WorkNet2015', 'hgcyhgchfgvhdf.gif', 'cn', 'Carlos', 'Minero', '2015-05-29', '34567890-9', 'no definida', '0000', 'no definida', '0', '0', 3);
+(6, '3', 'carlos98', 'carlosminerodubon@gmail.com', 'WorkNet2015', 'hgcyhgchfgvhdf.gif', 'cn', 'Carlos', 'Minero', '2015-05-29', '34567890-9', 'no definida', '0000', 'no definida', '0', '0', 3),
+(7, '4', 'CarlosM', 'carlosminero@gmail.com', 'carlos98', 'default.jpg', 'no definida', 'Carlos', 'Minero', '1993-02-09', '78522348-5', 'no definida', '0000', 'no definida', '0', '0', 0);
 
 -- --------------------------------------------------------
 
@@ -234,7 +256,14 @@ CREATE TABLE IF NOT EXISTS `ofertas` (
   `Cargo` varchar(45) NOT NULL,
   `Edad` varchar(2) NOT NULL,
   `Requisitos` varchar(45) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+
+--
+-- Volcado de datos para la tabla `ofertas`
+--
+
+INSERT INTO `ofertas` (`idOfertas`, `idCuenta`, `Titulo`, `Detalle`, `Genero`, `Salario`, `Direccion`, `Cargo`, `Edad`, `Requisitos`) VALUES
+(1, 3, 'WorkNet', 'Se necesita', 'A', 45, 'av.78, Santa Tecla', 'Trabajador', '25', 'Conocimientos Informaticos');
 
 -- --------------------------------------------------------
 
@@ -330,6 +359,12 @@ ALTER TABLE `amigo`
  ADD PRIMARY KEY (`idAmigo`), ADD KEY `idCuenta` (`idCuenta`);
 
 --
+-- Indices de la tabla `aplicadores`
+--
+ALTER TABLE `aplicadores`
+ ADD PRIMARY KEY (`idAplicacion`);
+
+--
 -- Indices de la tabla `categorias`
 --
 ALTER TABLE `categorias`
@@ -423,6 +458,11 @@ ALTER TABLE `solicitudes`
 ALTER TABLE `amigo`
 MODIFY `idAmigo` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=13;
 --
+-- AUTO_INCREMENT de la tabla `aplicadores`
+--
+ALTER TABLE `aplicadores`
+MODIFY `idAplicacion` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
+--
 -- AUTO_INCREMENT de la tabla `categorias`
 --
 ALTER TABLE `categorias`
@@ -441,7 +481,7 @@ MODIFY `idComentario` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
 -- AUTO_INCREMENT de la tabla `cuenta`
 --
 ALTER TABLE `cuenta`
-MODIFY `idCuenta` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=7;
+MODIFY `idCuenta` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=8;
 --
 -- AUTO_INCREMENT de la tabla `curriculum`
 --
@@ -461,7 +501,7 @@ MODIFY `idEventos` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=6;
 -- AUTO_INCREMENT de la tabla `ofertas`
 --
 ALTER TABLE `ofertas`
-MODIFY `idOfertas` int(11) NOT NULL AUTO_INCREMENT;
+MODIFY `idOfertas` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT de la tabla `perfil`
 --

@@ -104,6 +104,7 @@ class Ofertas {
                             <h3 class="panel-title"><center>'.$Ofertas[0]['Titulo'].'</center></h3><a href="#" class="dropdown-toggle" id="deE" data-toggle="dropdown"><i class="fa fa-cogs"></i></a>
                                                                                                     <ul class="dropdown-menu" id="enfren">
                                                                                                     <li><a href="./eliminarOferta.php?idOfertas='.$Ofertas[0]['id'].'"><i class="fa fa-trash-o"></i> Eliminar Oferta</a></li>
+                                                                                                    <li><a href="./verInteresados.php?idOferta='.$Ofertas[0]['id'].'"><i class="fa fa-eye"></i> Ver interesados</a></li>
                                                                                                     </ul>
                           </div>
                           <div class="panel-body">
@@ -134,6 +135,8 @@ class Ofertas {
         $query = 'SELECT idOfertas as id,idCuenta,Titulo,Detalle,Genero,Salario,Direccion,Cargo,Edad,Requisitos FROM ofertas';
         $result = $db->consulta($query);
         
+        $variables['idOferta']=$result[0]['id'];
+        $variables['idEmpresa']=$result[0]['idCuenta'];
         $variables['listaOfertasUsuario'] = $this->convertirOferUsuarioHTML($result);
         $plantilla->verPagina('listaOfertasUsuario', $variables);
 
@@ -163,7 +166,9 @@ class Ofertas {
                           <div class="panel-heading">
                             <h3 class="panel-title"><center>'.$Ofertas[0]['Titulo'].'</center></h3><a href="#" class="dropdown-toggle" id="deE" data-toggle="dropdown"><i class="fa fa-caret-down"></i></a>
                                                                                                     <ul class="dropdown-menu" id="enfren">
-                                                                                                    <li><a href="#"><i class="fa fa-plus-circle"></i> Aplicar</a></li>
+                                                                                                    
+                                                                                                    <li><a data-toggle="modal" data-target="#app" href="#"><i class="fa fa-plus-circle"></i> Aplicar</a></li>
+                                                                                                    
                                                                                                     <li><a href="verPerfilAmigo.php?idCuenta='.$Ofertas[0]['idCuenta'].'"><i class="fa fa-eye"></i> Ver Perfil Empresa</a></li>
                                                                                                     </ul>
                           </div>
