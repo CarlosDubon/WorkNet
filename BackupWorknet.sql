@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 26-06-2015 a las 02:46:26
+-- Tiempo de generación: 28-06-2015 a las 06:10:58
 -- Versión del servidor: 5.6.21
 -- Versión de PHP: 5.6.3
 
@@ -30,7 +30,7 @@ CREATE TABLE IF NOT EXISTS `amigo` (
 `idAmigo` int(11) NOT NULL,
   `idCuenta` int(11) NOT NULL,
   `idCuentaAmigo` int(11) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Volcado de datos para la tabla `amigo`
@@ -38,7 +38,8 @@ CREATE TABLE IF NOT EXISTS `amigo` (
 
 INSERT INTO `amigo` (`idAmigo`, `idCuenta`, `idCuentaAmigo`) VALUES
 (3, 3, 2),
-(11, 3, 4);
+(11, 3, 4),
+(12, 4, 3);
 
 -- --------------------------------------------------------
 
@@ -67,14 +68,15 @@ CREATE TABLE IF NOT EXISTS `chat` (
   `Size` int(11) DEFAULT NULL,
   `cuenta_idCuenta` int(11) NOT NULL,
   `idAmigo` int(11) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=34 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=35 DEFAULT CHARSET=utf8;
 
 --
 -- Volcado de datos para la tabla `chat`
 --
 
 INSERT INTO `chat` (`idChat`, `FechaChat`, `Texto`, `ArchivosChat`, `NombreArchChat`, `Size`, `cuenta_idCuenta`, `idAmigo`) VALUES
-(33, '2015-06-14', 'hola', NULL, NULL, NULL, 3, 4);
+(33, '2015-06-14', 'hola', NULL, NULL, NULL, 3, 4),
+(34, '2015-06-28', 'hey', NULL, NULL, NULL, 4, 3);
 
 -- --------------------------------------------------------
 
@@ -226,6 +228,9 @@ CREATE TABLE IF NOT EXISTS `ofertas` (
   `idCuenta` int(11) NOT NULL,
   `Titulo` varchar(70) CHARACTER SET utf8 NOT NULL,
   `Detalle` tinytext NOT NULL,
+  `Genero` varchar(1) NOT NULL,
+  `Salario` double NOT NULL,
+  `Direccion` tinytext NOT NULL,
   `Cargo` varchar(45) NOT NULL,
   `Edad` varchar(2) NOT NULL,
   `Requisitos` varchar(45) NOT NULL
@@ -416,7 +421,7 @@ ALTER TABLE `solicitudes`
 -- AUTO_INCREMENT de la tabla `amigo`
 --
 ALTER TABLE `amigo`
-MODIFY `idAmigo` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=12;
+MODIFY `idAmigo` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=13;
 --
 -- AUTO_INCREMENT de la tabla `categorias`
 --
@@ -426,7 +431,7 @@ MODIFY `idCategorias` int(11) NOT NULL AUTO_INCREMENT;
 -- AUTO_INCREMENT de la tabla `chat`
 --
 ALTER TABLE `chat`
-MODIFY `idChat` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=34;
+MODIFY `idChat` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=35;
 --
 -- AUTO_INCREMENT de la tabla `comentarios`
 --
