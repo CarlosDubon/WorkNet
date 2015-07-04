@@ -38,10 +38,10 @@
             $consulta ='SELECT idDenuncias as id,Motivo,UserEmpresa,cuenta_idCuenta,FechaRealizada  FROM denuncias';
             $listaDenuncia = $mysql->consulta($consulta);
             $encabezado = array('ID', 'Motivo', 'ID Publicacion', 'ID Usuario', 'Fecha');
+            $acciones = '<a href="#" class="btn btn-success"></a>';
 
 
-
-            $variables['listaDenuncias'] = $utilidades->convertirTabla($listaDenuncia, $encabezado);
+            $variables['listaDenuncias'] = $utilidades->convertirTabla($listaDenuncia, $encabezado,$acciones);
 
             $plantilla->verPagina('listaDenuncias', $variables);
         }
