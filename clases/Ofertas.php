@@ -81,12 +81,12 @@ class Ofertas {
     public function convertirOferHTML($Ofertas = array()){
         $db = new MySQL();
         $sesion = new Sesion();
+        
         $oferta = '';
-        
-        
+
         for ($i = 0; $i < count($Ofertas); $i++){
-            
-            switch($Ofertas[0]['Genero']){
+
+            switch($Ofertas[$i]['Genero']){
                 case 'F':
                 $genero = "Femenino";
                 break;
@@ -99,23 +99,23 @@ class Ofertas {
                 $genero = "Masculino";
                 break;
             }
-            $oferta .= '<div class="panel panel-default"><input type="hidden" value="'.$Ofertas[0]['id'].'" name="idOfer">
+            $oferta .= '<div class="panel panel-default"><input type="hidden" value="'.$Ofertas[$i]['id'].'" name="idOfer">
                           <div class="panel-heading">
-                            <h3 class="panel-title"><center>'.$Ofertas[0]['Titulo'].'</center></h3><a href="#" class="dropdown-toggle" id="deE" data-toggle="dropdown"><i class="fa fa-cogs"></i></a>
+                            <h3 class="panel-title"><center>'.$Ofertas[$i]['Titulo'].'</center></h3><a href="#" class="dropdown-toggle" id="deE" data-toggle="dropdown"><i class="fa fa-cogs"></i></a>
                                                                                                     <ul class="dropdown-menu" id="enfren">
-                                                                                                    <li><a href="./eliminarOferta.php?idOfertas='.$Ofertas[0]['id'].'"><i class="fa fa-trash-o"></i> Eliminar Oferta</a></li>
-                                                                                                    <li><a href="./verInteresados.php?idOferta='.$Ofertas[0]['id'].'"><i class="fa fa-eye"></i> Ver interesados</a></li>
+                                                                                                    <li><a href="./eliminarOferta.php?idOfertas='.$Ofertas[$i]['id'].'"><i class="fa fa-trash-o"></i> Eliminar Oferta</a></li>
+                                                                                                    <li><a href="./verInteresados.php?idOferta='.$Ofertas[$i]['id'].'"><i class="fa fa-eye"></i> Ver interesados</a></li>
                                                                                                     </ul>
                           </div>
                           <div class="panel-body">
-                            <p>'.$Ofertas[0]['Detalle'].'</p>
+                            <p>'.$Ofertas[$i]['Detalle'].'</p>
                             <br>
                             <p><b>Genero: </b>'.$genero.'</p>
-                            <p><b>Salario: $</b>'.$Ofertas[0]['Salario'].'
+                            <p><b>Salario: $</b>'.$Ofertas[$i]['Salario'].'
                             <span class="help-block">Salario por hora</span></p>
-                            <p><b>Cargo: </b>'.$Ofertas[0]['Cargo'].'</p>
-                            <p><b>Edad: </b>'.$Ofertas[0]['Edad'].'</p>
-                            <p><b>Direccion: </b>'.$Ofertas[0]['Direccion'].'</p>
+                            <p><b>Cargo: </b>'.$Ofertas[$i]['Cargo'].'</p>
+                            <p><b>Edad: </b>'.$Ofertas[$i]['Edad'].'</p>
+                            <p><b>Direccion: </b>'.$Ofertas[$i]['Direccion'].'</p>
                           </div>
                         </div>';
                         
@@ -149,7 +149,7 @@ class Ofertas {
         $oferta = '';
         
         for ($i = 0; $i < count($Ofertas); $i++){
-            switch($Ofertas[0]['Genero']){
+            switch($Ofertas[$i]['Genero']){
                 case 'F':
                 $genero = "Femenino";
                 break;
@@ -162,25 +162,25 @@ class Ofertas {
                 $genero = "Masculino";
                 break;
             }
-            $oferta .= '<div class="panel panel-default"><input type="hidden" value="'.$Ofertas[0]['id'].'" name="idOfer">
+            $oferta .= '<div class="panel panel-default"><input type="hidden" value="'.$Ofertas[$i]['id'].'" name="idOfer">
                           <div class="panel-heading">
-                            <h3 class="panel-title"><center>'.$Ofertas[0]['Titulo'].'</center></h3><a href="#" class="dropdown-toggle" id="deE" data-toggle="dropdown"><i class="fa fa-caret-down"></i></a>
+                            <h3 class="panel-title"><center>'.$Ofertas[$i]['Titulo'].'</center></h3><a href="#" class="dropdown-toggle" id="deE" data-toggle="dropdown"><i class="fa fa-caret-down"></i></a>
                                                                                                     <ul class="dropdown-menu" id="enfren">
                                                                                                     
                                                                                                     <li><a data-toggle="modal" data-target="#app" href="#"><i class="fa fa-plus-circle"></i> Aplicar</a></li>
                                                                                                     
-                                                                                                    <li><a href="verPerfilAmigo.php?idCuenta='.$Ofertas[0]['idCuenta'].'"><i class="fa fa-eye"></i> Ver Perfil Empresa</a></li>
+                                                                                                    <li><a href="verPerfilAmigo.php?idCuenta='.$Ofertas[$i]['idCuenta'].'"><i class="fa fa-eye"></i> Ver Perfil Empresa</a></li>
                                                                                                     </ul>
                           </div>
                           <div class="panel-body">
-                            <p>'.$Ofertas[0]['Detalle'].'</p>
+                            <p>'.$Ofertas[$i]['Detalle'].'</p>
                             <br>
                             <p><b>Genero: </b>'.$genero.'</p>
-                            <p><b>Salario: $</b>'.$Ofertas[0]['Salario'].'
+                            <p><b>Salario: $</b>'.$Ofertas[$i]['Salario'].'
                             <span class="help-block">Salario por hora</span></p>
-                            <p><b>Cargo: </b>'.$Ofertas[0]['Cargo'].'</p>
-                            <p><b>Edad: </b>'.$Ofertas[0]['Edad'].'</p>
-                            <p><b>Direccion: </b>'.$Ofertas[0]['Direccion'].'</p>
+                            <p><b>Cargo: </b>'.$Ofertas[$i]['Cargo'].'</p>
+                            <p><b>Edad: </b>'.$Ofertas[$i]['Edad'].'</p>
+                            <p><b>Direccion: </b>'.$Ofertas[$i]['Direccion'].'</p>
                           </div>
                         </div>';
         }
@@ -208,5 +208,4 @@ class Ofertas {
             $utilidades->Redireccionar('controladores/ofertas_empre.php');
         }
     }
-       
 }
