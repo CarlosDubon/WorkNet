@@ -250,4 +250,22 @@ class Perfil {
             $utilidades-> mostrarMensaje('El correo se ha actualizado correctamente');
         $utilidades -> Redireccionar('controladores/perfil_Mostrar.php');
     }
+        public function editarCorreoUsuario($editor){
+        $db = new MySQL();
+        $sesion = new Sesion();
+        $utilidades = new Utilidades();
+        
+        $id = $sesion->ObtenerVariableSesion('idUsuario');
+        $newEmail = $editor['newEmail'];
+        
+        $tabla = 'cuenta';
+        $cambio = 'Correo ="'.$newEmail.'"';
+        $where = 'idCuenta='.$id;
+        
+        $resultado = $db->modificarRegistro($tabla,$cambio,$where);
+        
+        if($resultado)
+            $utilidades-> mostrarMensaje('El correo se ha actualizado correctamente');
+        $utilidades -> Redireccionar('controladores/verPerfilUsuario.php');
+    }
 }

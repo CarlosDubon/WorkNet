@@ -11,7 +11,7 @@
             <center><h3>Eventos</h3></center>                   
             <form action="../controladores/guardarEvento.php" method="POST">
                 <div class='form-group'>     
-                    <label for="Empieza">Inciio:</label><br>
+                    <label for="Empieza">Incio:</label><br>
                         <input type='date' class='form-control login-field' name='empieza' placeholder='Inicio' required /><br>
                     <label for="Termina">Finaliza:</label><br>
                         <input type='date' class='form-control login-field' name='termina' placeholder='Finaliza' required /><br>
