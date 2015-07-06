@@ -5,7 +5,7 @@ require_once realpath(dirname(__FILE__) . '/../clases/Sesion.php');
 require_once realpath(dirname(__FILE__) . '/../clases/Perfil.php');
 
 $administrarUsuario = new AdministrarUsuarios();
-$usuariosPermitidos = array('2','3','4');
+$usuariosPermitidos = array('2');
 
 $administrarUsuario->verificarSesion($usuariosPermitidos);
 

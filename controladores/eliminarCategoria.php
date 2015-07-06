@@ -4,7 +4,7 @@ require_once realpath(dirname(__FILE__) . '/../clases/Categoria.php');
 
 
 $administrarUsuario = new AdministrarUsuarios();
-$usuariosPermitidos = array('1','2');
+$usuariosPermitidos = array('1');
 
 $administrarUsuario->verificarSesion($usuariosPermitidos);
 
