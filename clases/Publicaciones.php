@@ -49,6 +49,7 @@ class Publicaciones {
         $resultado = $mysql->consulta($query);
 
         //print_r($resultado);
+        $variables['id']=$resultado[0]['id'];
         $variables['publicaciones'] = $this->convertirPubHTML($resultado);
         
         $plantilla->verPagina('contenido-empre',$variables);
@@ -117,5 +118,24 @@ class Publicaciones {
         }
         $utilidades->Redireccionar('controladores/publicar.php');
 
+    }
+        public function eliminarPub($id){
+            $bd = new MySQL();
+            $utilidades = new Utilidades();
+
+            $tabla = 'publicaciones';
+            $where = 'idPub='.$id;
+            $result = $bd->eliminarRegistro($tabla,$where);
+            
+            if($result){
+                $utilidades -> mostrarMensaje('La publicacion se elimino correctamente');
+                    $tabla1='denuncias';
+                    $where1='userEmpresa='.$id;
+                    $result2=$bd->eliminarRegistro($tabla1,$where1);
+                $utilidades->Redireccionar('controladores/verDenuncias.php');
+            }else
+                $utilidades->mostrarMensaje('ocurrio un problema, por favor intente de nuevo');
+
+            
     }
 }

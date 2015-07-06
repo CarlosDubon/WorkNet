@@ -38,11 +38,11 @@
             $consulta ='SELECT idDenuncias as id,Motivo,UserEmpresa,cuenta_idCuenta,FechaRealizada  FROM denuncias';
             $listaDenuncia = $mysql->consulta($consulta);
             $encabezado = array('ID', 'Motivo', 'ID Publicacion', 'ID Usuario', 'Fecha');
-            $acciones = '<a href="#" class="btn btn-success"></a>';
-
+            $acciones = '<center> <a href="./mostrarPubComAdmin.php?idPub='.$listaDenuncia[0]['UserEmpresa'].'" class="btn btn-info" id="acciones"> <i class="fa fa-newspaper-o"></i></a>';
 
             $variables['listaDenuncias'] = $utilidades->convertirTabla($listaDenuncia, $encabezado,$acciones);
 
             $plantilla->verPagina('listaDenuncias', $variables);
         }
+
     }

@@ -22,7 +22,7 @@
                 Información General
             </div>
     </div>
-        <div class="panel panel-default" id="az">
+        <div class="panel panel-default">
           <div class="panel-body">
             <b>Usuario:</b> {{Usuario}}<br>
             <b>DUI:</b> {{DUI}}<br>

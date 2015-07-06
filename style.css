@@ -787,3 +787,22 @@ height: 35% !important;
     float: right!important;
     margin-top: -15px !important;
 }
+
+#esquinaInfe {
+    float: right !important;
+    position: relative !important;
+    bottom: 45px !important;
+    left: 75px !important;
+}
+
+.text-default {
+    color: black !important;
+}
+
+#enfrent {
+    z-index: 100 !important;
+    position: relative!important;
+    float: right !important;
+    bottom: 20px !important;
+    left: 90px !important;
+}
