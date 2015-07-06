@@ -11,13 +11,13 @@
         <div class="col-lg-6">
             <div class="panel-body">
                 <label>Phone Number</label>
-                <input type="tel" name="tel" onkeydown="return validarNumeros(event)" onkeydown="mascara(this,'-',patronCel,true)" maxlength="9" class="form-control" placeholder="Phone Number">
+                <input type="tel" name="tel" onkeydown="mascara(this,'-',patronCel,true)" maxlength="9" class="form-control" placeholder="Phone Number">
             </div>
         </div>
         <div class="col-lg-6">
             <div class="panel-body">
                 <label>Cellphone Number</label>
-                <input type="tel" name="cel" maxlength="9" onkeydown="return validarNumeros(event)" onkeydown="mascara(this,'-',patronCel,true)" class="form-control" placeholder="Cellphone Number">
+                <input type="tel" name="cel" maxlength="9"  onkeydown="mascara(this,'-',patronCel,true)" class="form-control" placeholder="Cellphone Number">
             </div>
         </div>
     </div>
@@ -43,7 +43,7 @@
         <div class="col-lg-6">
             <div class="panel-body">
                 <label>Phone Number</label>
-                <input type="tel" name="tel1"onkeydown="return validarNumeros(event)" class="form-control"  onkeydown="mascara(this,'-',patronCel,true)" placeholder="Phone Number">
+                <input type="tel" name="tel1" class="form-control"  onkeydown="mascara(this,'-',patronCel,true)" placeholder="Phone Number" maxlength="9">
             </div>
         </div>
     </div>     
@@ -57,7 +57,7 @@
         <div class="col-lg-6">
             <div class="panel-body">
                 <label>Phone Number</label>
-                <input type="tel" name="tel2"onkeydown="return validarNumeros(event)" class="form-control"  onkeydown="mascara(this,'-',patronCel,true)" placeholder="Phone Number">
+                <input type="tel" name="tel2" class="form-control"  onkeydown="mascara(this,'-',patronCel,true)" placeholder="Phone Number" maxlength="9">
             </div>
         </div>
     </div>
@@ -65,13 +65,13 @@
         <div class="col-lg-6">
             <div class="panel-body">
                 <label>Reference</label>
-                <input type="tel" name="ref3" onkeypress="return numeros(event)" class="form-control" placeholder="Reference">
+                <input type="tel" name="ref3" onkeypress="return numeros(event)" class="form-control" placeholder="Reference" >
             </div>
         </div>
         <div class="col-lg-6">
             <div class="panel-body">
                 <label>Phone Number</label>
-                <input type="tel" name="tel3" class="form-control" onkeydown="return validarNumeros(event)" onkeydown="mascara(this,'-',patronCel,true)"  placeholder="Phone Number">
+                <input type="tel" name="tel3" class="form-control"  onkeydown="mascara(this,'-',patronCel,true)"  placeholder="Phone Number" maxlength="9">
             </div>
         </div>
     </div>
