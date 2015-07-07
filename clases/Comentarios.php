@@ -40,11 +40,14 @@ class Comentarios {
         $pub = '';        
 
         for ($i = 0; $i < count($Pub); $i++) {
-            $pub.=  '<blockquote class="public"><input type="hidden" value="'.$Pub[$i]['id'].'" name="idPub">
+            $pub.=  '<div class="panel panel-default">
+                        <input type="hidden" value="'.$Pub[$i]['id'].'" name="idPub">
+                       <div class="panel-body">
                        <a href="#"><small class="col-xs-3">'.$Pub[$i]['Usuario_cuenta'].'</cite></small></a><small class="fechapub">'.$Pub[$i]['Fecha'].'</small>
                        <br><img src="../fotos/'.$Pub[$i]['Usuario_cuenta'].'/'.$Pub[$i]['ImgUsuario'].'" class="img-circle" id="img-pub">
                         <p><b>'.$Pub[$i]['Texto'].'</b></p>
-                    </blockquote>';      
+                    </div>
+                    </div>';      
                 }
         return $pub;
 
@@ -82,11 +85,13 @@ class Comentarios {
         
         $com = '';
         for ($i = 0; $i < count($Com); $i++) {
-        $com .= '<blockquote class="public">
+        $com .= '<div class="panel panel-default">
+                    <div class="panel-body">
                        <a href="#"><small class="col-xs-3">'.$Com[$i]['Usuario'].'</cite></small></a>
                        <br><img src="../fotos/'.$Com[$i]['Usuario'].'/'.$Com[$i]['imgUsuario'].'" class="img-circle" id="img-pub">
                         <p><b>'.$Com[$i]['Comentario'].'</b></p>
-                    </blockquote>'; 
+                    </div>
+                    </div>'; 
         
         }
         return $com;
@@ -125,14 +130,17 @@ class Comentarios {
         $pub = '';        
 
         for ($i = 0; $i < count($Pub); $i++) {
-            $pub.=  '<blockquote class="public"><input type="hidden" value="'.$Pub[$i]['id'].'" name="idPub">
+            $pub.=  '<div class="panel panel-default">
+                        <div class="panel-body">
+                        <input type="hidden" value="'.$Pub[$i]['id'].'" name="idPub">
                        <a href="#"><small class="col-xs-3">'.$Pub[$i]['Usuario_cuenta'].'</cite></small></a><small class="fechapub">'.$Pub[$i]['Fecha'].'</small><a href="#" id="esquinaInfe" class="text-default dropdown-toggle" data-toggle="dropdown"><span class="fa fa-cogs"></span></a>
                                                                                                                                                                   <ul class="dropdown-menu" id="enfrent">
                                                                                                                                                                     <li><a href="#" data-toggle="modal" data-target="#myModal"><i class="fa fa-trash-o"></i> Eliminar</a></li>
                                                                                                                                                                   </ul> 
                        <br><img src="../fotos/'.$Pub[$i]['Usuario_cuenta'].'/'.$Pub[$i]['ImgUsuario'].'" class="img-circle" id="img-pub">
                         <p><b>'.$Pub[$i]['Texto'].'</b></p>
-                    </blockquote>';      
+                 </div>
+                 </div>';      
                 }
         return $pub;
 
@@ -143,11 +151,13 @@ class Comentarios {
         
         $com = '';
         for ($i = 0; $i < count($Com); $i++) {
-        $com .= '<blockquote class="public">
+        $com .= '<div class="panel panel-default">
+                    <div class="panel-body">
                        <a href="#"><small class="col-xs-3">'.$Com[$i]['Usuario'].'</cite></small></a>
                        <br><img src="../fotos/'.$Com[$i]['Usuario'].'/'.$Com[$i]['imgUsuario'].'" class="img-circle" id="img-pub">
                         <p><b>'.$Com[$i]['Comentario'].'</b></p>
-                    </blockquote>'; 
+                    </div>
+                    </div>'; 
         
         }
         return $com;

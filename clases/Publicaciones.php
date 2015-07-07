@@ -63,14 +63,18 @@ class Publicaciones {
         $pub = '';        
 
         for ($i = 0; $i < count($Pub); $i++) {
-            $pub.=  '<blockquote class="public"><input type="hidden" value="'.$Pub[$i]['id'].'" name="idPub">
+            $pub.=  '<div class="panel panel-default">
+                     <div class="panel-body">
+                        <input type="hidden" value="'.$Pub[$i]['id'].'" name="idPub">
                        <a href="#"><small class="col-xs-3">'.$Pub[$i]['Usuario_cuenta'].'</cite></small></a>                        <small class="fechapub">'.$Pub[$i]['Fecha'].'</small>
                        <br><img src="../fotos/'.$Pub[$i]['Usuario_cuenta'].'/'.$Pub[$i]['ImgUsuario'].'" class="img-circle" id="img-pub">
-                        <p><b>'.$Pub[$i]['Texto'].'</b></p>
+                        <p class="text-default"><b>'.$Pub[$i]['Texto'].'</b></p>
                         <a href="../controladores/works.php?idPub='.$Pub[$i]['id'].'" class="btn btn-default boton" id="btn btn"><i class="fa fa-suitcase"></i> Work</a >
                         <a href="./mostrarPubCom.php?idPub='.$Pub[$i]['id'].'" class="btn btn-default boton" ><span class="fui-chat"></span></i> Comentar </a>
-                        <button type="button" class="btn btn-default boton" id="" data-toggle="modal" data-target="#myModal"><span class="fui-cross"></span></i>Denuncia </button><span class="badge" id="de">Esta publicion tiene ' .$Pub[$i]['works'].' work(s)</span>
-                    </blockquote>';      
+                        <button type="button" class="btn btn-default boton" id="" data-toggle="modal" data-target="#myModal"><span class="fui-cross"></span></i>Denuncia </button>
+                    <span class="badge" id="de">Esta publicion tiene ' .$Pub[$i]['works'].' work(s)</span>
+                    </div>
+                    </div>';      
                 }
         return $pub;
 
