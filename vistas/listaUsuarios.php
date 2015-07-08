@@ -78,7 +78,7 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
-        <a href=href="./eliminarUsuario.php?idCuenta={{id}}" class="btn btn-primary">Aceptar</a>
+        <a href="./eliminarUsuario.php?idCuenta={{id}}" class="btn btn-primary">Aceptar</a>
       </div>
     </div>
   </div>
