@@ -101,9 +101,10 @@ class Ofertas {
             }
             $oferta .= '<div class="panel panel-default"><input type="hidden" value="'.$Ofertas[$i]['id'].'" name="idOfer">
                           <div class="panel-heading">
-                            <h3 class="panel-title"><center>'.$Ofertas[$i]['Titulo'].'</center></h3><a href="#" class="dropdown-toggle" id="deE" data-toggle="dropdown"><i class="fa fa-cogs"></i></a>
+                            <h3 class="panel-title"><center>'.$Ofertas[$i]['Titulo'].'</center></h3><a href="#" class="text-default dropdown-toggle" id="deE" data-toggle="dropdown"><i class="fa fa-cogs"></i></a>
                                                                                                     <ul class="dropdown-menu" id="enfren">
                                                                                                     <li><a href="./eliminarOferta.php?idOfertas='.$Ofertas[$i]['id'].'"><i class="fa fa-trash-o"></i> Eliminar Oferta</a></li>
+                                                                                                    <li><a href="./remplazarVarOferta.php?idOfertas='.$Ofertas[$i]['id'].'"><i class="fa fa-pencil"></i> Editar Oferta</a></li>
                                                                                                     <li><a href="./verInteresados.php?idOferta='.$Ofertas[$i]['id'].'"><i class="fa fa-eye"></i> Ver interesados</a></li>
                                                                                                     </ul>
                           </div>
@@ -125,6 +126,8 @@ class Ofertas {
         
         
     }
+    
+########################################################################################################################################
     
     public function mostrarOfertasUsuario(){
         $db = new MySQL();
@@ -207,5 +210,65 @@ class Ofertas {
             $utilidades->mostrarMensaje('Lo sentimos, Ocurrio un error, por favor intentelo de nuevo.');
             $utilidades->Redireccionar('controladores/ofertas_empre.php');
         }
+    }
+    
+    public function mostrarDatosEditar($id){
+        $bd = new MySQL();
+        $plantilla = new Plantilla();
+        
+        $query = 'SELECT idOfertas as id,Titulo,Detalle,Genero,Salario,Direccion,Cargo,Edad,Requisitos FROM ofertas WHERE idOfertas='.$id;
+        $resultado = $bd->consulta($query);
+        
+        $variables['id']= $resultado[0]['id'];
+        $variables['plaza']=$resultado[0]['Titulo'];
+        $variables['detalle']=$resultado[0]['Detalle'];
+        $variables['genero']=$resultado[0]['Genero'];
+        $variables['salario']=$resultado[0]['Salario'];
+        $variables['direccion']=$resultado[0]['Direccion'];
+        $variables['cargo']=$resultado[0]['Cargo'];
+        $variables['edad']=$resultado[0]['Edad'];
+        $variables['requerimientos']=$resultado[0]['Requisitos'];
+        
+        $plantilla -> verPagina('formEditarOferta',$variables);
+    }
+    
+    public function editarOferta($datosOferta){
+        $bd = new MySQL();
+        $utilidades = new Utilidades();
+        $plantilla = new Plantilla();
+        $sesion = new Sesion();
+        
+        $tabla = 'ofertas';
+        $columnas = 'idCuenta,Titulo,Detalle,Genero,Salario,Direccion,Cargo,Edad,Requisitos';
+        $id = $datosOferta['id'];
+        $titulo = $datosOferta['titulo'];
+        $detalle = $datosOferta['detalle'];
+        $genero = $datosOferta['genero'];
+        $salario = $datosOferta['salario'];
+        $direccion = $datosOferta['adress'];
+        $cargo = $datosOferta['cargo'];
+        $edad = $datosOferta['edad'];
+        $requisitos = $datosOferta['requisitos'];
+
+        $cambio = "Titulo ='".$titulo."',
+                  Detalle='".$detalle."',
+                  Genero='".$genero."',
+                  Salario='".$salario."',
+                  Direccion='".$direccion."',
+                  Cargo = '".$cargo."',
+                  Edad = '".$edad."',
+                  Requisitos = '".$requisitos."'";
+        
+        $where = 'idOfertas='.$id; 
+        
+        if($edad >= '18')
+            $resultado = $bd->modificarRegistro($tabla,$cambio,$where);
+
+        if (isset($resultado))
+            $utilidades->mostrarMensaje('La oferta de trabjado se edito correctamente!');
+        else
+            $utilidades->mostrarMensaje('Lo sentimos!,Ocurrio un error, por favor intente de nuevo.');                
+        
+        $utilidades->Redireccionar('controladores/formOfertas.php');
     }
 }
