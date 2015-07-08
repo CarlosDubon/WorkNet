@@ -44,8 +44,15 @@ class Publicaciones {
         $sesion = new Sesion();
          
          $idUsuario = $sesion->obtenerVariableSesion('idUsuario');
-         $query = 'SELECT p.idPub as id,p.Texto,p.ImgUsuario,p.Fecha,p.cuenta_idCuenta,p.Usuario_cuenta,p.works FROM publicaciones p ORDER BY idPub DESC';
-        
+         $query = 'SELECT p.idPub as id,p.Texto,p.ImgUsuario,p.Fecha,p.cuenta_idCuenta,p.Usuario_cuenta,p.works 
+         FROM publicaciones p 
+         WHERE p.cuenta_idCuenta in 
+         (select idCuenta from amigo where idCuentaAmigo = '.$idUsuario.'
+          UNION select '.$idUsuario.' as idCuenta from amigo
+         )
+         ORDER BY idPub DESC';
+
+         
         $resultado = $mysql->consulta($query);
 
         //print_r($resultado);
