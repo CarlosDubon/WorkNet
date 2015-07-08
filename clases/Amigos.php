@@ -48,6 +48,17 @@ class Amigos {
                     $utilidades->mostrarMensaje('Lo sentimos, ocurrio un problema, por favor intente de nuevo .');
             }
         }
+        
+        $new = 'SELECT new_count FROM cuenta WHERE idCuenta ='.$id;
+        $count = $mysql->consulta($new);
+        
+        $contador = $count[0]['new_count'];
+        $tabla2 = 'cuenta';
+        $cambio2 = 'new_count='.$contador.'+'.'1';
+        $where2 = 'idCuenta='.$id;
+        
+        $sumar = $mysql ->modificarRegistro($tabla2,$cambio2,$where2);
+        
         $plantilla->verPagina();
     }
 

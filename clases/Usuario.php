@@ -84,10 +84,11 @@ class Usuario {
         $listaUsuarios = $mysql->consulta($query);
         $encabezado = array('ID', 'Usuario', 'Nombre','Apellido');
         $acciones = '<center><a data-toggle="modal" data-target="#deleteUser" class="btn btn-danger"><span class="fui-trash"></span></a>';
-        $acciones .= ' <a data-toggle="modal" data-target="#recoverPass " class = "btn btn-info" ><span class="fui-new"></span></a><br><br>';
+        $acciones .= ' <a data-toggle="modal" data-target="#recoverPass" class = "btn btn-info" ><span class="fui-new"></span></a><br><br>';
         
         if(count($listaUsuarios) >= 1 ){
             $variables['listaUsuarios'] = $utilidades->convertirTabla($listaUsuarios, $encabezado, $acciones);
+            $variables['id']=$listaUsuarios[0]['id'];
             $sesion->agregarVariableSesion('permisoAccionesUsuario','1');
         }else{
             $variables['listaUsuarios'] ='';
