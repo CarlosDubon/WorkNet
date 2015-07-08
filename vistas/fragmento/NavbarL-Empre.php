@@ -10,3 +10,15 @@
 <a href="./formOfertas.php" class="list-group-item"><span class="fui-document"></span> Ofertas de trabajo</a>
 <a href="./ofertas_empre.php" class="list-group-item"><span class="fui-document"></span> Ofertas</a>
 <a href="./logout.php" class="list-group-item"><span class="fui-power"></span>Cerrar Sesión</a>
+
+<!--<script type="text/javascript" src="http://www.skypeassets.com/i/scom/js/skype-uri.js"></script>
+<div id="SkypeButton_Call_CarlosDubon_1">
+  <script type="text/javascript">
+    Skype.ui({
+      "name": "call",
+      "element": "SkypeButton_Call_CarlosDubon_1",
+      "participants": ["CarlosDubon"],
+      "imageSize": 32
+    });
+  </script>
+</div>-->
