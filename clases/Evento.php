@@ -40,16 +40,87 @@ class Evento {
         if($FechaIni <= $FechaFin){
             $resultado = $bd->insertarRegistro($tabla, $columnas, $valores);
         }else{
-            $utilidades->mostrarMensaje('Lo sentimos, el evento no puede terminar antes que incie ');
+            $utilidades->mostrarMensaje('Sorry! The event can not start before the end date.');
         }
             }else{
-                    $utilidades->mostrarMensaje('Lo sentimos!, por favor verifique las fechas');
+                    $utilidades->mostrarMensaje('Sorry! Please verify the dates.');
             }
          
         if (isset($resultado))
-            $utilidades->mostrarMensaje('El evento se creo correctamente!');
+            $utilidades->mostrarMensaje('The event was successfully created.');
         else
-            $utilidades->mostrarMensaje('Lo sentimos!,Oucrrio un problema, por favor intentelo de nuevo!0');                    
+            $utilidades->mostrarMensaje('Sorry! There was an error. Please try again.');                    
+        
+        $utilidades->Redireccionar('controladores/formEventos.php');
+     }
+    
+        public function mostrarFormularioTrabaja() {
+        $plantilla = new Plantilla();
+        $plantilla->verPagina('formularioEventoTraba');
+    }
+    
+    public function guardarEventoTrabajador($datosEvento) {        
+        $bd = new MySQL();
+        $utilidades = new Utilidades();
+        $plantilla = new Plantilla();
+        $dateNow = new DateTime();
+        $date = $dateNow->format('Y-m-d');
+        $Sesion = new Sesion();
+        
+        $tabla = 'eventos';
+        $columnas = 'idCuenta,FechaIni,FechaFin,Nombre,Descripcion';
+
+        $FechaIni=$datosEvento['empieza'];
+        $FechaFin=$datosEvento['termina'];
+        $Nombre=$datosEvento['nombre'];
+        $Descripcion=$datosEvento['descripcion'];
+        $idCuenta=$Sesion->obtenerVariableSesion('idUsuario');
+        
+        $valores = '"'.$idCuenta. '","' . 
+                    $FechaIni. '","' . 
+                    $FechaFin. '","' . 
+                    $Nombre . '","'.
+                    $Descripcion.'"';
+    
+    if ($date <= $FechaIni){
+        if($FechaIni <= $FechaFin){
+            $resultado = $bd->insertarRegistro($tabla, $columnas, $valores);
+        }else{
+            $utilidades->mostrarMensaje('Sorry! The event can not start before the end date.');
+        }
+            }else{
+                    $utilidades->mostrarMensaje('Sorry! Please verify the dates.');
+            }
+         
+        if (isset($resultado)){
+            $utilidades->mostrarMensaje('The event was successfully created.');
+             
+            $consulta1= 'SELECT cuenta_cuenta FROM cuenta WHERE idCuenta ='.$idCuenta;
+            $producto = $bd->consulta($consulta1);
+            $id=$producto[0]['cuenta_cuenta'];
+                $new = 'SELECT new_count FROM cuenta WHERE idCuenta ='.$id;
+                            $count = $bd->consulta($new);
+
+                            $contador = $count[0]['new_count'];
+                            $tabla2 = 'cuenta';
+                            $cambio2 = 'new_count='.$contador.'+'.'1';
+                            $where2 = 'idCuenta='.$id;
+
+                            $sumar = $bd ->modificarRegistro($tabla2,$cambio2,$where2);
+
+                            $tabla3 = 'solicitudes';
+                            $columnas3 ='Tipo,cuentaAmigo,cuenta_idCuenta,user_idCuenta';
+                            $tipo = 2;
+                            $idCuenta_cuenta = $Sesion->obtenerVariableSesion('idUsuario');
+                            $user_idCuenta=$Sesion->obtenerVariableSesion('nombreUsuario');
+                            $valores3 = '"' .$tipo. '","' 
+                                         .$id.'","'
+                                         .$idCuenta_cuenta.'","'
+                                         .$user_idCuenta.'"';
+                            $consuLta= $bd ->insertarRegistro($tabla3,$columnas3,$valores3);
+        }
+        else
+            $utilidades->mostrarMensaje('Sorry! There was an error. Please try again.');                    
         
         $utilidades->Redireccionar('controladores/formEventos.php');
      }
