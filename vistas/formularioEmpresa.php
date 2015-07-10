@@ -8,41 +8,63 @@
         <link href="../style.css" rel="stylesheet">
     </head>
     <body class="fondi">
-        <div class="login-form">
+        <div class="login-form" id="registro">
             <center><h3>Regístrate</h3></center>                   
             <form action="../controladores/guardarEmpresa.php" method="POST">
-                <div class='form-group'>     
+            <div class="row">
+                <div class="col-lg-6">
+                <div class='form-group'>    
                     <label for="Empresa">Empresa:</label><br>
                     <input type='text' class='form-control login-field' id="letras" onkeydown="return validarLetras(event)" name='empresa' placeholder='Empresa' required /><br>
                     </div>
+                </div>
+                <div class="col-lg-6">
                     <div class='form-group'> 
                     <label for="Usuario">Usuario:</label><br>
                     <input type='text' class='form-control login-field' name='user' placeholder='Usuario' required /><br>
                     </div>
+                </div>
+                </div>
+                
+                <div class="row">
+                    <div class="col-lg-6">
                     <div class='form-group'> 
                     <label for="Contraseña">Contraseña:</label><br>
                     <input type='password' minlength="5" id="pass" class='form-control login-field' name='password' placeholder='Contraseña' required  /><br>
                     <label for="Repita Contraseña">Confirmar contraseña:</label><br>
                     <input type='password' id="repass" class='form-control login-field' name='repassword' placeholder='Confirmar contraseña' required  /><br>
+                    </div>
                     <div id="val"></div>
                     </div>
+                    <div class="col-lg-6">
                     <label for="Nombre">Nombre:</label><br>
                     <input type='text' class='form-control login-field' onkeypress="return numeros(event)" id="letras" name='name' placeholder='Nombre'  required /><br>
                     <label for="Apellido">Apellido:</label><br>
-                    <input type='text' class='form-control login-field' id="letras" onkeypress="return numeros(event)" name='ape' placeholder='Apellido' required /><br>
+                    <input type='text' class='form-control login-field' id="letras" onkeypress="return numeros(event)" name='ape' placeholder='Apellido' required />
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-6">
                     <label for="DUI">DUI:</label><br>
                     <input type='text' onkeyup="mascara(this,'-',patron2,true)" maxlength="10"id="num" onkeydown="return validarNumeros(event)" class='form-control login-field' name='dui' placeholder='DUI' required /><br>
+                    </div>
+                    <div class="col-lg-6">
                     <label for="FechaNacimiento"> Fecha de fundación (mes/día/año):</label><br>
-                    <input type='date' class='form-control login-field' name='birth' placeholder='Fecha de fundación' required /><br>
+                    <input type='date' class='form-control login-field' name='birth' placeholder='Fecha de fundación' required />
+                    </div>
+                </div>    
+                <div class="row">
+                    <div class="col-lg-6">
                     <label for="email">E-mail:</label><br>
                     <div class='form-group'> 
                     <input type='email' id="email" class='form-control login-field' name='email' placeholder='E-mail' required /><br>
-                    <label for="email2">Confirmar e-mail:</label><br>
-                    <input type='email' id="remail" class='form-control login-field' name='remail' placeholder='Confirmar e-mail' required  /><br>
-                    <div id="val2"></div>
                     </div>
+                    </div>
+                    <div class="col-lg-6">
                     <label for="web">Web Site(opcional):</label><br>
                     <input type='url' class='form-control login-field' name='site' placeholder='Web Site' /><br>
+                    </div>
+                    </div>
                     <label for="Dirección">Dirección:</label><br>
                     <input type='text' class='form-control login-field' name='adres' placeholder='Dirección' required  /><br>
                     <label for="Telefono">Número telefónico:</label><br>

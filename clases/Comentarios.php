@@ -88,7 +88,7 @@ class Comentarios {
         $com .= '<div class="panel panel-default">
                     <div class="panel-body">
                        <a href="#"><small class="col-xs-3">'.$Com[$i]['Usuario'].'</cite></small></a>
-                       <br><img src="../fotos/'.$Com[$i]['Usuario'].'/'.$Com[$i]['imgUsuario'].'" class="img-circle" id="img-pub">
+                       <br><img src="../fotos/'.$Com[$i]['Usuario'].'/'.$Com[$i]['imgUsuario'].'" class="img-circle" id="img-coment">
                         <p><b>'.$Com[$i]['Comentario'].'</b></p>
                     </div>
                     </div>'; 

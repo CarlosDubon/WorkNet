@@ -13,10 +13,11 @@
             <span class="input-group-btn">
                 <input class="btn btn-default" value="Comentar" id="publicacionbtn" type="submit" >
             </span>
-        </div>
+        </div>  
     </form>
+        {{comentarios}}
+
 </div>
-    {{comentarios}}
 </div>
 <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
   <div class="modal-dialog" role="document">

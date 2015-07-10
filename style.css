@@ -807,3 +807,16 @@ height: 35% !important;
     bottom: 20px !important;
     left: 90px !important;
 }
+
+#img-coment {
+    width: 45px !important;
+    height: 45px !important;
+    margin-left: -200px !important;
+}
+
+#registro {
+    width: 60% !important;
+    float: none !important;
+    margin-left: 0 !important;
+    margin-left: 20% !important;
+}

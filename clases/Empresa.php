@@ -43,7 +43,7 @@ class Empresa {
         $valores = '"'.$tipo . '","' . $user . '","' . $email . '","' . $password . '","' . $img . '","' . $empresa . '","' . $name . '","' . $ape . '","' . $birth . '","' . $dui . '","' . $adres . '","' . $phone . '","' . $site . '","' . $estado.'"';
 
 if($dateNow > $birth)
-    if ($password == $repassword && $email == $remail)
+    if ($password == $repassword)
         if($this->validarNombreUnico($user))
             $resultado = $bd->insertarRegistro($tabla, $columnas, $valores);
         else{
