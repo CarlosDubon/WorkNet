@@ -38,7 +38,7 @@
         </div>
     </div>
 </div>
-<!--<div class="well search"><a href="" class="dropdown-toggle" data-toggle="dropdown"><div id="results"></div> </a></div>-->
+<div class="well search"><a href="" class="dropdown-toggle" data-toggle="dropdown"><div id="results"></div> </a></div>
 
 <script type="text/javascript">
     
@@ -47,12 +47,16 @@
 
         $.post("../logica/getStates.php", {partialState:value}, function(data) {
             $("#results").html(data);
-            
-            if(results.length < 1){
-                $("#results").parent().addClass("hidden");
-            }
         });
     }
 </script>
-    
+<script>
+    function esconderDiv(){
+        var eldiv =$("#results");
+        if(eldiv.innerHTML == ""){
+            eldiv.style.display = none;
+        }
+    }
+</script>
+  
     

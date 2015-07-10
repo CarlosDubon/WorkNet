@@ -9,7 +9,21 @@ class Empresa {
 
     public function mostrarFormulario() {
         $plantilla = new Plantilla();
-        $plantilla->verPaginaSinPlantilla('formularioEmpresa');
+        $bd = new MySQL();
+        $query = 'SELECT NombreCat FROM categorias WHERE cuenta_idCuenta=1';
+        $resultado = $bd->consulta($query);
+        $variables['opciones']=$this->convertirHTMLCategorias($resultado);
+        
+        $plantilla->verPaginaSinPlantilla('formularioEmpresa',$variables);
+    }
+    
+    public function convertirHTMLCategorias($Cat = array()){
+        
+        $cat = '';
+        for($i=0; $i<count($Cat) ;$i++){
+            $cat .='<option value="'.$Cat[$i]['NombreCat'].'">'.$Cat[$i]['NombreCat'].'</option>';
+        }
+        return $cat;
     }
 
 
@@ -21,7 +35,7 @@ class Empresa {
         $dateNow = $date->format('Y-m-d');
         
         $tabla = 'cuenta';
-        $columnas = 'Tipo,Usuario,Correo,Password,ImgCuenta,Empresa,Nombre,Apellido,FechaNac,DUI,Direc,Telefono,SitioWeb,Estado';
+        $columnas = 'Tipo,Usuario,Correo,Password,ImgCuenta,Empresa,Nombre,Apellido,FechaNac,DUI,Direc,Telefono,SitioWeb,Estado,Categoria';
 
         $tipo = '2';
         $empresa = $datosEmpresa['empresa'];
@@ -33,14 +47,14 @@ class Empresa {
         $dui = $datosEmpresa['dui'];
         $birth = $datosEmpresa['birth'];
         $email = $datosEmpresa['email'];
-        $remail = $datosEmpresa['remail'];
         $site = $datosEmpresa['site'];
         $adres = $datosEmpresa['adres'];
         $phone = $datosEmpresa['phone'];
+        $categoria = $datosEmpresa['categoria'];
         $estado = '1';
         $img = 'default.jpg';
         
-        $valores = '"'.$tipo . '","' . $user . '","' . $email . '","' . $password . '","' . $img . '","' . $empresa . '","' . $name . '","' . $ape . '","' . $birth . '","' . $dui . '","' . $adres . '","' . $phone . '","' . $site . '","' . $estado.'"';
+        $valores = '"'.$tipo . '","' . $user . '","' . $email . '","' . $password . '","' . $img . '","' . $empresa . '","' . $name . '","' . $ape . '","' . $birth . '","' . $dui . '","' . $adres . '","' . $phone . '","' . $site . '","' . $estado.'","'.$categoria.'"';
 
 if($dateNow > $birth)
     if ($password == $repassword)

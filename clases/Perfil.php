@@ -4,6 +4,7 @@ require_once realpath(dirname(__FILE__) . '/./MySQL.php');
 require_once realpath(dirname(__FILE__) . '/./Plantilla.php');
 require_once realpath(dirname(__FILE__) . '/./Utilidades.php');
 require_once realpath(dirname(__FILE__) . '/./Sesion.php');
+require_once realpath(dirname(__FILE__) . '/./Empresa.php');
 
 
 class Perfil {
@@ -13,11 +14,14 @@ class Perfil {
         $plantilla = new Plantilla();
         $mysql = new MySQL();
         $sesion = new Sesion();
+        $empresa = new Empresa();
 
-        $consulta = ' select c.ImgCuenta, c.SitioWeb,c.Empresa, c.idCuenta,c.FechaNac, c.tipo, c.usuario, c.correo from cuenta c where c.idCuenta = ' . $sesion->obtenerVariableSesion('idUsuario');        
-        
+        $consulta = ' select c.ImgCuenta, c.SitioWeb,c.Empresa, c.idCuenta,c.FechaNac,c.Categoria, c.tipo, c.usuario, c.correo from cuenta c where c.idCuenta = ' . $sesion->obtenerVariableSesion('idUsuario');        
         $resultado = $mysql->consulta($consulta);
 
+        $query='SELECT NombreCat FROM categorias';
+        $result= $mysql->consulta($query);
+        $variables['categoria'] = $empresa->convertirHTMLCategorias($result);
         //print_r($resultado);
         $variables['Id'] = $resultado[0]['idCuenta'];
         $variables['Tipo'] = $resultado[0]['tipo'];
@@ -26,6 +30,7 @@ class Perfil {
         $variables['Empresa'] = $resultado[0]['Empresa'];
         $variables['Web'] = $resultado[0]['SitioWeb'];
         $variables['Fun']=$resultado[0]['FechaNac'];
+        $variables['Categoria']=$resultado[0]['Categoria'];
         $variables['photo'] = '../fotos/'.$resultado[0]['usuario'].'\\'.$resultado[0]['ImgCuenta'];
         
         
@@ -267,5 +272,26 @@ class Perfil {
         if($resultado)
             $utilidades-> mostrarMensaje('El correo se ha actualizado correctamente');
         $utilidades -> Redireccionar('controladores/verPerfilUsuario.php');
+    }
+    
+    public function editarCategoria($editor){
+        $bd = new MySQL();
+        $sesion = new Sesion();
+        $utilidades = new Utilidades();
+        
+        $id= $sesion->obtenerVariableSesion('idUsuario');
+        $newCat = $editor['categoria'];
+        
+        $tabla ='cuenta';
+        $cambio = 'Categoria="'.$newCat.'"';
+        $where = 'idCuenta='.$id;
+        
+        $resultado = $bd->modificarRegistro($tabla,$cambio,$where);
+        if($resultado)
+            $utilidades->mostrarMensaje('Usted se ha cambiado de categoria correctamente');
+        else
+            $utilidades->mostrarMensaje('Lo sentimos, ocurrio un proble por favor vuelva a intentar');
+        $utilidades -> Redireccionar('controladores/perfil_Mostrar.php');
+
     }
 }

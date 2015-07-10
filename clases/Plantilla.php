@@ -96,14 +96,14 @@ class Plantilla {
 
 
     
-    public function verPaginaSinPlantilla($contenido = 'index', $respuesta = '',$variables='') {
+    public function verPaginaSinPlantilla($contenido = 'index',$variables='') {
         $paginaWeb = $this->cargarArchivo($contenido);
 
         if($variables != ''){
             $this->agregarVariables($variables);
             $paginaWeb = $this->reemplazarVariables($paginaWeb);
             }
-            echo $paginaWeb . $respuesta;
+            echo $paginaWeb;
             }
 
 }

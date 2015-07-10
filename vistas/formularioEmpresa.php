@@ -64,11 +64,24 @@
                     <label for="web">Web Site(opcional):</label><br>
                     <input type='url' class='form-control login-field' name='site' placeholder='Web Site' /><br>
                     </div>
-                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-6">
                     <label for="Dirección">Dirección:</label><br>
                     <input type='text' class='form-control login-field' name='adres' placeholder='Dirección' required  /><br>
+                    </div>
+                    <div class="col-lg-6">
                     <label for="Telefono">Número telefónico:</label><br>
                     <input type='tel' maxlength="9" id="num" onkeydown="return validarNumeros(event)" class='form-control login-field' name='phone' placeholder='Número telefónico' onkeyup="mascara(this,'-',patron3,true)" required  /><br>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="control-label">Categoria</label><br>
+                    <select class="form-control" id="select" name="categoria">
+                    <option value="">Seleccione una categoría</option>
+                        {{opciones}}
+                    </select>
+                </div>
                     <p class="text-center">
                     <input type='submit' value='Registrarse' class='btn btn-primary btn-lg btn-warning'>
                     <a href='../controladores/index.php'><input type='button' value='Regresar' class='btn btn-primary btn-lg btn-danger'></a>

@@ -25,12 +25,14 @@
     </div>
         <div class="panel panel-default" id="az">
           <div class="panel-body">
+            <b>Empresa:</b> {{Empresa}}<br>          
+            <b>Email:</b> {{Correo}} <small id="de"><a href =""  data-toggle="modal" data-target="#ChangeE-mail">Editar<i class="fa fa-pencil"> </i></a></small><br>
             <b>Usuario:</b> {{Usuario}} <br>
-            <b>Empresa:</b> {{Empresa}}<br>
-            <b>E-mail:</b> {{Correo}} <small id="de"><a href =""  data-toggle="modal" data-target="#ChangeE-mail">Editar<i class="fa fa-pencil"> </i></a></small><br>
-            <b>Fecha de fundación:</b> {{Fun}}<br>
             <b>Web Site:</b> {{Web}} <small id="de"><a href =""  data-toggle="modal" data-target="#ChangeWeb">Editar<i class="fa fa-pencil"> </i></a></small><br>
-          </div>
+            <b>Fecha de fundación:</b> {{Fun}}<br>
+            <b>Categoría:</b> {{Categoria}} <small id="de"><a href =""  data-toggle="modal" data-target="#ChangeCat">Editar<i class="fa fa-pencil"> </i></a></small>
+          
+        </div>
     </div>
     
         </div>
@@ -102,4 +104,31 @@
      </form>
   </div>
 </div>
-
+<div class="modal fade" id="ChangeCat" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">Cambiar de Categoria</h4>
+      </div>
+      <div class="modal-body">
+        <form action="./cambiarCat.php" method="POST">
+          <div class="form-group">
+             <label class="control-label" for="disabledInput">Categoria Anterior</label>
+             <input class="form-control" id="disabledInput" value="{{Categoria}}" type="text" placeholder="Disabled input here..." disabled="">
+        </div>
+          <div class="form-group">
+              <label class="control-label" for="focusedInput">Nueva Categoria</label>
+              <select class="form-control" name="categoria">
+                  {{categoria}}
+              </select>
+            </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+        <input type="submit" class="btn btn-primary" value="Guardar Cambios">
+      </div>
+    </div>
+     </form>
+  </div>
+</div>
