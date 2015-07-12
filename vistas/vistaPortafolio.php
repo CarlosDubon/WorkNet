@@ -25,9 +25,4 @@
         $('#miTabla').DataTable();
     });
 </script>
-<script src="../vistas/recursos/rating-master/jquery.barrating.js"></script>
-<script type="text/javascript">
-   $(function() {
-      $('#example').barrating();
-   });
-</script>
+

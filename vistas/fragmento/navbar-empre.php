@@ -38,14 +38,14 @@
         </div>
     </div>
 </div>
-<div class="well search"><a href="" class="dropdown-toggle" data-toggle="dropdown"><div id="results"></div> </a></div>
+<div class="well search"><div id="results"></div></div>
 
 <script type="text/javascript">
     
     function getStates(value){
          var results=$("#results")
 
-        $.post("../logica/getStates.php", {partialState:value}, function(data) {
+        $.post("../controladores/slideBar.php", {partialState:value}, function(data) {
             $("#results").html(data);
         });
     }

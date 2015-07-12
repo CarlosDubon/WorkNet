@@ -1,3 +1,4 @@
+
 #derecha{
     float: right!important;
     margin-top: -1% !important;
@@ -273,7 +274,7 @@ height: 35% !important;
     position: absolute !important;
     margin-left: 18% !important;
     margin-top: 4% !important;
-    width: 195px !important;
+    width: 350px !important;
 }
 
 .zeti {
@@ -819,4 +820,8 @@ height: 35% !important;
     float: none !important;
     margin-left: 0 !important;
     margin-left: 20% !important;
+}
+
+.div-blanco {
+    background-color: #fff;
 }
