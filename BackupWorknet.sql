@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 09-07-2015 a las 04:26:48
+-- Tiempo de generación: 12-07-2015 a las 16:57:56
 -- Versión del servidor: 5.6.21
 -- Versión de PHP: 5.6.3
 
@@ -30,16 +30,14 @@ CREATE TABLE IF NOT EXISTS `amigo` (
 `idAmigo` int(11) NOT NULL,
   `idCuenta` int(11) NOT NULL,
   `idCuentaAmigo` int(11) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=23 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Volcado de datos para la tabla `amigo`
 --
 
 INSERT INTO `amigo` (`idAmigo`, `idCuenta`, `idCuentaAmigo`) VALUES
-(3, 3, 2),
-(16, 4, 3),
-(17, 3, 4);
+(22, 4, 8);
 
 -- --------------------------------------------------------
 
@@ -53,7 +51,7 @@ CREATE TABLE IF NOT EXISTS `aplicadores` (
   `idEmpresa` int(11) NOT NULL,
   `Usuario` varchar(45) NOT NULL,
   `idUsuario` int(11) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
 
 --
 -- Volcado de datos para la tabla `aplicadores`
@@ -61,7 +59,9 @@ CREATE TABLE IF NOT EXISTS `aplicadores` (
 
 INSERT INTO `aplicadores` (`idAplicacion`, `idOferta`, `idEmpresa`, `Usuario`, `idUsuario`) VALUES
 (2, 1, 3, 'CarlosM', 7),
-(3, 5, 3, 'CarlosM', 7);
+(3, 5, 3, 'CarlosM', 7),
+(4, 8, 8, 'JRjunior32', 10),
+(5, 8, 8, 'JRjunior32', 10);
 
 -- --------------------------------------------------------
 
@@ -73,7 +73,7 @@ CREATE TABLE IF NOT EXISTS `categorias` (
 `idCategorias` int(11) NOT NULL,
   `NombreCat` varchar(20) NOT NULL,
   `cuenta_idCuenta` int(11) NOT NULL DEFAULT '0'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -90,15 +90,18 @@ CREATE TABLE IF NOT EXISTS `chat` (
   `Size` int(11) DEFAULT NULL,
   `cuenta_idCuenta` int(11) NOT NULL,
   `idAmigo` int(11) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=35 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=39 DEFAULT CHARSET=utf8;
 
 --
 -- Volcado de datos para la tabla `chat`
 --
 
 INSERT INTO `chat` (`idChat`, `FechaChat`, `Texto`, `ArchivosChat`, `NombreArchChat`, `Size`, `cuenta_idCuenta`, `idAmigo`) VALUES
-(33, '2015-06-14', 'hola', NULL, NULL, NULL, 3, 4),
-(34, '2015-06-28', 'hey', NULL, NULL, NULL, 4, 3);
+(34, '2015-06-28', 'hey', NULL, NULL, NULL, 4, 3),
+(35, '2015-07-09', 'Soy Nayib', NULL, NULL, NULL, 8, 4),
+(36, '2015-07-09', 'Yo no soy nadie :(', NULL, NULL, NULL, 4, 8),
+(37, '2015-07-09', 'Bueno, soy un  pokemÃ³n', NULL, NULL, NULL, 4, 8),
+(38, '2015-07-09', 'Papiiiiii', NULL, NULL, NULL, 9, 8);
 
 -- --------------------------------------------------------
 
@@ -112,7 +115,7 @@ CREATE TABLE IF NOT EXISTS `comentarios` (
   `imgUsuario` varchar(70) NOT NULL,
   `Comentario` tinytext NOT NULL,
   `idPub` int(11) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=latin1;
 
 --
 -- Volcado de datos para la tabla `comentarios`
@@ -123,7 +126,8 @@ INSERT INTO `comentarios` (`idComentario`, `Usuario`, `imgUsuario`, `Comentario`
 (2, 'cn', 'elefantes-bebe.jpg', 'Que tal?\r\n', 4),
 (3, 'cn', 'elefantes-bebe.jpg', '', 0),
 (5, 'CarlosM', '333853.jpg', 'nos vale verga mahe\r\n', 2),
-(6, 'cn', 'elefantes-bebe.jpg', 'hola\r\n', 6);
+(6, 'cn', 'elefantes-bebe.jpg', 'hola\r\n', 6),
+(7, 'wn', 'Squirtle.jpg', 'Hola amigo? que pollo soy jaja hablo solo xD', 8);
 
 -- --------------------------------------------------------
 
@@ -147,21 +151,24 @@ CREATE TABLE IF NOT EXISTS `cuenta` (
   `Telefono` varchar(9) NOT NULL,
   `SitioWeb` varchar(100) NOT NULL,
   `Estado` varchar(1) NOT NULL,
+  `Categoria` varchar(45) NOT NULL,
   `work_count` varchar(1) NOT NULL DEFAULT '0',
   `new_count` int(11) DEFAULT '0',
   `cuenta_cuenta` int(11) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8;
 
 --
 -- Volcado de datos para la tabla `cuenta`
 --
 
-INSERT INTO `cuenta` (`idCuenta`, `Tipo`, `Usuario`, `Correo`, `Password`, `ImgCuenta`, `Empresa`, `Nombre`, `Apellido`, `FechaNac`, `DUI`, `Direc`, `Telefono`, `SitioWeb`, `Estado`, `work_count`, `new_count`, `cuenta_cuenta`) VALUES
-(1, '1', 'admin', 'admin@admin.com', 'admin', '', 'admin', 'admin', 'admin', '0000-00-00', '', '', '', '', '', '0', 0, 0),
-(3, '2', 'cn', 'karloz_minero@hotmail.com', 'cn', 'elefantes-bebe.jpg', 'CorpNet', 'Carlos', 'Minero', '2002-02-05', '123456', 'cn', '22222222', 'https://www.facebook.com/groups/1422689947974430/?fref=nf', '0', '1', 0, 0),
-(4, '2', 'wn', 'wn@wn.com', 'work1', 'Squirtle.jpg', 'WorkNet', 'ffdasfds', 'sdfdsaf', '2015-05-01', '654567654', 'sdfafsda', '2354123', '', '1', '0', 0, 0),
-(6, '3', 'carlos98', 'carlosminerodubon@gmail.com', 'WorkNet2015', 'hgcyhgchfgvhdf.gif', 'cn', 'Carlos', 'Minero', '2015-05-29', '34567890-9', 'no definida', '0000', 'no definida', '0', '0', 0, 3),
-(7, '4', 'CarlosM', 'carlos@gmail.com', 'carlos98', '333853.jpg', 'no definida', 'Carlos', 'Minero', '1993-02-09', '78522348-5', 'no definida', '0000', 'no definida', '0', '0', 0, 0);
+INSERT INTO `cuenta` (`idCuenta`, `Tipo`, `Usuario`, `Correo`, `Password`, `ImgCuenta`, `Empresa`, `Nombre`, `Apellido`, `FechaNac`, `DUI`, `Direc`, `Telefono`, `SitioWeb`, `Estado`, `Categoria`, `work_count`, `new_count`, `cuenta_cuenta`) VALUES
+(1, '1', 'admin', 'admin@admin.com', 'admin', '', 'admin', 'admin', 'admin', '0000-00-00', '', '', '', '', '', '', '0', 0, 0),
+(4, '2', 'wn', 'hsdkhfs@fjasd.com', 'work1', 'Squirtle.jpg', 'WorkNet', 'ffdasfds', 'sdfdsaf', '2015-05-01', '654567654', 'sdfafsda', '2354123', 'https://bootswatch.com/', '1', '', '1', 0, 0),
+(6, '3', 'carlos98', 'carlosminerodubon@gmail.com', 'WorkNet2015', 'hgcyhgchfgvhdf.gif', 'cn', 'Carlos', 'Minero', '2015-05-29', '34567890-9', 'no definida', '0000', 'no definida', '0', '', '0', 0, 3),
+(7, '4', 'CarlosM', 'carlos@gmail.com', 'carlos98', '333853.jpg', 'no definida', 'Carlos', 'Minero', '1993-02-09', '78522348-5', 'no definida', '0000', 'no definida', '0', '', '0', 0, 0),
+(8, '2', 'BK_ALoKing', 'bk_aloking@gmail.com', '123456', 'burguer.jpg', 'Burguer King', 'Nayib', 'Bukele', '1999-06-16', '46754621-6', 'En todo sivar', '2256-5654', 'http://livepipe.net/control/rating', '1', '', '1', 2, 0),
+(9, '3', 'NayibJr', 'nayibjr@gmail.com', '123456', 'nayib-1.jpg', 'BK_ALoKing', 'Nayib Junior', 'Bukele', '1995-02-08', '45567645-6', 'no definida', '0000', 'no definida', '0', '', '0', 0, 8),
+(10, '4', 'JRjunior32', 'junior.rod78@gmail.com', '123456', 'default.jpg', 'no definida', 'Julio', 'Rodriguez', '1992-06-10', '54654646-5', 'no definida', '0000', 'no definida', '0', '', '0', 0, 0);
 
 -- --------------------------------------------------------
 
@@ -184,7 +191,14 @@ CREATE TABLE IF NOT EXISTS `curriculum` (
   `Referencia3` varchar(40) DEFAULT NULL,
   `TelRef3` varchar(9) DEFAULT NULL,
   `idCuenta_cuenta` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+
+--
+-- Volcado de datos para la tabla `curriculum`
+--
+
+INSERT INTO `curriculum` (`idCurriculum`, `Nombre_Completo`, `Telefono`, `Celular`, `direccion`, `FormacionAc`, `Experiencia`, `Referencia1`, `TelRef1`, `Referencia2`, `TelRef2`, `Referencia3`, `TelRef3`, `idCuenta_cuenta`) VALUES
+(1, 'Julio Cesar Rodriguez Gomez', '2245-4502', '7741-7336', 'Col. Sn Francisco. Cal. Los CastaÃ±os Av Las Dalias Con Res Terralinda B8', 'Escuela de Comunicaciones Monica Herrera', 'BISA', 'Maria Fernanda Duque Rodriguez', '7458-9654', 'Carlos Antonio Minero Dubon', '6864-6546', 'Jose Atilio Garcia Sibrian', '7578-7878', 10);
 
 -- --------------------------------------------------------
 
@@ -198,7 +212,14 @@ CREATE TABLE IF NOT EXISTS `denuncias` (
   `FechaRealizada` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `UserEmpresa` varchar(30) NOT NULL,
   `cuenta_idCuenta` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+
+--
+-- Volcado de datos para la tabla `denuncias`
+--
+
+INSERT INTO `denuncias` (`idDenuncias`, `Motivo`, `FechaRealizada`, `UserEmpresa`, `cuenta_idCuenta`) VALUES
+(1, 'Porque si me cae mal', '2015-07-09 20:05:14', '8', 4);
 
 -- --------------------------------------------------------
 
@@ -213,7 +234,7 @@ CREATE TABLE IF NOT EXISTS `eventos` (
   `FechaFin` date NOT NULL,
   `Nombre` varchar(30) NOT NULL,
   `Descripcion` tinytext NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8;
 
 --
 -- Volcado de datos para la tabla `eventos`
@@ -222,7 +243,13 @@ CREATE TABLE IF NOT EXISTS `eventos` (
 INSERT INTO `eventos` (`idEventos`, `idCuenta`, `FechaIni`, `FechaFin`, `Nombre`, `Descripcion`) VALUES
 (1, 1, '2015-04-16', '2015-04-17', 'sdfa', 'dasf'),
 (2, 1, '2015-04-16', '2015-04-17', 'sdfa', 'dasf'),
-(5, 3, '2015-06-20', '2015-06-23', 'Semana de Juventud', 'sdfasdf');
+(6, 8, '2015-07-10', '2015-07-11', 'ALL YOU CAN EAT', 'All you can eat, just in burguer King babyy'),
+(7, 9, '2015-07-10', '2015-07-12', 'puerbas', 'puerbas'),
+(8, 9, '2015-07-10', '2015-07-12', 'puerbas', 'puerbas'),
+(9, 9, '2015-07-10', '2015-07-12', 'puerbas', 'puerbas'),
+(10, 9, '2015-07-10', '2015-07-12', 'puerbas', 'puerbas'),
+(11, 9, '2015-07-10', '2015-07-12', 'puerbas', 'puerbas'),
+(12, 9, '2015-07-10', '2015-07-10', 'Prueba', 'Prueba');
 
 -- --------------------------------------------------------
 
@@ -253,14 +280,14 @@ CREATE TABLE IF NOT EXISTS `ofertas` (
   `Cargo` varchar(45) NOT NULL,
   `Edad` varchar(2) NOT NULL,
   `Requisitos` varchar(45) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=latin1;
 
 --
 -- Volcado de datos para la tabla `ofertas`
 --
 
 INSERT INTO `ofertas` (`idOfertas`, `idCuenta`, `Titulo`, `Detalle`, `Genero`, `Salario`, `Direccion`, `Cargo`, `Edad`, `Requisitos`) VALUES
-(6, 3, 'BBBBB', 'bbbbb', 'M', 22.5, 'bbbb', 'bbbbb', '80', 'bbbb');
+(8, 8, 'Manager', 'We need a good manager vaaa', 'A', 20, 'Col. Ecalon AhÃ­ por el paseo mall', 'Manager in Col Escalon', '25', 'Be a good manager please');
 
 -- --------------------------------------------------------
 
@@ -286,14 +313,7 @@ CREATE TABLE IF NOT EXISTS `portafolio` (
   `FechaSubida` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   `Size` int(11) NOT NULL,
   `cuenta_idCuenta` int(11) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
-
---
--- Volcado de datos para la tabla `portafolio`
---
-
-INSERT INTO `portafolio` (`idPortafolio`, `NombreArchivo`, `FechaSubida`, `Size`, `cuenta_idCuenta`) VALUES
-(4, 'script.txt', '2015-06-19 21:20:36', 794, 3);
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -309,15 +329,17 @@ CREATE TABLE IF NOT EXISTS `publicaciones` (
   `cuenta_idCuenta` int(11) NOT NULL,
   `Usuario_cuenta` varchar(45) NOT NULL,
   `works` int(11) NOT NULL DEFAULT '0'
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8 COMMENT='	';
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8 COMMENT='	';
 
 --
 -- Volcado de datos para la tabla `publicaciones`
 --
 
 INSERT INTO `publicaciones` (`idPub`, `Texto`, `imgUsuario`, `Fecha`, `cuenta_idCuenta`, `Usuario_cuenta`, `works`) VALUES
-(6, 'HOLAA!\r\n', 'elefantes-bebe.jpg', '2015-07-07', 3, 'cn', 0),
-(7, 'Hey hola!\r\n', 'Squirtle.jpg', '2015-07-08', 4, 'wn', 0);
+(7, 'Hey hola!\r\n', 'Squirtle.jpg', '2015-07-08', 4, 'wn', 1),
+(8, 'Hola amigos y amigas de WorkNet', 'Squirtle.jpg', '2015-07-09', 4, 'wn', 1),
+(9, 'Hola soy el hijo de Nayib :'')', 'default.jpg', '2015-07-09', 9, 'NayibJr', 0),
+(10, 'Hola soy el hijo de Nayib :'')', 'nayib-1.jpg', '2015-07-09', 9, 'NayibJr', 1);
 
 -- --------------------------------------------------------
 
@@ -338,11 +360,20 @@ CREATE TABLE IF NOT EXISTS `seguidores` (
 
 CREATE TABLE IF NOT EXISTS `solicitudes` (
 `idSoli` int(11) NOT NULL,
-  `Fecha` date NOT NULL,
-  `Solicitudescol` varchar(45) NOT NULL,
-  `Solicitudescol1` varchar(45) NOT NULL,
-  `cuenta_idCuenta` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+  `Fecha` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `Tipo` varchar(1) NOT NULL,
+  `cuentaAmigo` int(45) NOT NULL,
+  `cuenta_idCuenta` int(11) NOT NULL,
+  `user_idCuenta` varchar(45) NOT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
+
+--
+-- Volcado de datos para la tabla `solicitudes`
+--
+
+INSERT INTO `solicitudes` (`idSoli`, `Fecha`, `Tipo`, `cuentaAmigo`, `cuenta_idCuenta`, `user_idCuenta`) VALUES
+(5, '2015-07-09 21:48:39', '1', 8, 4, 'wn'),
+(6, '2015-07-09 21:49:09', '2', 8, 9, 'NayibJr');
 
 --
 -- Índices para tablas volcadas
@@ -452,52 +483,52 @@ ALTER TABLE `solicitudes`
 -- AUTO_INCREMENT de la tabla `amigo`
 --
 ALTER TABLE `amigo`
-MODIFY `idAmigo` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=18;
+MODIFY `idAmigo` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=23;
 --
 -- AUTO_INCREMENT de la tabla `aplicadores`
 --
 ALTER TABLE `aplicadores`
-MODIFY `idAplicacion` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=4;
+MODIFY `idAplicacion` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=6;
 --
 -- AUTO_INCREMENT de la tabla `categorias`
 --
 ALTER TABLE `categorias`
-MODIFY `idCategorias` int(11) NOT NULL AUTO_INCREMENT;
+MODIFY `idCategorias` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT de la tabla `chat`
 --
 ALTER TABLE `chat`
-MODIFY `idChat` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=35;
+MODIFY `idChat` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=39;
 --
 -- AUTO_INCREMENT de la tabla `comentarios`
 --
 ALTER TABLE `comentarios`
-MODIFY `idComentario` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=7;
+MODIFY `idComentario` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=8;
 --
 -- AUTO_INCREMENT de la tabla `cuenta`
 --
 ALTER TABLE `cuenta`
-MODIFY `idCuenta` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=8;
+MODIFY `idCuenta` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=11;
 --
 -- AUTO_INCREMENT de la tabla `curriculum`
 --
 ALTER TABLE `curriculum`
-MODIFY `idCurriculum` int(11) NOT NULL AUTO_INCREMENT;
+MODIFY `idCurriculum` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT de la tabla `denuncias`
 --
 ALTER TABLE `denuncias`
-MODIFY `idDenuncias` int(11) NOT NULL AUTO_INCREMENT;
+MODIFY `idDenuncias` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT de la tabla `eventos`
 --
 ALTER TABLE `eventos`
-MODIFY `idEventos` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=6;
+MODIFY `idEventos` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=13;
 --
 -- AUTO_INCREMENT de la tabla `ofertas`
 --
 ALTER TABLE `ofertas`
-MODIFY `idOfertas` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=7;
+MODIFY `idOfertas` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=9;
 --
 -- AUTO_INCREMENT de la tabla `perfil`
 --
@@ -507,12 +538,12 @@ MODIFY `idPerfil` int(11) NOT NULL AUTO_INCREMENT;
 -- AUTO_INCREMENT de la tabla `portafolio`
 --
 ALTER TABLE `portafolio`
-MODIFY `idPortafolio` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=5;
+MODIFY `idPortafolio` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=6;
 --
 -- AUTO_INCREMENT de la tabla `publicaciones`
 --
 ALTER TABLE `publicaciones`
-MODIFY `idPub` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=8;
+MODIFY `idPub` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=11;
 --
 -- AUTO_INCREMENT de la tabla `seguidores`
 --
@@ -522,7 +553,7 @@ MODIFY `idSeguidores` int(11) NOT NULL AUTO_INCREMENT;
 -- AUTO_INCREMENT de la tabla `solicitudes`
 --
 ALTER TABLE `solicitudes`
-MODIFY `idSoli` int(11) NOT NULL AUTO_INCREMENT;
+MODIFY `idSoli` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=7;
 --
 -- Restricciones para tablas volcadas
 --
