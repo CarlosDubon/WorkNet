@@ -22,8 +22,10 @@ class Buscar{
     public function verUsuariosPorCat($categoria){
         $bd = new MySQL();
         $plantilla = new Plantilla();
+        $sesion = new Sesion();
         
-        $query ='SELECT Usuario,imgCuenta,Empresa,Categoria FROM cuenta WHERE Categoria ="'.$categoria.'"';
+        $id= $sesion->obtenerVariableSesion('idUsuario');
+        $query ='SELECT idCuenta,Usuario,imgCuenta,Empresa,Categoria FROM cuenta WHERE Categoria ="'.$categoria.'" AND idCuenta !='.$id;
         $resultado= $bd->consulta($query);
         $variables['Usuarios']=$this->convertirUsuariosHTML($resultado);
         $variables['Categoria']=$resultado[0]['Categoria'];
@@ -35,10 +37,10 @@ class Buscar{
         $u = '';
         
         for($i=0;$i<count($U); $i++){
-            $u='<div class="panel panel-default">
+            $u .='<div class="panel panel-default">
                   <div class="panel-body">
-                    <img src="../fotos/'.$U[$i]['Usuario'].'/'.$U[$i]['imgCuenta'].'" class="img-circle" > '
-                .$U[$i]['Empresa'].'
+                    <img src="../fotos/'.$U[$i]['Usuario'].'/'.$U[$i]['imgCuenta'].'" class="img-circle" ><a href="verPerfilAmigo.php?idCuenta='.$U[$i]['idCuenta'].'"> '
+                .$U[$i]['Empresa'].'</a>
                 <a href="" id="deU"><i class="fa fa-user-plus"></i></a>
                   </div>
                 </div>';
