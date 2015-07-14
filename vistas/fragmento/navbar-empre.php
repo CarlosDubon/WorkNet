@@ -50,12 +50,21 @@
         });
     }
 </script>
-<script>
-    function esconderDiv(){
-        var eldiv =$("#results");
-        if(eldiv.innerHTML == ""){
-            eldiv.style.display = none;
-        }
+
+<script type="text/javascript">
+    $(".search").fadeOut();
+    function getStates(value){
+         var results=$("#results")
+         if (value == "") {
+            $(".search").fadeOut();
+         }else {
+        $.post("../controladores/slideBar.php", {partialState:value}, function(data) {
+          $(".search").fadeIn();
+            $("#results").html(data);
+
+            
+        });
+      }
     }
 </script>
   
