@@ -3,10 +3,10 @@ require_once realpath(dirname(__FILE__) . '/../clases/AdministrarUsuarios.php');
 require_once realpath(dirname(__FILE__) . '/../clases/MySQL.php');
 require_once realpath(dirname(__FILE__) . '/../clases/Evento.php');
 
-	
+
     $json = array();
-    $query= "Select idEventos as id, FechaIni as start, FechaFin as end, Nombre as title FROM eventos"; 
-        
+    $query= "Select idEventos, FechaIni, FechaFin, Nombre as title FROM eventos";
+
     try{
     $db = new PDO('mysql:host=localhost;dbname=corpnet','root','');
     } catch(Exception $e){
@@ -17,5 +17,3 @@ $result = $db -> query($query) or die(print_r($db->errorInfo()));
 echo json_encode($result->fetchAll(PDO::FETCH_ASSOC));
 
 ?>
-
-

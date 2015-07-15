@@ -1,9 +1,9 @@
 <div class="login-form" id="perfil">
     <div class="panel panel-primary">
           <div class="panel-heading">
-            <div class="row"> 
+            <div class="row">
                   <div class="col-xs-6 col-md-3">
-                    
+
                        <a href="" class="thumbnail" id="photot" data-toggle="modal" data-target="#myModal">
                           <img src="{{photo}}" alt="Usuario Avatar" class="img-circle" id="foto-perfil">
                         </a>
@@ -25,16 +25,16 @@
     </div>
         <div class="panel panel-default" id="az">
           <div class="panel-body">
-            <b>Empresa:</b> {{Empresa}}<br>          
+            <b>Empresa:</b> {{Empresa}}<br>
             <b>Email:</b> {{Correo}} <small id="de"><a href =""  data-toggle="modal" data-target="#ChangeE-mail">Editar<i class="fa fa-pencil"> </i></a></small><br>
             <b>Usuario:</b> {{Usuario}} <br>
             <b>Web Site:</b> {{Web}} <small id="de"><a href =""  data-toggle="modal" data-target="#ChangeWeb">Editar<i class="fa fa-pencil"> </i></a></small><br>
             <b>Fecha de fundación:</b> {{Fun}}<br>
             <b>Categoría:</b> {{Categoria}} <small id="de"><a href =""  data-toggle="modal" data-target="#ChangeCat">Editar<i class="fa fa-pencil"> </i></a></small>
-          
+
         </div>
     </div>
-    
+
         </div>
 
 <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
@@ -119,7 +119,7 @@
         </div>
           <div class="form-group">
               <label class="control-label" for="focusedInput">Nueva Categoria</label>
-              <select class="form-control" name="categoria">
+              <select class="form-control" name="categoria" required>
                   {{categoria}}
               </select>
             </div>

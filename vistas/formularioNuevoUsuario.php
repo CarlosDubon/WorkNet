@@ -4,43 +4,71 @@
         <title>Regístrate</title>
         <meta charset="utf-8">
         <link href="../vistas/recursos/css/bootstrap.css" rel="stylesheet">
-        <link href="../vistas/recursos/css/flat-ui.css" rel="stylesheet">  
+        <link href="../vistas/recursos/css/flat-ui.css" rel="stylesheet">
         <link href="../style.css" rel="stylesheet">
-    </head>
+    </head>z
     <body class="fondi">
         <form action="../controladores/guardarUsuario.php" method="POST">
-            <div class="login-form">
-                <div class="from-group">
-                    <center><h3>Regístrate</h3></center>                    
-                    Usuario:<input type="text" class="form-control login-field" name="usuario" placeholder="Usuario" required /><br>
-                    </div>
+            <div class="login-form" id="registro">
+                <center><h3>Regístrate</h3></center>
+                <div class="row">
+                  <div class="col-lg-6">
                     <div class="from-group">
-                    Contraseña:<input type="password" minlength="5" id="pass" class="form-control login-field" name="pass" placeholder="Contraseña" required /> <br>
-                    Confirmar contraseña:<input type="password" id="repass" class="form-control login-field" name="repass" placeholder="Confirmar contraseña" required /><br>
-                    <div id="val"></div>
+                      Usuario:
+                      <input type="text" class="form-control login-field" name="usuario" placeholder="Usuario" required /><br>
                     </div>
+                  </div>
+                  <div class="col-lg-6">
                     <div class="from-group">
-                    Nombre:<input type="text"id="letras" onkeypress="return numeros(event)"  class="form-control login-field" name="name" placeholder="Nombre" /><br>
-                    Apellido:<input type="text"id="letras" onkeypress="return numeros(event)"  class="form-control login-field" name="ape" placeholder="Apellido" required /><br>
+                      Fecha de Nacimiento (mes/día/año):<input type="date" class="form-control login-field" name="birth" placeholder="Fecha de nacimiento" required /><br>
                     </div>
-                    <div class="from-group">
-                    Correo Electronico:<input type="email" id="email" class="form-control login-field" name="mail" placeholder="Correo Electronico" required /><br>
-                    Confirmar Electronico:<input type="email" id="remail" class="form-control login-field" name="remail" placeholder="Confirmar Correo Electronico" required /><br>
-                    <div id="val2"></div>
-                    </div>
-                    <div class="from-group">
-                    Fecha de Nacimiento (mes/día/año):<input type="date" class="form-control login-field" name="birth" placeholder="Fecha de nacimiento" required /><br>
-                    DUI:<input type="text" class="form-control login-field" onkeyup="mascara(this,'-',patron3,true)" id="num" onkeydown="return validarNumeros(event)" maxlength="10" name="dui" placeholder="DUI" required /><br>
-                    <p class="text-center">
-                        <input type="submit" name="Registrar" value="Registrar" class="btn btn-primary btn-lg btn-warning" >
-                        <a href="../controladores/index.php"><input type="button" value="Regresar" class="btn btn-primary btn-lg btn-danger" ></a>
-                    </p>
+                  </div>
                 </div>
-            </div>   
-        </form>   
+                <div class="row">
+                  <div class="col-lg-6">
+                      <div class="from-group">
+                      Nombre:<input type="text"id="letras" onkeypress="return numeros(event)"  class="form-control login-field" name="name" placeholder="Nombre" /><br>
+                    </div>
+                    <div class="form-group">
+                      Apellido:<input type="text"id="letras" onkeypress="return numeros(event)"  class="form-control login-field" name="ape" placeholder="Apellido" required /><br>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                      <div class="from-group">
+                      Contraseña:<input type="password" minlength="5" id="pass" class="form-control login-field" name="pass" placeholder="Contraseña" required /> <br>
+                    </div>
+                 <div class="from-group">
+                      Confirmar contraseña:<input type="password" id="repass" class="form-control login-field" name="repass" placeholder="Confirmar contraseña" required /><br>
+                </div>
+                <div id="val"></div>
+
+              </div>
+              </div>
+              <div class="row">
+                <div class="col-lg-6">
+                      <div class="from-group">
+                      Correo Electronico:<input type="email" id="email" class="form-control login-field" name="mail" placeholder="Correo Electronico" required /><br>
+                      </div>
+               </div>
+                    <div class="col-lg-6">
+                      <div class="form-group">
+                      Confirmar Electronico:<input type="email" id="remail" class="form-control login-field" name="remail" placeholder="Confirmar Correo Electronico" required /><br>
+                      <div id="val2"></div>
+                    </div>
+                    </div>
+              </div>
+                      <div class="from-group">
+                      DUI:<input type="text" class="form-control login-field" onkeyup="mascara(this,'-',patron3,true)" id="num" onkeydown="return validarNumeros(event)" maxlength="10" name="dui" placeholder="DUI" required /><br>
+                      <p class="text-center">
+                          <input type="submit" name="Registrar" value="Registrar" class="btn btn-primary btn-lg btn-warning" >
+                          <a href="../controladores/index.php"><input type="button" value="Regresar" class="btn btn-primary btn-lg btn-danger" ></a>
+                      </p>
+                </div>
+            </div>
+        </form>
     </body>
-    <script src="../vistas/recursos/js/jquery.min.js"></script>    
-    <script src="../vistas/recursos/js/flat-ui.min.js"></script>    
+    <script src="../vistas/recursos/js/jquery.min.js"></script>
+    <script src="../vistas/recursos/js/flat-ui.min.js"></script>
 </html>
 
 <script>
@@ -48,7 +76,7 @@
         $("#pass,#repass").keyup(function(){
             var pass=$("#pass").val();
             var repass=$("#repass").val();
-            
+
                 if(pass != repass){
                     $("#val").parent().addClass("has-error");
                     $("#val").parent().removeClass("has-success");
@@ -62,12 +90,12 @@
                     $("#val").parent().removeClass("has-error");
 
                 }
-        
+
         });
         $("#email,#remail").keyup(function(){
             var email=$("#email").val();
             var remail=$("#remail").val();
-            
+
                 if(email != remail){
                     $("#val2").parent().addClass("has-error");
                     $("#val2").parent().removeClass("has-success");
@@ -91,10 +119,10 @@
 		if (tecla==189) return true; // guion
 		if (e.ctrlKey && tecla==88) { return true}; //Ctrl x
 		if (tecla>=96 && tecla<=105) { return true;} //numpad
- 
+
 		patron = /[0-9]/; // patron
- 
-		te = String.fromCharCode(tecla); 
+
+		te = String.fromCharCode(tecla);
 		return patron.test(te); // prueba
 	}
 </script>
@@ -108,7 +136,7 @@
                 val = val.split(sep)
                 val2 = ''
                 for(r=0;r<val.length;r++){
-                    val2 += val[r]	
+                    val2 += val[r]
                 }
                 if(nums){
                     for(z=0;z<val2.length;z++){
@@ -144,15 +172,15 @@
     tecla = String.fromCharCode(key).toLowerCase();
     letras = " abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
     especiales = [8,37,39,46];
- 
+
     tecla_especial = false
     for(var i in especiales){
  if(key == especiales[i]){
      tecla_especial = true;
      break;
-        } 
+        }
     }
- 
+
     if(letras.indexOf(tecla)==-1 && !tecla_especial)
         return false;
 }

@@ -12,30 +12,34 @@ class Evento {
         $plantilla = new Plantilla();
         $plantilla->verPagina('formularioEventos');
     }
-     public function guardarEvento($datosEvento) {        
+     public function guardarEvento($datosEvento) {
         $bd = new MySQL();
         $utilidades = new Utilidades();
         $plantilla = new Plantilla();
         $dateNow = new DateTime();
         $date = $dateNow->format('Y-m-d');
         $Sesion = new Sesion();
-        
-        
+
+
         $tabla = 'eventos';
-        $columnas = 'idCuenta,FechaIni,FechaFin,Nombre,Descripcion';
+        $columnas = 'idCuenta,FechaIni,HoraIni,FechaFin,HoraFin,Nombre,Descripcion';
 
         $FechaIni=$datosEvento['empieza'];
+        $HoraInicio=$datosEvento['HInicio'];
         $FechaFin=$datosEvento['termina'];
+        $HoraFin=$datosEvento['HTermina'];
         $Nombre=$datosEvento['nombre'];
         $Descripcion=$datosEvento['descripcion'];
         $idCuenta=$Sesion->obtenerVariableSesion('idUsuario');
-        
-        $valores = '"'.$idCuenta. '","' . 
-                    $FechaIni. '","' . 
-                    $FechaFin. '","' . 
+
+        $valores = '"'.$idCuenta. '","' .
+                    $FechaIni. '","' .
+                    $HoraInicio.'","'.
+                    $FechaFin. '","' .
+                    $HoraFin.'","'.
                     $Nombre . '","'.
                     $Descripcion.'"';
-    
+
     if ($date <= $FechaIni){
         if($FechaIni <= $FechaFin){
             $resultado = $bd->insertarRegistro($tabla, $columnas, $valores);
@@ -45,28 +49,28 @@ class Evento {
             }else{
                     $utilidades->mostrarMensaje('Sorry! Please verify the dates.');
             }
-         
+
         if (isset($resultado))
             $utilidades->mostrarMensaje('The event was successfully created.');
         else
-            $utilidades->mostrarMensaje('Sorry! There was an error. Please try again.');                    
-        
+            $utilidades->mostrarMensaje('Sorry! There was an error. Please try again.');
+
         $utilidades->Redireccionar('controladores/formEventos.php');
      }
-    
+
         public function mostrarFormularioTrabaja() {
         $plantilla = new Plantilla();
         $plantilla->verPagina('formularioEventoTraba');
     }
-    
-    public function guardarEventoTrabajador($datosEvento) {        
+
+    public function guardarEventoTrabajador($datosEvento) {
         $bd = new MySQL();
         $utilidades = new Utilidades();
         $plantilla = new Plantilla();
         $dateNow = new DateTime();
         $date = $dateNow->format('Y-m-d');
         $Sesion = new Sesion();
-        
+
         $tabla = 'eventos';
         $columnas = 'idCuenta,FechaIni,FechaFin,Nombre,Descripcion';
 
@@ -75,13 +79,13 @@ class Evento {
         $Nombre=$datosEvento['nombre'];
         $Descripcion=$datosEvento['descripcion'];
         $idCuenta=$Sesion->obtenerVariableSesion('idUsuario');
-        
-        $valores = '"'.$idCuenta. '","' . 
-                    $FechaIni. '","' . 
-                    $FechaFin. '","' . 
+
+        $valores = '"'.$idCuenta. '","' .
+                    $FechaIni. '","' .
+                    $FechaFin. '","' .
                     $Nombre . '","'.
                     $Descripcion.'"';
-    
+
     if ($date <= $FechaIni){
         if($FechaIni <= $FechaFin){
             $resultado = $bd->insertarRegistro($tabla, $columnas, $valores);
@@ -91,10 +95,10 @@ class Evento {
             }else{
                     $utilidades->mostrarMensaje('Sorry! Please verify the dates.');
             }
-         
+
         if (isset($resultado)){
             $utilidades->mostrarMensaje('The event was successfully created.');
-             
+
             $consulta1= 'SELECT cuenta_cuenta FROM cuenta WHERE idCuenta ='.$idCuenta;
             $producto = $bd->consulta($consulta1);
             $id=$producto[0]['cuenta_cuenta'];
@@ -113,15 +117,15 @@ class Evento {
                             $tipo = 2;
                             $idCuenta_cuenta = $Sesion->obtenerVariableSesion('idUsuario');
                             $user_idCuenta=$Sesion->obtenerVariableSesion('nombreUsuario');
-                            $valores3 = '"' .$tipo. '","' 
+                            $valores3 = '"' .$tipo. '","'
                                          .$id.'","'
                                          .$idCuenta_cuenta.'","'
                                          .$user_idCuenta.'"';
                             $consuLta= $bd ->insertarRegistro($tabla3,$columnas3,$valores3);
         }
         else
-            $utilidades->mostrarMensaje('Sorry! There was an error. Please try again.');                    
-        
+            $utilidades->mostrarMensaje('Sorry! There was an error. Please try again.');
+
         $utilidades->Redireccionar('controladores/formEventos.php');
      }
 }

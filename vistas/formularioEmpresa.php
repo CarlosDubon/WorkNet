@@ -9,26 +9,26 @@
     </head>
     <body class="fondi">
         <div class="login-form" id="registro">
-            <center><h3>Regístrate</h3></center>                   
+            <center><h3>Regístrate</h3></center>
             <form action="../controladores/guardarEmpresa.php" method="POST">
             <div class="row">
                 <div class="col-lg-6">
-                <div class='form-group'>    
+                <div class='form-group'>
                     <label for="Empresa">Empresa:</label><br>
                     <input type='text' class='form-control login-field' id="letras" onkeydown="return validarLetras(event)" name='empresa' placeholder='Empresa' required /><br>
                     </div>
                 </div>
                 <div class="col-lg-6">
-                    <div class='form-group'> 
+                    <div class='form-group'>
                     <label for="Usuario">Usuario:</label><br>
                     <input type='text' class='form-control login-field' name='user' placeholder='Usuario' required /><br>
                     </div>
                 </div>
                 </div>
-                
+
                 <div class="row">
                     <div class="col-lg-6">
-                    <div class='form-group'> 
+                    <div class='form-group'>
                     <label for="Contraseña">Contraseña:</label><br>
                     <input type='password' minlength="5" id="pass" class='form-control login-field' name='password' placeholder='Contraseña' required  /><br>
                     <label for="Repita Contraseña">Confirmar contraseña:</label><br>
@@ -52,11 +52,11 @@
                     <label for="FechaNacimiento"> Fecha de fundación (mes/día/año):</label><br>
                     <input type='date' class='form-control login-field' name='birth' placeholder='Fecha de fundación' required />
                     </div>
-                </div>    
+                </div>
                 <div class="row">
                     <div class="col-lg-6">
                     <label for="email">E-mail:</label><br>
-                    <div class='form-group'> 
+                    <div class='form-group'>
                     <input type='email' id="email" class='form-control login-field' name='email' placeholder='E-mail' required /><br>
                     </div>
                     </div>
@@ -77,7 +77,7 @@
                 </div>
                 <div class="form-group">
                     <label for="control-label">Categoria</label><br>
-                    <select class="form-control" id="select" name="categoria">
+                    <select class="form-control" id="select" name="categoria" required>
                     <option value="">Seleccione una categoría</option>
                         {{opciones}}
                     </select>
@@ -89,14 +89,14 @@
                 </div>
             </form>
         </div>
-        <script src="../vistas/recursos/js/jquery.min.js"></script>    
-        <script src="../vistas/recursos/js/flat-ui.min.js"></script>    
+        <script src="../vistas/recursos/js/jquery.min.js"></script>
+        <script src="../vistas/recursos/js/flat-ui.min.js"></script>
     <script>
     $(document).ready(function(){
         $("#pass,#repass").keyup(function(){
             var pass=$("#pass").val();
             var repass=$("#repass").val();
-            
+
                 if(pass != repass){
                     $("#val").parent().addClass("has-error");
                     $("#val").parent().removeClass("has-success");
@@ -112,7 +112,7 @@
         $("#mail,#remail").keyup(function(){
             var email=$("#email").val();
             var remail=$("#remail").val();
-            
+
                 if(email != remail){
                     $("#val2").parent().addClass("has-error");
                     $("#val2").parent().removeClass("has-success");
@@ -125,8 +125,8 @@
 
                 }
         });
-    }); 
-    
+    });
+
     </script>
     <script type="text/javascript">
 	function validarNumeros(e) { // 1
@@ -137,10 +137,10 @@
 		if (tecla==189) return true; // guion
 		if (e.ctrlKey && tecla==88) { return true}; //Ctrl x
 		if (tecla>=96 && tecla<=105) { return true;} //numpad
- 
+
 		patron = /[0-9]/; // patron
- 
-		te = String.fromCharCode(tecla); 
+
+		te = String.fromCharCode(tecla);
 		return patron.test(te); // prueba
 	}
 </script>
@@ -155,7 +155,7 @@
                 val = val.split(sep)
                 val2 = ''
                 for(r=0;r<val.length;r++){
-                    val2 += val[r]	
+                    val2 += val[r]
                 }
                 if(nums){
                     for(z=0;z<val2.length;z++){
@@ -191,15 +191,15 @@
     tecla = String.fromCharCode(key).toLowerCase();
     letras = " abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
     especiales = [8,37,39,46];
- 
+
     tecla_especial = false
     for(var i in especiales){
  if(key == especiales[i]){
      tecla_especial = true;
      break;
-        } 
+        }
     }
- 
+
     if(letras.indexOf(tecla)==-1 && !tecla_especial)
         return false;
 }

@@ -1,4 +1,4 @@
-<?php 
+<?php
   // include("plantilla/Plantilla.php");
   // include("fragmento/NavBarL-Empre.php");
   include("plantilla/planti.php");
@@ -21,7 +21,7 @@
 		defaultView: 'agendaWeek',
 		$('#calendar').fullCalendar({
 			header: {
-                
+
 				left: 'prev,next today',
 				center: 'title',
 				right: 'month,basicWeek'
@@ -35,11 +35,11 @@
             }
         }
 		});
-		
+
 	});
 
 </script>
-   
+
 </head>
 <body>
 
@@ -59,4 +59,3 @@
 
     </center>
 </body>
-

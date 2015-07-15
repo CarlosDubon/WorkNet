@@ -1,18 +1,18 @@
 <div class="login-form" id="perfil">
     <div class="panel panel-primary">
           <div class="panel-heading">
-            <div class="row"> 
+            <div class="row">
                   <div class="col-xs-3 col-md-12">
                    <!-- <img src="{{photo}}" id="backimg" >-->
                       <center><a href="" class="thumbnail" id="photot" data-toggle="modal" data-target="#myModal">
                           <img src="{{photo}}" alt="User Avatar" class="img-circle" id="foto-perfil">
-                        </a></center> 
+                        </a></center>
                 </div>
           </div>
-          
+
     </div>
         </div>
-    
+
         <div class="panel panel-default">
             <div class=" panel-heading">
                 <a href="./agregarAmigo.php?idCuenta={{Id}}" class="btn btn-success"><i class="fa fa-user-plus"></i> Agregar amigo</a>
@@ -21,10 +21,10 @@
 
             </div>
     </div>
-    
+
     <div class="panel panel-default">
             <div class=" panel-heading">
-               <b>Información General</b> 
+               <b>Información General</b>
             </div>
     </div>
         <div class="panel panel-default" id="az">
@@ -34,10 +34,11 @@
             <b>E-mail:</b> {{Correo}}<br>
             <b>Fecha de fundación:</b> {{Fun}}<br>
             <b>Web Site:</b> {{Web}}<br>
+            <b>Categoria:</b> {{Categoria}}
           </div>
     </div>
     <input type="hidden" value="{{Id}}">
-    
+
         </div>
 
 <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
@@ -53,4 +54,3 @@
     </div>
   </div>
 </div>
-

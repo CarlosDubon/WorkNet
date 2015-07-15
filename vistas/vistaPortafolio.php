@@ -5,7 +5,7 @@
   </div>
   <div class="panel-body">
       {{listaArchivos}}
-            
+
       <div class="login-form" id="portafolio">
 
           <form action="../controladores/subirArchivo.php" method="POST" enctype="multipart/form-data">
@@ -14,7 +14,7 @@
                   <center><input type="file" name="file" class="btn btn-info"></center>
               <br>
                   <center><input type="submit" value="Actualizar" class="btn btn-warning"></center>
-              
+
           </form>
 
       </div>
@@ -22,7 +22,7 @@
 </div>
  <script type="text/javascript" language="javascript" class="init">
     $(document).ready(function() {
+
         $('#miTabla').DataTable();
     });
 </script>
-
