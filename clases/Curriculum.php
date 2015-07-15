@@ -6,18 +6,18 @@ require_once realpath(dirname(__FILE__) . '/./Plantilla.php');
 class Curriculum {
     public function mostrarFormulario(){
         $plantilla = new Plantilla();
-         
+
         $plantilla->verPagina('fromCurriculum');
     }
-    
+
     public function crearCurriculum($datos){
         $db = new MySQL();
         $sesion = new Sesion();
         $plantilla = new Plantilla();
         $utilidades = new Utilidades();
-        
+
         $tabla = 'curriculum';
-        
+
         $columnas='Nombre_Completo,Telefono,Celular,direccion,FormacionAc,Experiencia,Referencia1,TelRef1,Referencia2,TelRef2,Referencia3,TelRef3,idCuenta_Cuenta';
 
         $id = $sesion->obtenerVariableSesion('idUsuario');
@@ -34,9 +34,9 @@ class Curriculum {
         $tel1 = $datos['tel1'];
         $tel2 = $datos['tel2'];
         $tel3 = $datos['tel3'];
-        
-        
-        
+
+
+
         $valores = '"'.$nombre.'","'
                     .$tel.'","'
                     .$cel.'","'
@@ -49,10 +49,10 @@ class Curriculum {
                     .$tel2.'","'
                     .$ref3.'","'
                     .$tel3.'","'
-                    .$id.'"'; 
-        
+                    .$id.'"';
+
         $result = $db->insertarRegistro($tabla, $columnas, $valores);
-        
+
         if($result){
             $utilidades->mostrarMensaje("El curriculum se creo exitosamente");
             $utilidades->Redireccionar('controladores/formCurriculum.php');
@@ -63,11 +63,11 @@ class Curriculum {
         }
 
     }
-    
+
     public function convertirCurHTML($C = array()){
-        
+
         $c = '';
-        
+
         for ($i = 0; $i < count($C); $i++){
             $c.='<div class="panel panel-default">
                   <div class="panel-heading">'.$C[$i]['Nombre_Completo'].'</div>
@@ -92,37 +92,37 @@ class Curriculum {
         }
         return $c;
     }
-    
+
     public function mostrarCurriculum(){
         $sql = new MySQL();
         $sesion = new Sesion();
         $plantilla = new Plantilla();
-        
+
         $id = $sesion->obtenerVariableSesion('idUsuario');
         $query = 'SELECT Nombre_Completo,Telefono,Celular,direccion,FormacionAc,Experiencia,Referencia1,TelRef1,Referencia2,TelRef2,Referencia3,TelRef3,idCuenta_Cuenta FROM curriculum WHERE idCuenta_cuenta='.$id;
         $result = $sql->consulta($query);
-        
+
         $variables['curriculum'] = $this->convertirCurHTML($result);
-        
+
         $plantilla->verPagina('curriculum',$variables);
     }
-    
+
     public function verCurriculumA($id){
         $sql = new MySQL();
         $sesion = new Sesion();
         $plantilla = new Plantilla();
-        
+
         $query = 'SELECT Nombre_Completo,Telefono,Celular,direccion,FormacionAc,Experiencia,Referencia1,TelRef1,Referencia2,TelRef2,Referencia3,TelRef3,idCuenta_Cuenta FROM curriculum WHERE idCuenta_cuenta='.$id;
         $result = $sql->consulta($query);
-        
+
         $variables['curriculumV'] = $this->convertirCurAmigoHTML($result);
-        
+
         $plantilla->verPagina('curriculumV',$variables);
     }
         public function convertirCurAmigoHTML($C = array()){
-        
+
         $c = '';
-        
+
         for ($i = 0; $i < count($C); $i++){
             $c.='<div class="panel panel-default">
                   <div class="panel-heading">'.$C[$i]['Nombre_Completo'].'</div>
@@ -147,4 +147,13 @@ class Curriculum {
         }
         return $c;
     }
+
+    private function verificarCurriculum();
+    $sesion= new Sesion();
+    $db = new MySQL();
+    $utilidades = new Utilidades();
+
+    $id = $sesion->obtenerVariableSesion('idusuario');
+    $query = 'SELECT idCuenta_cuenta FROM curriculum WHERE idCuenta_cuenta='.$id;
+    $result = $db->consulta($query);
 }
