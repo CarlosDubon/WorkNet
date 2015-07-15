@@ -12,6 +12,8 @@
 <script src='recursos/Full_calendar/fullcalendar/lib/jquery.min.js'></script>
 <script src='recursos/Full_calendar/fullcalendar/lib/jquery-ui.custom.min.js'></script>
 <script src='recursos/Full_calendar/fullcalendar/fullcalendar.min.js'></script>
+<script src='recursos/Full_calendar/fullcalendar/lang/es.js'></script>
+
 
 
 

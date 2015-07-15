@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 12-07-2015 a las 16:57:56
+-- Tiempo de generación: 15-07-2015 a las 05:30:52
 -- Versión del servidor: 5.6.21
 -- Versión de PHP: 5.6.3
 
@@ -30,14 +30,15 @@ CREATE TABLE IF NOT EXISTS `amigo` (
 `idAmigo` int(11) NOT NULL,
   `idCuenta` int(11) NOT NULL,
   `idCuentaAmigo` int(11) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=23 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=27 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Volcado de datos para la tabla `amigo`
 --
 
 INSERT INTO `amigo` (`idAmigo`, `idCuenta`, `idCuentaAmigo`) VALUES
-(22, 4, 8);
+(25, 4, 8),
+(26, 8, 4);
 
 -- --------------------------------------------------------
 
@@ -73,7 +74,16 @@ CREATE TABLE IF NOT EXISTS `categorias` (
 `idCategorias` int(11) NOT NULL,
   `NombreCat` varchar(20) NOT NULL,
   `cuenta_idCuenta` int(11) NOT NULL DEFAULT '0'
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
+
+--
+-- Volcado de datos para la tabla `categorias`
+--
+
+INSERT INTO `categorias` (`idCategorias`, `NombreCat`, `cuenta_idCuenta`) VALUES
+(2, 'General', 1),
+(3, 'Informatica', 1),
+(4, 'Restaurantes', 1);
 
 -- --------------------------------------------------------
 
@@ -163,10 +173,10 @@ CREATE TABLE IF NOT EXISTS `cuenta` (
 
 INSERT INTO `cuenta` (`idCuenta`, `Tipo`, `Usuario`, `Correo`, `Password`, `ImgCuenta`, `Empresa`, `Nombre`, `Apellido`, `FechaNac`, `DUI`, `Direc`, `Telefono`, `SitioWeb`, `Estado`, `Categoria`, `work_count`, `new_count`, `cuenta_cuenta`) VALUES
 (1, '1', 'admin', 'admin@admin.com', 'admin', '', 'admin', 'admin', 'admin', '0000-00-00', '', '', '', '', '', '', '0', 0, 0),
-(4, '2', 'wn', 'hsdkhfs@fjasd.com', 'work1', 'Squirtle.jpg', 'WorkNet', 'ffdasfds', 'sdfdsaf', '2015-05-01', '654567654', 'sdfafsda', '2354123', 'https://bootswatch.com/', '1', '', '1', 0, 0),
-(6, '3', 'carlos98', 'carlosminerodubon@gmail.com', 'WorkNet2015', 'hgcyhgchfgvhdf.gif', 'cn', 'Carlos', 'Minero', '2015-05-29', '34567890-9', 'no definida', '0000', 'no definida', '0', '', '0', 0, 3),
-(7, '4', 'CarlosM', 'carlos@gmail.com', 'carlos98', '333853.jpg', 'no definida', 'Carlos', 'Minero', '1993-02-09', '78522348-5', 'no definida', '0000', 'no definida', '0', '', '0', 0, 0),
-(8, '2', 'BK_ALoKing', 'bk_aloking@gmail.com', '123456', 'burguer.jpg', 'Burguer King', 'Nayib', 'Bukele', '1999-06-16', '46754621-6', 'En todo sivar', '2256-5654', 'http://livepipe.net/control/rating', '1', '', '1', 2, 0),
+(4, '2', 'wn', 'hsdkhfs@fjasd.com', 'work1', 'Squirtle.jpg', 'WorkNet', 'ffdasfds', 'sdfdsaf', '2015-05-01', '654567654', 'sdfafsda', '2354123', 'https://bootswatch.com/', '1', 'Restaurantes', '1', 0, 0),
+(6, '3', 'carlos98', 'carlosminerodubon@gmail.com', 'WorkNet2015', 'hgcyhgchfgvhdf.gif', 'cn', 'Carlos', 'Minero', '2015-05-29', '34567890-9', 'no definida', '0000', 'no definida', '0', '', '0', 2, 3),
+(7, '4', 'CarlosM', 'carlos@gmail.com', 'carlos98', '333853.jpg', 'no definida', 'Carlos', 'Minero', '1993-02-09', '78522348-5', 'no definida', '0000', 'no definida', '0', '', '0', 4, 0),
+(8, '2', 'BK_ALoKing', 'bk_aloking@gmail.com', '123456', 'burguer.jpg', 'Burguer King', 'Nayib', 'Bukele', '1999-06-16', '46754621-6', 'En todo sivar', '2256-5654', 'http://livepipe.net/control/rating', '1', 'Restaurantes', '1', 0, 0),
 (9, '3', 'NayibJr', 'nayibjr@gmail.com', '123456', 'nayib-1.jpg', 'BK_ALoKing', 'Nayib Junior', 'Bukele', '1995-02-08', '45567645-6', 'no definida', '0000', 'no definida', '0', '', '0', 0, 8),
 (10, '4', 'JRjunior32', 'junior.rod78@gmail.com', '123456', 'default.jpg', 'no definida', 'Julio', 'Rodriguez', '1992-06-10', '54654646-5', 'no definida', '0000', 'no definida', '0', '', '0', 0, 0);
 
@@ -231,25 +241,12 @@ CREATE TABLE IF NOT EXISTS `eventos` (
 `idEventos` int(11) NOT NULL,
   `idCuenta` int(11) NOT NULL,
   `FechaIni` date NOT NULL,
+  `HoraIni` time NOT NULL,
   `FechaFin` date NOT NULL,
+  `HoraFin` time NOT NULL,
   `Nombre` varchar(30) NOT NULL,
   `Descripcion` tinytext NOT NULL
 ) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8;
-
---
--- Volcado de datos para la tabla `eventos`
---
-
-INSERT INTO `eventos` (`idEventos`, `idCuenta`, `FechaIni`, `FechaFin`, `Nombre`, `Descripcion`) VALUES
-(1, 1, '2015-04-16', '2015-04-17', 'sdfa', 'dasf'),
-(2, 1, '2015-04-16', '2015-04-17', 'sdfa', 'dasf'),
-(6, 8, '2015-07-10', '2015-07-11', 'ALL YOU CAN EAT', 'All you can eat, just in burguer King babyy'),
-(7, 9, '2015-07-10', '2015-07-12', 'puerbas', 'puerbas'),
-(8, 9, '2015-07-10', '2015-07-12', 'puerbas', 'puerbas'),
-(9, 9, '2015-07-10', '2015-07-12', 'puerbas', 'puerbas'),
-(10, 9, '2015-07-10', '2015-07-12', 'puerbas', 'puerbas'),
-(11, 9, '2015-07-10', '2015-07-12', 'puerbas', 'puerbas'),
-(12, 9, '2015-07-10', '2015-07-10', 'Prueba', 'Prueba');
 
 -- --------------------------------------------------------
 
@@ -312,8 +309,16 @@ CREATE TABLE IF NOT EXISTS `portafolio` (
   `NombreArchivo` varchar(30) NOT NULL,
   `FechaSubida` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   `Size` int(11) NOT NULL,
+  `calificacion` int(11) NOT NULL DEFAULT '0',
   `cuenta_idCuenta` int(11) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8;
+
+--
+-- Volcado de datos para la tabla `portafolio`
+--
+
+INSERT INTO `portafolio` (`idPortafolio`, `NombreArchivo`, `FechaSubida`, `Size`, `calificacion`, `cuenta_idCuenta`) VALUES
+(7, 'BackupWorknet.sql', '2015-07-12 15:14:14', 21423, 0, 8);
 
 -- --------------------------------------------------------
 
@@ -365,15 +370,7 @@ CREATE TABLE IF NOT EXISTS `solicitudes` (
   `cuentaAmigo` int(45) NOT NULL,
   `cuenta_idCuenta` int(11) NOT NULL,
   `user_idCuenta` varchar(45) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
-
---
--- Volcado de datos para la tabla `solicitudes`
---
-
-INSERT INTO `solicitudes` (`idSoli`, `Fecha`, `Tipo`, `cuentaAmigo`, `cuenta_idCuenta`, `user_idCuenta`) VALUES
-(5, '2015-07-09 21:48:39', '1', 8, 4, 'wn'),
-(6, '2015-07-09 21:49:09', '2', 8, 9, 'NayibJr');
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Índices para tablas volcadas
@@ -483,7 +480,7 @@ ALTER TABLE `solicitudes`
 -- AUTO_INCREMENT de la tabla `amigo`
 --
 ALTER TABLE `amigo`
-MODIFY `idAmigo` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=23;
+MODIFY `idAmigo` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=27;
 --
 -- AUTO_INCREMENT de la tabla `aplicadores`
 --
@@ -493,7 +490,7 @@ MODIFY `idAplicacion` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=6;
 -- AUTO_INCREMENT de la tabla `categorias`
 --
 ALTER TABLE `categorias`
-MODIFY `idCategorias` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
+MODIFY `idCategorias` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=5;
 --
 -- AUTO_INCREMENT de la tabla `chat`
 --
@@ -538,7 +535,7 @@ MODIFY `idPerfil` int(11) NOT NULL AUTO_INCREMENT;
 -- AUTO_INCREMENT de la tabla `portafolio`
 --
 ALTER TABLE `portafolio`
-MODIFY `idPortafolio` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=6;
+MODIFY `idPortafolio` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=8;
 --
 -- AUTO_INCREMENT de la tabla `publicaciones`
 --
@@ -553,7 +550,7 @@ MODIFY `idSeguidores` int(11) NOT NULL AUTO_INCREMENT;
 -- AUTO_INCREMENT de la tabla `solicitudes`
 --
 ALTER TABLE `solicitudes`
-MODIFY `idSoli` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=7;
+MODIFY `idSoli` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- Restricciones para tablas volcadas
 --
