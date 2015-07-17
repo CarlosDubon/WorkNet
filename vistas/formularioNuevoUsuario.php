@@ -47,12 +47,12 @@
               <div class="row">
                 <div class="col-lg-6">
                       <div class="from-group">
-                      Correo Electronico:<input type="email" id="email" class="form-control login-field" name="mail" placeholder="Correo Electronico" required /><br>
+                      Correo Electrónico:<input type="email" id="email" class="form-control login-field" name="mail" placeholder="Correo Electrónico" required /><br>
                       </div>
                </div>
                     <div class="col-lg-6">
                       <div class="form-group">
-                      Confirmar Electronico:<input type="email" id="remail" class="form-control login-field" name="remail" placeholder="Confirmar Correo Electronico" required /><br>
+                      Confirmar Electrónico:<input type="email" id="remail" class="form-control login-field" name="remail" placeholder="Confirmar Correo Electrónico" required /><br>
                       <div id="val2"></div>
                     </div>
                     </div>
