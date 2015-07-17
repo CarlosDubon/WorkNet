@@ -11,12 +11,12 @@
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title" id="myModalLabel">Aviso</h4>
+        <h4 class="modal-title" id="myModalLabel">¡Aviso!</h4>
       </div>
     <form action="./guardarAplicador.php" method="POST">
       <div class="modal-body">
-        Esta seguro de enviar una solicitud de aplicacion en la oferta seleccionada?
-          <span class="help-block">Esta acción no se podra revertir</span>
+        ¿Está seguro de enviar una solicitud de aplicación en la oferta seleccionada?
+          <span class="help-block">Esta acción no se podrá revertir</span>
           <input type="hidden" value="{{idOferta}}" name="idOferta">
           <input type="hidden" value="{{idEmpresa}}" name="idEmpresa">
       </div>

@@ -16,10 +16,10 @@
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title" id="myModalLabel">Aviso!</h4>
+        <h4 class="modal-title" id="myModalLabel">¡Aviso!</h4>
       </div>
       <div class="modal-body">
-        Esta seguro que quiere activar el usuario seleccionado?
+        ¿Está seguro que quiere activar el usuario seleccionado?
           <span class="help-block">Esta acción puede revertirse desactivando el usuario</span>
       </div>
       <div class="modal-footer">
@@ -34,10 +34,10 @@
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title" id="myModalLabel">Aviso!</h4>
+        <h4 class="modal-title" id="myModalLabel">¡Aviso!</h4>
       </div>
       <div class="modal-body">
-        Esta seguro que quiere desactivar el usuario seleccionado?
+        ¿Está seguro que quiere desactivar el usuario seleccionado?
           <span class="help-block">Esta acción puede revertirse activando el usuario</span>
       </div>
       <div class="modal-footer">
@@ -52,11 +52,11 @@
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title" id="myModalLabel">Aviso!</h4>
+        <h4 class="modal-title" id="myModalLabel">¡Aviso!</h4>
       </div>
       <div class="modal-body">
-        Esta seguro que desea reiniciar la contraseña a "WorkNet2015"?
-          <span class="help-block">Si acepta realizar esta acción no se podra revertir </span>
+        ¿Está seguro que desea reiniciar la contraseña a "WorkNet2015"?
+          <span class="help-block">Si acepta realizar esta acción no se podrá revertir </span>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
@@ -70,11 +70,11 @@
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title" id="myModalLabel">Aviso!</h4>
+        <h4 class="modal-title" id="myModalLabel">¡Aviso!</h4>
       </div>
       <div class="modal-body">
-        Esta seguro que desea eliminar el usuario seleccionado?
-          <span class="help-block">Si se realiza esta acción no habra registros del usuario que se eliminara</span>
+        ¿Está seguro que desea eliminar el usuario seleccionado?
+          <span class="help-block">Si se realiza esta acción no habrán registros del usuario que se elimine</span>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>

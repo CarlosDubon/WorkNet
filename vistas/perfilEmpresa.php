@@ -56,7 +56,7 @@
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title" id="myModalLabel">Cambiar Correo Electronico</h4>
+        <h4 class="modal-title" id="myModalLabel">Cambiar Correo Electrónico</h4>
       </div>
       <div class="modal-body">
         <form action="./cambiarCorreo.php" method="POST">
@@ -83,16 +83,16 @@
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title" id="myModalLabel">Cambiar Pagina Web</h4>
+        <h4 class="modal-title" id="myModalLabel">Cambiar Website</h4>
       </div>
       <div class="modal-body">
         <form action="./cambiarWeb.php" method="POST">
           <div class="form-group">
-             <label class="control-label" for="disabledInput">Pagina Web Anterior</label>
+             <label class="control-label" for="disabledInput">Website Anterior</label>
              <input class="form-control" id="disabledInput" value="{{Web}}" type="text" placeholder="Disabled input here..." disabled="">
         </div>
           <div class="form-group">
-              <label class="control-label" for="focusedInput">Nueva Pagina Web</label>
+              <label class="control-label" for="focusedInput">NuevWebsite</label>
               <input class="form-control" name="newWeb" id="focusedInput" type="url" required>
             </div>
       </div>
@@ -109,16 +109,16 @@
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title" id="myModalLabel">Cambiar de Categoria</h4>
+        <h4 class="modal-title" id="myModalLabel">Cambiar de Categoría</h4>
       </div>
       <div class="modal-body">
         <form action="./cambiarCat.php" method="POST">
           <div class="form-group">
-             <label class="control-label" for="disabledInput">Categoria Anterior</label>
+             <label class="control-label" for="disabledInput">Categoría Anterior</label>
              <input class="form-control" id="disabledInput" value="{{Categoria}}" type="text" placeholder="Disabled input here..." disabled="">
         </div>
           <div class="form-group">
-              <label class="control-label" for="focusedInput">Nueva Categoria</label>
+              <label class="control-label" for="focusedInput">Nueva Categoría</label>
               <select class="form-control" name="categoria" required>
                   {{categoria}}
               </select>
