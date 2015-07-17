@@ -14,7 +14,7 @@
                 
                 <div class="form-group">
 
-                    <input type="text" class="form-control login-field" name="email" placeholder="Correo Electronico" id="login-name" />
+                    <input type="text" class="form-control login-field" name="email" placeholder="Correo Electrónico" id="login-name" />
                     <label class="login-field-icon" for="login-name"></label>
                 </div>
                 <div id="divcen">
