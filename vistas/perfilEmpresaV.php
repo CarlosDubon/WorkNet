@@ -33,7 +33,7 @@
             <b>Empresa:</b> {{Empresa}}<br>
             <b>Mail:</b> {{Correo}}<br>
             <b>Fecha de fundación:</b> {{Fun}}<br>
-            <b>Sitio Web:</b> {{Web}}<br>
+            <b>Website:</b> {{Web}}<br>
             <b>Categoria:</b> {{Categoria}}
           </div>
     </div>
@@ -64,7 +64,7 @@
       </div>
         <form action="./denunciar.php" method="POST">
       <div class="modal-body">
-          <h6>Por favor escriba la razon de su denuncia</h6><input type="hidden" name="id" value="{{Id}}">
+          <h6>Por favor escriba la razón de su denuncia</h6><input type="hidden" name="id" value="{{Id}}">
            <div class="form-group">
                 <div class="col-lg-10">
                     <textarea required class="form-control" name="razon" rows="3" id="publicacion" id="textArea"></textarea>

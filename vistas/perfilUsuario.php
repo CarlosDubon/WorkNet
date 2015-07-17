@@ -28,7 +28,7 @@
             <b>Usuario:</b> {{Usuario}}<br>
             <b>DUI:</b> {{DUI}}<br>
             <b>Nombre:</b> {{Nombre}}<br>
-              <b>Apellido: </b> {{Apellido}}<br>
+            <b>Apellido: </b> {{Apellido}}<br>
             <b>Email:</b> {{Correo}} <small id="de"><a href =""  data-toggle="modal" data-target="#ChangeE-mail">Editar<i class="fa fa-pencil"> </i></a></small><br>
           </div>
     </div>
@@ -53,7 +53,7 @@
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title" id="myModalLabel">Cambiar Correo Electronico</h4>
+        <h4 class="modal-title" id="myModalLabel">Cambiar Correo Electrónico</h4>
       </div>
       <div class="modal-body">
         <form action="./cambiarCorreoUsuario.php" method="POST">

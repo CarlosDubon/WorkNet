@@ -28,7 +28,7 @@
             <b>Usuario:</b> {{Usuario}}<br>
             <b>DUI:</b> {{DUI}}<br>
             <b>Nombre:</b> {{Nombre}}<br>
-              <b>Apellido: </b> {{Apellido}}<br>
+            <b>Apellido: </b> {{Apellido}}<br>
             <b>Mail:</b> {{Correo}}<br>
           </div>
     </div>
@@ -57,7 +57,7 @@
       </div>
         <form action="./denunciar.php" method="POST">
       <div class="modal-body">
-          <h6>Por favor escriba la razon de su denuncia</h6><input type="hidden" name="id" value="{{Id}}">
+          <h6>Por favor escriba la razón de su denuncia</h6><input type="hidden" name="id" value="{{Id}}">
            <div class="form-group">
                 <div class="col-lg-10">
                     <textarea required class="form-control" name="razon" rows="3" id="publicacion" id="textArea"></textarea>
