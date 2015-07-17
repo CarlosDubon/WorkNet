@@ -33,6 +33,7 @@
                 <input type="text"  class="form-control login-field" name="requisitos" value="{{requerimientos}}" placeholder="Requerimientos" required /><br>
                 <input type="submit" value="Crear" class="btn btn-primary btn-lg btn-warning">                
                 <a href="./publicar.php" class="btn btn-danger">Cancelar</a>
+
                 </p>
             </div>    
         </form>

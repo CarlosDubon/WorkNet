@@ -51,6 +51,10 @@
         <div class="panel panel-primary">
           <div class="panel-heading">
             <h3 class="panel-title">Calendario</h3>
+              <a href="#" class="text-default dropdown-toggle" id="deE" data-toggle="dropdown"><i class="fa fa-cogs"></i></a>
+                <ul class="dropdown-menu" id="enfren">
+                    <li><a href="../controladores/verEventosLista.php"><i class="fa fa-eye"></i> Ver lista de mis eventos</a></li>
+                </ul>
           </div>
           <div class="panel-body">
             <div id='calendar'></div>

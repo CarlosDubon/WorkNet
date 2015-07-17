@@ -15,7 +15,7 @@
                   <div class="col-lg-6">
                     <div class="from-group">
                       Usuario:
-                      <input type="text" class="form-control login-field" name="usuario" placeholder="Usuario" required /><br>
+                      <input type="text" class="form-control login-field" name="usuario" maxlength="10" placeholder="Usuario" required /><br>
                     </div>
                   </div>
                   <div class="col-lg-6">

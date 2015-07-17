@@ -18,7 +18,9 @@
                 <li class="active"><a href="#"></a></li>
                 <li><a href="../controladores/publicar.php"><span class="fui-home"></span> Inicio</a></li>
                 <li><a href="./verPerfilUsuario.php"><span class="fui-user"></span>Perfil</a></li>
-                                <li class="dropdown">
+                <li> <a href="./verNotificaciones.php"><span class="fa fa-globe"></span> Notificaciones </a></li>
+    
+                <li class="dropdown">
                     <a href="" class="dropdown-toggle" data-toggle="dropdown"><span class="fui-gear"></span> Cuenta<b class="caret"></b></a>
                     <ul class="dropdown-menu">
                         <li><span class="help-block" id="mover"><i class="fa fa-search"></i> Buscar Amigos</span></li>

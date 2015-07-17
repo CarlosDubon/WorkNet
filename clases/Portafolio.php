@@ -68,12 +68,26 @@ var $rutaServidor='C:\\xampp\\htdocs\\WorkNet\\portafolio\\';
 
          $acciones.='<a id="textRed" href="./eliminarArchivo.php?idPortafolio={{id}}" > <i class="fui-cross"></i></a></div></center>';
 
-
+        $estrellas = "SELECT calificacion FROM portafolio WHERE cuenta_idCuenta = $idUsuario";
+        $calcular = $mysql->consulta($estrellas);
+        $numeroStrella = $calcular[0]['calificacion'];
+        $i = 1;
+        $ii = 1;
+        $resta = 5 - $numeroStrella;
+        $acciones .= '<center><div class="ec-stars-wrapper">';
+                    
+        while($i != $numeroStrella + 1) {
+             $acciones .= '<a class="rate activaStar" href="#" data-value="'.$i.'" title="Votar con 1 estrellas">&#9733;</a>';
+            $i++;
+        }
+        while($ii != $resta + 1) {
+             $acciones .= '<a class="rate" href="#" data-value="'.$i.'" title="Votar con 1 estrellas">&#9733;</a>';
+            $i++;
+            $ii++;
+        }
+         $acciones .= '</div>';
 
         $variables['listaArchivos'] = $utilidades->convertirTabla($listaArchivos, $encabezado, $acciones);
-
-
-
 
         $plantilla->verPagina('vistaPortafolio', $variables);
     }
@@ -95,19 +109,26 @@ var $rutaServidor='C:\\xampp\\htdocs\\WorkNet\\portafolio\\';
         $estrellas = "SELECT calificacion FROM portafolio WHERE cuenta_idCuenta = $id";
         $calcular = $db->consulta($estrellas);
         $numeroStrella = $calcular[0]['calificacion'];
-
+        $i = 1;
+        $ii = 1;
+        $resta = 5 - $numeroStrella;
         $encabezado = array('<i class="fa fa-info"></i> ID','<i class="fa fa-file-text-o"></i> File');
         $acciones = '<a href="../portafolio/'.$nombreUsuario[0]['Usuario'].'/{{id}}" ><center><i class="fa fa-download"></i></a>';
-        $acciones .= '<center><div class="ec-stars-wrapper">
-                    <a class="rate" href="#" data-value="1" title="Votar con 1 estrellas">&#9733;</a>
-                    <a class="rate" href="#" data-value="2" title="Votar con 2 estrellas">&#9733;</a>
-                    <a class="rate" href="#" data-value="3" title="Votar con 3 estrellas">&#9733;</a>
-                    <a class="rate" href="#" data-value="4" title="Votar con 4 estrellas">&#9733;</a>
-                    <a class="rate" href="#" data-value="5" title="Votar con 5 estrellas">&#9733;</a>
-                    </div>';
-
+        $acciones .= '<center><div class="ec-stars-wrapper">';
+                    
+        while($i != $numeroStrella + 1) {
+             $acciones .= '<a class="rate activaStar" href="#" data-value="'.$i.'" title="Votar con 1 estrellas">&#9733;</a>';
+            $i++;
+        }
+        while($ii != $resta + 1) {
+             $acciones .= '<a class="rate" href="#" data-value="'.$i.'" title="Votar con 1 estrellas">&#9733;</a>';
+            $i++;
+            $ii++;
+        }
+         $acciones .= '</div>';
         $variables['listaArchivos'] = $utilidades->convertirTabla($resultado, $encabezado, $acciones);
 
+        
         $plantilla->verPagina('vistaPortafolioV', $variables);
 
 
@@ -132,12 +153,15 @@ var $rutaServidor='C:\\xampp\\htdocs\\WorkNet\\portafolio\\';
         $utilidades->Redireccionar('controladores/crearPortafolio.php');
     }
 
-    public function votarEstrella($estrella){
+    public function votarEstrella($idPorta){
         $bd = new MySQL();
+        
+        $partialStates = $_POST['numero'];
         $tabla ='portafolio';
         $cambio = 'calificacion ='.$estrella;
+        $where = 'idPorta='.$idPorta;
 
-        $resultado = $bd->modificarRegistro($tabla, $cambio);
+        $resultado = $bd->modificarRegistro($tabla, $cambio,$where);
     }
 
 }

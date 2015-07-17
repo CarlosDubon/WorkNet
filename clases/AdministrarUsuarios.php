@@ -17,7 +17,7 @@ class AdministrarUsuarios {
     public function verificarUsuario($usuario, $password) {
         $db = new MySQL();
         $utilidades = new Utilidades();
-        $query = "SELECT * FROM cuenta WHERE Usuario= '" . $usuario . "' and Password ='" . $password . "'";
+        $query = "SELECT * FROM cuenta WHERE Usuario= '" . $usuario . "' and Password ='" . $password . "' and Estado =  1";
         $resultado = $db->consulta($query);
 
         if (count($resultado) > 0) {

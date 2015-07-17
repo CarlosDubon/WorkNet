@@ -21,7 +21,7 @@
                 <div class="col-lg-6">
                     <div class='form-group'>
                     <label for="Usuario">Usuario:</label><br>
-                    <input type='text' class='form-control login-field' name='user' placeholder='Usuario' required /><br>
+                    <input type='text' class='form-control login-field' name='user' maxlength="10" placeholder='Usuario' required /><br>
                     </div>
                 </div>
                 </div>

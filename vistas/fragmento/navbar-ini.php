@@ -9,7 +9,7 @@
         <div class="navbar-collapse collapse">
             <ul class="nav navbar-nav">
                 <li class="active"><a href="#"></a></li>
-                <li><a href=""><span class="fui-home"></span> Inicio</a></li>
+                <li><a href="#"><span class="fui-home"></span> Inicio</a></li>
                 <li class="dropdown">
                     <a href="" class="dropdown-toggle" data-toggle="dropdown"><span class="fui-gear"></span> Opciones<b class="caret"></b></a>
                     <ul class="dropdown-menu">

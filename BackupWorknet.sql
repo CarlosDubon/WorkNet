@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 15-07-2015 a las 05:30:52
+-- Tiempo de generación: 15-07-2015 a las 23:39:17
 -- Versión del servidor: 5.6.21
 -- Versión de PHP: 5.6.3
 
@@ -30,15 +30,15 @@ CREATE TABLE IF NOT EXISTS `amigo` (
 `idAmigo` int(11) NOT NULL,
   `idCuenta` int(11) NOT NULL,
   `idCuentaAmigo` int(11) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=27 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=29 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Volcado de datos para la tabla `amigo`
 --
 
 INSERT INTO `amigo` (`idAmigo`, `idCuenta`, `idCuentaAmigo`) VALUES
-(25, 4, 8),
-(26, 8, 4);
+(26, 8, 4),
+(27, 8, 7);
 
 -- --------------------------------------------------------
 
@@ -125,19 +125,22 @@ CREATE TABLE IF NOT EXISTS `comentarios` (
   `imgUsuario` varchar(70) NOT NULL,
   `Comentario` tinytext NOT NULL,
   `idPub` int(11) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=latin1;
 
 --
 -- Volcado de datos para la tabla `comentarios`
 --
 
 INSERT INTO `comentarios` (`idComentario`, `Usuario`, `imgUsuario`, `Comentario`, `idPub`) VALUES
-(1, 'cn', 'elefantes-bebe.jpg', 'que tal?\r\n', 3),
-(2, 'cn', 'elefantes-bebe.jpg', 'Que tal?\r\n', 4),
-(3, 'cn', 'elefantes-bebe.jpg', '', 0),
-(5, 'CarlosM', '333853.jpg', 'nos vale verga mahe\r\n', 2),
-(6, 'cn', 'elefantes-bebe.jpg', 'hola\r\n', 6),
-(7, 'wn', 'Squirtle.jpg', 'Hola amigo? que pollo soy jaja hablo solo xD', 8);
+(1, 'cn', 'elefantes-bebe.jpg', 'que tal?\r\n', 0),
+(2, 'cn', 'elefantes-bebe.jpg', 'Que tal?\r\n', 0),
+(5, 'CarlosM', '333853.jpg', 'nos vale verga mahe\r\n', 0),
+(6, 'cn', 'elefantes-bebe.jpg', 'hola\r\n', 0),
+(7, 'wn', 'Squirtle.jpg', 'Hola amigo? que pollo soy jaja hablo solo xD', 0),
+(8, 'BK_ALoKing', 'burguer.jpg', 'el cara de miembro es atilio :3 :D\r\n', 0),
+(16, 'CarlosM', '333853.jpg', 'Hola\r\n', 11),
+(17, 'wn', 'Squirtle.jpg', 'aqui hay desvergue\r\n', 11),
+(18, 'CarlosM', '333853.jpg', 'tu nana es el desvergue\r\n', 11);
 
 -- --------------------------------------------------------
 
@@ -162,6 +165,7 @@ CREATE TABLE IF NOT EXISTS `cuenta` (
   `SitioWeb` varchar(100) NOT NULL,
   `Estado` varchar(1) NOT NULL,
   `Categoria` varchar(45) NOT NULL,
+  `State_Curriculum` int(11) NOT NULL DEFAULT '0',
   `work_count` varchar(1) NOT NULL DEFAULT '0',
   `new_count` int(11) DEFAULT '0',
   `cuenta_cuenta` int(11) NOT NULL
@@ -171,14 +175,14 @@ CREATE TABLE IF NOT EXISTS `cuenta` (
 -- Volcado de datos para la tabla `cuenta`
 --
 
-INSERT INTO `cuenta` (`idCuenta`, `Tipo`, `Usuario`, `Correo`, `Password`, `ImgCuenta`, `Empresa`, `Nombre`, `Apellido`, `FechaNac`, `DUI`, `Direc`, `Telefono`, `SitioWeb`, `Estado`, `Categoria`, `work_count`, `new_count`, `cuenta_cuenta`) VALUES
-(1, '1', 'admin', 'admin@admin.com', 'admin', '', 'admin', 'admin', 'admin', '0000-00-00', '', '', '', '', '', '', '0', 0, 0),
-(4, '2', 'wn', 'hsdkhfs@fjasd.com', 'work1', 'Squirtle.jpg', 'WorkNet', 'ffdasfds', 'sdfdsaf', '2015-05-01', '654567654', 'sdfafsda', '2354123', 'https://bootswatch.com/', '1', 'Restaurantes', '1', 0, 0),
-(6, '3', 'carlos98', 'carlosminerodubon@gmail.com', 'WorkNet2015', 'hgcyhgchfgvhdf.gif', 'cn', 'Carlos', 'Minero', '2015-05-29', '34567890-9', 'no definida', '0000', 'no definida', '0', '', '0', 2, 3),
-(7, '4', 'CarlosM', 'carlos@gmail.com', 'carlos98', '333853.jpg', 'no definida', 'Carlos', 'Minero', '1993-02-09', '78522348-5', 'no definida', '0000', 'no definida', '0', '', '0', 4, 0),
-(8, '2', 'BK_ALoKing', 'bk_aloking@gmail.com', '123456', 'burguer.jpg', 'Burguer King', 'Nayib', 'Bukele', '1999-06-16', '46754621-6', 'En todo sivar', '2256-5654', 'http://livepipe.net/control/rating', '1', 'Restaurantes', '1', 0, 0),
-(9, '3', 'NayibJr', 'nayibjr@gmail.com', '123456', 'nayib-1.jpg', 'BK_ALoKing', 'Nayib Junior', 'Bukele', '1995-02-08', '45567645-6', 'no definida', '0000', 'no definida', '0', '', '0', 0, 8),
-(10, '4', 'JRjunior32', 'junior.rod78@gmail.com', '123456', 'default.jpg', 'no definida', 'Julio', 'Rodriguez', '1992-06-10', '54654646-5', 'no definida', '0000', 'no definida', '0', '', '0', 0, 0);
+INSERT INTO `cuenta` (`idCuenta`, `Tipo`, `Usuario`, `Correo`, `Password`, `ImgCuenta`, `Empresa`, `Nombre`, `Apellido`, `FechaNac`, `DUI`, `Direc`, `Telefono`, `SitioWeb`, `Estado`, `Categoria`, `State_Curriculum`, `work_count`, `new_count`, `cuenta_cuenta`) VALUES
+(1, '1', 'admin', 'admin@admin.com', 'admin', '', 'admin', 'admin', 'admin', '0000-00-00', '', '', '', '', '', '', 0, '0', 0, 0),
+(4, '2', 'wn', 'hsdkhfs@fjasd.com', 'work1', 'Squirtle.jpg', 'WorkNet', 'ffdasfds', 'sdfdsaf', '2015-05-01', '654567654', 'sdfafsda', '2354123', 'https://bootswatch.com/', '1', 'Restaurantes', 0, '1', 0, 0),
+(6, '3', 'carlos98', 'carlosminerodubon@gmail.com', 'WorkNet2015', 'hgcyhgchfgvhdf.gif', 'cn', 'Carlos', 'Minero', '2015-05-29', '34567890-9', 'no definida', '0000', 'no definida', '0', '', 0, '0', 2, 3),
+(7, '4', 'CarlosM', 'carlos@gmail.com', 'carlos98', '333853.jpg', 'no definida', 'Carlos', 'Minero', '1993-02-09', '78522348-5', 'no definida', '0000', 'no definida', '0', '', 0, '0', 1, 0),
+(8, '2', 'BK_ALoKing', 'bk_aloking@gmail.com', '123456', 'burguer.jpg', 'Burguer King', 'Nayib', 'Bukele', '1999-06-16', '46754621-6', 'En todo sivar', '2256-5654', 'http://livepipe.net/control/rating', '1', 'Restaurantes', 0, '1', 0, 0),
+(9, '3', 'NayibJr', 'nayibjr@gmail.com', '123456', 'nayib-1.jpg', 'BK_ALoKing', 'Nayib Junior', 'Bukele', '1995-02-08', '45567645-6', 'no definida', '0000', 'no definida', '0', '', 0, '0', 0, 8),
+(10, '4', 'JRjunior32', 'junior.rod78@gmail.com', '123456', 'default.jpg', 'no definida', 'Julio', 'Rodriguez', '1992-06-10', '54654646-5', 'no definida', '0000', 'no definida', '0', '', 1, '0', 0, 0);
 
 -- --------------------------------------------------------
 
@@ -208,7 +212,7 @@ CREATE TABLE IF NOT EXISTS `curriculum` (
 --
 
 INSERT INTO `curriculum` (`idCurriculum`, `Nombre_Completo`, `Telefono`, `Celular`, `direccion`, `FormacionAc`, `Experiencia`, `Referencia1`, `TelRef1`, `Referencia2`, `TelRef2`, `Referencia3`, `TelRef3`, `idCuenta_cuenta`) VALUES
-(1, 'Julio Cesar Rodriguez Gomez', '2245-4502', '7741-7336', 'Col. Sn Francisco. Cal. Los CastaÃ±os Av Las Dalias Con Res Terralinda B8', 'Escuela de Comunicaciones Monica Herrera', 'BISA', 'Maria Fernanda Duque Rodriguez', '7458-9654', 'Carlos Antonio Minero Dubon', '6864-6546', 'Jose Atilio Garcia Sibrian', '7578-7878', 10);
+(1, 'Julio Cesar Rodriguez Gomez', '2314-1762', '7741-7336', 'Col. Sn Francisco. Cal. Los CastaÃ±os Av Las Dalias Con Res Terralinda B8', 'Escuela de Comunicaciones Monica Herrera', 'BISA', 'Maria Fernanda Duque Rodriguez', '7850-4369', 'Carlos Antonio Minero Dubon', '6864-6546', 'Jose Atilio Garcia Sibrian', '7578-7878', 10);
 
 -- --------------------------------------------------------
 
@@ -222,7 +226,7 @@ CREATE TABLE IF NOT EXISTS `denuncias` (
   `FechaRealizada` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `UserEmpresa` varchar(30) NOT NULL,
   `cuenta_idCuenta` int(11) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 
 --
 -- Volcado de datos para la tabla `denuncias`
@@ -289,18 +293,6 @@ INSERT INTO `ofertas` (`idOfertas`, `idCuenta`, `Titulo`, `Detalle`, `Genero`, `
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `perfil`
---
-
-CREATE TABLE IF NOT EXISTS `perfil` (
-`idPerfil` int(11) NOT NULL,
-  `Imagen` varchar(30) NOT NULL,
-  `cuenta_idCuenta` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
--- --------------------------------------------------------
-
---
 -- Estructura de tabla para la tabla `portafolio`
 --
 
@@ -318,7 +310,7 @@ CREATE TABLE IF NOT EXISTS `portafolio` (
 --
 
 INSERT INTO `portafolio` (`idPortafolio`, `NombreArchivo`, `FechaSubida`, `Size`, `calificacion`, `cuenta_idCuenta`) VALUES
-(7, 'BackupWorknet.sql', '2015-07-12 15:14:14', 21423, 0, 8);
+(7, 'BackupWorknet.sql', '2015-07-15 19:06:59', 21423, 4, 8);
 
 -- --------------------------------------------------------
 
@@ -334,7 +326,7 @@ CREATE TABLE IF NOT EXISTS `publicaciones` (
   `cuenta_idCuenta` int(11) NOT NULL,
   `Usuario_cuenta` varchar(45) NOT NULL,
   `works` int(11) NOT NULL DEFAULT '0'
-) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8 COMMENT='	';
+) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8 COMMENT='	';
 
 --
 -- Volcado de datos para la tabla `publicaciones`
@@ -344,7 +336,9 @@ INSERT INTO `publicaciones` (`idPub`, `Texto`, `imgUsuario`, `Fecha`, `cuenta_id
 (7, 'Hey hola!\r\n', 'Squirtle.jpg', '2015-07-08', 4, 'wn', 1),
 (8, 'Hola amigos y amigas de WorkNet', 'Squirtle.jpg', '2015-07-09', 4, 'wn', 1),
 (9, 'Hola soy el hijo de Nayib :'')', 'default.jpg', '2015-07-09', 9, 'NayibJr', 0),
-(10, 'Hola soy el hijo de Nayib :'')', 'nayib-1.jpg', '2015-07-09', 9, 'NayibJr', 1);
+(10, 'Hola soy el hijo de Nayib :'')', 'nayib-1.jpg', '2015-07-09', 9, 'NayibJr', 1),
+(12, 'HOLA!\r\n', 'default.jpg', '2015-07-15', 10, 'JRjunior32', 0),
+(13, '.l.', 'burguer.jpg', '2015-07-15', 8, 'BK_ALoKing', 0);
 
 -- --------------------------------------------------------
 
@@ -370,7 +364,14 @@ CREATE TABLE IF NOT EXISTS `solicitudes` (
   `cuentaAmigo` int(45) NOT NULL,
   `cuenta_idCuenta` int(11) NOT NULL,
   `user_idCuenta` varchar(45) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+
+--
+-- Volcado de datos para la tabla `solicitudes`
+--
+
+INSERT INTO `solicitudes` (`idSoli`, `Fecha`, `Tipo`, `cuentaAmigo`, `cuenta_idCuenta`, `user_idCuenta`) VALUES
+(1, '2015-07-15 19:34:04', '1', 7, 8, 'BK_ALoKing');
 
 --
 -- Índices para tablas volcadas
@@ -386,7 +387,7 @@ ALTER TABLE `amigo`
 -- Indices de la tabla `aplicadores`
 --
 ALTER TABLE `aplicadores`
- ADD PRIMARY KEY (`idAplicacion`);
+ ADD PRIMARY KEY (`idAplicacion`), ADD KEY `idOferta` (`idOferta`);
 
 --
 -- Indices de la tabla `categorias`
@@ -404,7 +405,7 @@ ALTER TABLE `chat`
 -- Indices de la tabla `comentarios`
 --
 ALTER TABLE `comentarios`
- ADD PRIMARY KEY (`idComentario`);
+ ADD PRIMARY KEY (`idComentario`), ADD UNIQUE KEY `idComentario` (`idComentario`), ADD UNIQUE KEY `idComentario_2` (`idComentario`);
 
 --
 -- Indices de la tabla `cuenta`
@@ -416,7 +417,7 @@ ALTER TABLE `cuenta`
 -- Indices de la tabla `curriculum`
 --
 ALTER TABLE `curriculum`
- ADD PRIMARY KEY (`idCurriculum`);
+ ADD PRIMARY KEY (`idCurriculum`), ADD KEY `idCuenta_cuenta` (`idCuenta_cuenta`);
 
 --
 -- Indices de la tabla `denuncias`
@@ -443,12 +444,6 @@ ALTER TABLE `ofertas`
  ADD PRIMARY KEY (`idOfertas`), ADD KEY `idCuenta` (`idCuenta`);
 
 --
--- Indices de la tabla `perfil`
---
-ALTER TABLE `perfil`
- ADD PRIMARY KEY (`idPerfil`,`cuenta_idCuenta`), ADD KEY `fk_perfil_cuenta1_idx` (`cuenta_idCuenta`);
-
---
 -- Indices de la tabla `portafolio`
 --
 ALTER TABLE `portafolio`
@@ -458,7 +453,7 @@ ALTER TABLE `portafolio`
 -- Indices de la tabla `publicaciones`
 --
 ALTER TABLE `publicaciones`
- ADD PRIMARY KEY (`idPub`,`cuenta_idCuenta`), ADD KEY `fk_publicaciones_cuenta_idx` (`cuenta_idCuenta`);
+ ADD PRIMARY KEY (`idPub`,`cuenta_idCuenta`), ADD UNIQUE KEY `idPub` (`idPub`), ADD KEY `fk_publicaciones_cuenta_idx` (`cuenta_idCuenta`), ADD KEY `cuenta_idCuenta` (`cuenta_idCuenta`);
 
 --
 -- Indices de la tabla `seguidores`
@@ -480,7 +475,7 @@ ALTER TABLE `solicitudes`
 -- AUTO_INCREMENT de la tabla `amigo`
 --
 ALTER TABLE `amigo`
-MODIFY `idAmigo` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=27;
+MODIFY `idAmigo` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=29;
 --
 -- AUTO_INCREMENT de la tabla `aplicadores`
 --
@@ -500,7 +495,7 @@ MODIFY `idChat` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=39;
 -- AUTO_INCREMENT de la tabla `comentarios`
 --
 ALTER TABLE `comentarios`
-MODIFY `idComentario` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=8;
+MODIFY `idComentario` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=19;
 --
 -- AUTO_INCREMENT de la tabla `cuenta`
 --
@@ -515,7 +510,7 @@ MODIFY `idCurriculum` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
 -- AUTO_INCREMENT de la tabla `denuncias`
 --
 ALTER TABLE `denuncias`
-MODIFY `idDenuncias` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
+MODIFY `idDenuncias` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT de la tabla `eventos`
 --
@@ -527,11 +522,6 @@ MODIFY `idEventos` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=13;
 ALTER TABLE `ofertas`
 MODIFY `idOfertas` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=9;
 --
--- AUTO_INCREMENT de la tabla `perfil`
---
-ALTER TABLE `perfil`
-MODIFY `idPerfil` int(11) NOT NULL AUTO_INCREMENT;
---
 -- AUTO_INCREMENT de la tabla `portafolio`
 --
 ALTER TABLE `portafolio`
@@ -540,7 +530,7 @@ MODIFY `idPortafolio` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=8;
 -- AUTO_INCREMENT de la tabla `publicaciones`
 --
 ALTER TABLE `publicaciones`
-MODIFY `idPub` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=11;
+MODIFY `idPub` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=14;
 --
 -- AUTO_INCREMENT de la tabla `seguidores`
 --
@@ -550,7 +540,7 @@ MODIFY `idSeguidores` int(11) NOT NULL AUTO_INCREMENT;
 -- AUTO_INCREMENT de la tabla `solicitudes`
 --
 ALTER TABLE `solicitudes`
-MODIFY `idSoli` int(11) NOT NULL AUTO_INCREMENT;
+MODIFY `idSoli` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
 --
 -- Restricciones para tablas volcadas
 --
@@ -572,6 +562,12 @@ ADD CONSTRAINT `fk_categorias_cuenta1` FOREIGN KEY (`cuenta_idCuenta`) REFERENCE
 --
 ALTER TABLE `chat`
 ADD CONSTRAINT `fk_Chat_cuenta1` FOREIGN KEY (`cuenta_idCuenta`) REFERENCES `cuenta` (`idCuenta`) ON DELETE CASCADE ON UPDATE NO ACTION;
+
+--
+-- Filtros para la tabla `curriculum`
+--
+ALTER TABLE `curriculum`
+ADD CONSTRAINT `curriculum_ibfk_1` FOREIGN KEY (`idCuenta_cuenta`) REFERENCES `cuenta` (`idCuenta`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Filtros para la tabla `denuncias`
@@ -596,13 +592,8 @@ ADD CONSTRAINT `fk_seguidores_has_eventos_seguidores1` FOREIGN KEY (`seguidores_
 -- Filtros para la tabla `ofertas`
 --
 ALTER TABLE `ofertas`
-ADD CONSTRAINT `ofertas_ibfk_1` FOREIGN KEY (`idCuenta`) REFERENCES `cuenta` (`idCuenta`) ON DELETE CASCADE;
-
---
--- Filtros para la tabla `perfil`
---
-ALTER TABLE `perfil`
-ADD CONSTRAINT `fk_perfil_cuenta1` FOREIGN KEY (`cuenta_idCuenta`) REFERENCES `cuenta` (`idCuenta`) ON DELETE CASCADE ON UPDATE NO ACTION;
+ADD CONSTRAINT `ofertas_ibfk_1` FOREIGN KEY (`idCuenta`) REFERENCES `cuenta` (`idCuenta`) ON DELETE CASCADE,
+ADD CONSTRAINT `ofertas_ibfk_2` FOREIGN KEY (`idOfertas`) REFERENCES `aplicadores` (`idOferta`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Filtros para la tabla `portafolio`
@@ -615,12 +606,6 @@ ADD CONSTRAINT `fk_portafolio_cuenta1` FOREIGN KEY (`cuenta_idCuenta`) REFERENCE
 --
 ALTER TABLE `publicaciones`
 ADD CONSTRAINT `fk_publicaciones_cuenta` FOREIGN KEY (`cuenta_idCuenta`) REFERENCES `cuenta` (`idCuenta`) ON DELETE CASCADE ON UPDATE NO ACTION;
-
---
--- Filtros para la tabla `seguidores`
---
-ALTER TABLE `seguidores`
-ADD CONSTRAINT `fk_seguidores_cuenta1` FOREIGN KEY (`cuenta_idCuenta`) REFERENCES `cuenta` (`idCuenta`) ON DELETE CASCADE ON UPDATE NO ACTION;
 
 --
 -- Filtros para la tabla `solicitudes`

@@ -41,7 +41,7 @@ class Notificaciones{
 
                 $noti.='<div class="alert alert-dismissible alert-info">
                           <a href="./eliminarSoli.php?idSoli='.$Noti[$i]['id'].'" class="close" data-dismiss="alert">×</a>
-                          El ususario <strong>'.$Noti[$i]['user_idCuenta'].'</strong>  te sigue. <a href="./agregarAmigo.php?idCuenta='.$Noti[0]['cuenta_idCuenta'].'" class="alert-link">Seguir?</a> <strong id="de">'.substr($Noti[0]['Fecha'],0,-9).'</strong>
+                          El usuario <strong>'.$Noti[$i]['user_idCuenta'].'</strong>  te sigue. <a href="./agregarAmigo.php?idCuenta='.$Noti[0]['cuenta_idCuenta'].'" class="alert-link">Seguir?</a> <strong id="de">'.substr($Noti[0]['Fecha'],0,-9).'</strong>
                         </div>';
             break;
             case 2:

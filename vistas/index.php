@@ -11,7 +11,7 @@
         <form action="../controladores/index.php" method="POST">
 
             <div class="login-form">                
-                <center><h1>Worknet</h1></center>
+                <center><h1>WorkNet</h1></center>
                 <p font-size="14pt">WorkNet, una red social para empresas, empresarios y trabajadores.</p>              
 
                 <div class="form-group">

@@ -26,3 +26,4 @@
         $('#miTabla').DataTable();
     });
 </script>
+

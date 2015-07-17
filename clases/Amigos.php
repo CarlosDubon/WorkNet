@@ -135,5 +135,12 @@ class Amigos {
 
 
     }
+    
+    public function verificarAmigos(){
+        $db = new MySQL();
+        $sesion = new Sesion();
+        
+        
+    }
 
 }

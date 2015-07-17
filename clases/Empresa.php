@@ -39,14 +39,14 @@ class Empresa {
 
         $tipo = '2';
         $empresa = $datosEmpresa['empresa'];
-        $user = $datosEmpresa['user'];
+        $user = str_replace(' ','',$datosEmpresa['user']);
         $password = $datosEmpresa['password'];
         $repassword = $datosEmpresa['repassword'];
         $name = $datosEmpresa['name'];
         $ape = $datosEmpresa['ape'];
         $dui = $datosEmpresa['dui'];
         $birth = $datosEmpresa['birth'];
-        $email = $datosEmpresa['email'];
+        $email = trim($datosEmpresa['email']);
         $site = $datosEmpresa['site'];
         $adres = $datosEmpresa['adres'];
         $phone = $datosEmpresa['phone'];

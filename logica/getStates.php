@@ -4,6 +4,6 @@
 
 	$partialStates = $_POST['numero'];
 
-	$query ="UPDATE portafolio SET calificacion = $partialStates WHERE idPortafolio = 6";
+	$query ="UPDATE portafolio SET calificacion = $partialStates WHERE idPortafolio = 7";
 	$resultado = mysql_query($query);
  ?>

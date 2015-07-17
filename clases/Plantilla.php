@@ -45,7 +45,7 @@ class Plantilla {
             $menuSuperior = $this->cargarArchivo('fragmento/navbar-empre');
             $menuLateral = $this->cargarArchivo('fragmento/NavbarL-Empre');
             if($contenido == '')
-                $contenido = $this->cargarArchivo('contenido-empre'); 
+                $contenido = $this->cargarArchivo('fragmento/contenido-trabador'); 
         }     
         if($sesion->obtenerVariableSesion('tipoUsuario') == 3){
             $menuSuperior = $this->cargarArchivo('fragmento/navbar-trabaja');

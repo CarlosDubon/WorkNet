@@ -17,7 +17,7 @@
 $(".rate").on("click",function(){
     var star = $(this).attr("data-value");
     $.ajax({
-        url: "../logica/getStates.php",
+        url: "../controladores/votar.php?idPortafolio = 7",
         type: "post",
         data: {numero:star},
         beforeSend:function(){

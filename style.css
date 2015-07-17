@@ -125,7 +125,7 @@
 	color: #888;
 }
 .activaStar {
-  color: #888;
+  color: rgb(241, 196, 15) !important;
 }
 
 #w {
@@ -834,4 +834,9 @@ height: 35% !important;
 #deU {
     float: right!important;
     border-radius: 5px !important;
+}
+
+#clanedary {
+    margin-top: -80% !important ;
+    margin-left: -15% !important;
 }

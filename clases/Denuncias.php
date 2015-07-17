@@ -35,10 +35,10 @@
             $utilidades = new Utilidades();
 
 
-            $consulta ='SELECT idDenuncias as id,Motivo,UserEmpresa,cuenta_idCuenta,FechaRealizada  FROM denuncias';
+            $consulta ='SELECT idDenuncias,Motivo,UserEmpresa as id,cuenta_idCuenta,FechaRealizada  FROM denuncias';
             $listaDenuncia = $mysql->consulta($consulta);
             $encabezado = array('ID', 'Motivo', 'ID Publicacion', 'ID Usuario', 'Fecha');
-            $acciones = '<center> <a href="./mostrarPubComAdmin.php?idPub='.$listaDenuncia[0]['UserEmpresa'].'" class="btn btn-info" id="acciones"> <i class="fa fa-newspaper-o"></i></a>';
+            $acciones = '<center> <a href="./mostrarPubComAdmin.php?idPub={{id}}" class="btn btn-info" id="acciones"> <i class="fa fa-newspaper-o"></i></a>';
 
             $variables['listaDenuncias'] = $utilidades->convertirTabla($listaDenuncia, $encabezado,$acciones);
 

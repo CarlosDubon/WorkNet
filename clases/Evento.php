@@ -128,4 +128,33 @@ class Evento {
 
         $utilidades->Redireccionar('controladores/formEventos.php');
      }
+    
+    public function mostrarListaEventos(){
+        $bd = new MySQL();
+        $utilidades = new Utilidades();
+        $plantilla = new Plantilla();
+        $sesion = new Sesion();
+        
+        $id = $sesion->obtenerVariableSesion('idUsuario');
+        $query =  'SELECT idEventos as id,FechaIni,HoraIni,FechaFin,HoraFin,Nombre,Descripcion FROM eventos WHERE idCuenta ='.$id;
+        $resultado = $bd->consulta($query);
+        
+        $encabezado = array('ID','Fecha de Incio','Hora de Inicio','Fecha Final','Hora Final','Titulo','Descripcion');
+        $acciones = '<center><a href="./eliminarEvento.php?idEventos={{id}}" class="btn btn-danger" title="Eliminar Evento" id="acciones"><i class="fa fa-trash"></i></a>';
+        $variables['listaEventos'] = $utilidades->convertirTabla($resultado,$encabezado,$acciones);
+        
+        $plantilla->verPagina('listaEventos', $variables);
+    }
+    
+    public function eliminarEvento($id){
+        $bd = new MySQL();
+        $utilidades = new Utilidades();
+        
+        $tabla ='eventos';
+        $where = 'idEventos='.$id;
+        
+        $resultado = $bd->eliminarRegistro($tabla,$where);
+        $utilidades->Redireccionar('controladores/verEventosLista.php');
+        $utilidades->mostrarMensaje('El evento se elimino correctamente');
+    }
 }

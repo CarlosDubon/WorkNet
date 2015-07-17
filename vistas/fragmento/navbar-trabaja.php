@@ -12,7 +12,7 @@
             <ul class="nav navbar-nav">
                 <form class="navbar-form navbar-left" role="search">
                     <div class="form-group">
-                        <input type="text" class="form-control" placeholder="Buscar">
+                        <input type="text" class="form-control" placeholder="Buscar" onkeyup="getStates(this.value)">
                     </div>
                     <button type="submit" class="btn btn-default"><span class="fui-search"></span></button>
                 </form>
@@ -42,3 +42,32 @@
     </div>
 </div>
     </div>
+<div class="well search"><div id="results"></div></div>
+
+<script type="text/javascript">
+    
+    function getStates(value){
+         var results=$("#results")
+
+        $.post("../controladores/slideBar.php", {partialState:value}, function(data) {
+            $("#results").html(data);
+        });
+    }
+</script>
+
+<script type="text/javascript">
+    $(".search").fadeOut();
+    function getStates(value){
+         var results=$("#results")
+         if (value == "") {
+            $(".search").fadeOut();
+         }else {
+        $.post("../controladores/slideBar.php", {partialState:value}, function(data) {
+          $(".search").fadeIn();
+            $("#results").html(data);
+
+            
+        });
+      }
+    }
+</script>

@@ -21,8 +21,8 @@ class Usuario {
         $columnas = 'Tipo,Usuario,Correo,Password,ImgCuenta,Empresa,Nombre,Apellido,FechaNac,DUI,Direc,Telefono,SitioWeb,Estado';
 
         $tipo='4';
-        $usuario=$datosUsuario['usuario'];
-        $mail=$datosUsuario['mail'];
+        $usuario=str_replace(' ','',$datosUsuario['usuario']);
+        $mail=trim($datosUsuario['mail']);
         $remail=$datosUsuario['remail'];
         $pass=$datosUsuario['pass'];
         $repass=$datosUsuario['repass'];
@@ -83,8 +83,8 @@ class Usuario {
         $query = "SELECT idCuenta as id, Usuario, Nombre, Apellido FROM cuenta where Tipo = '3' AND cuenta_cuenta=$cuenta";
         $listaUsuarios = $mysql->consulta($query);
         $encabezado = array('ID', 'Usuario', 'Nombre','Apellido');
-        $acciones = '<center><a data-toggle="modal" data-target="#deleteUser" class="btn btn-danger"><span class="fui-trash"></span></a>';
-        $acciones .= ' <a data-toggle="modal" data-target="#recoverPass" class = "btn btn-info" ><span class="fui-new"></span></a><br><br>';
+        $acciones = ' <center><a  href="./recuperarClave.php?idCuenta={{id}}" title="Restablecer Contraseña" onclick ="return confirm();" class = "btn btn-info" id="acciones" ><span class="fui-new"></span></a>';
+        $acciones .= ' <a href="./eliminarUsuario.php?idCuenta={{id}}" title="Eliminar Usuario" onclick ="return confirm();" class="btn btn-danger" id="acciones"><span class="fui-trash"></span></a></center>';
         
         if(count($listaUsuarios) >= 1 ){
             $variables['listaUsuarios'] = $utilidades->convertirTabla($listaUsuarios, $encabezado, $acciones);
@@ -104,24 +104,20 @@ class Usuario {
         $utilidades = new Utilidades();
         
 
-        $consulta = 'select idCuenta as id,Usuario,Nombre,Apellido,if(Estado = 1,"Active","Inactive") as Estado from cuenta where Tipo!=1';
+        $consulta = 'select idCuenta as id,Usuario,Nombre,Apellido,if(Estado = 1,"Activo","Inactivo") as Estado from cuenta where Tipo!=1';
         $listaUsuarios = $mysql->consulta($consulta);
         $encabezado = array('ID', 'Usuario', 'Nombre', 'Apellido', 'Estado');
         
-        $acciones = '<center><a data-toggle="modal" data-target="#activarUser" class="btn btn-success" id="acciones"><span class="fui-check"></span></a>';
-        $acciones .= ' <a  data-toggle="modal" data-target="#descativarUser" class = "btn btn-danger" id="acciones"><span class="fui-cross"></span></a>';
-        $acciones .= ' <a  data-toggle="modal" data-target="#recoverPass" class = "btn btn-info" id="acciones" ><span class="fui-new"></span></a>';
-        $acciones .= ' <a  data-toggle="modal" data-target="#deleteUser" class="btn btn-danger" id="acciones"><span class="fui-trash"></span></a></center>';
+        $acciones = '<center><a href="./activarUsuario.php?idCuenta={{id}}" title="Activar Usuario" onclick ="return confirm();" class="btn btn-success" id="acciones"><span class="fui-check"></span></a>';
+        $acciones .= ' <a href="./desactivarUsuario.php?idCuenta={{id}}" title="Desactivar Usuario" onclick ="return confirm();" class = "btn btn-danger" id="acciones"><span class="fui-cross"></span></a>';
+        $acciones .= ' <a  href="./recuperarClave.php?idCuenta={{id}}" title="Restablecer Contraseña" onclick ="return confirm();" class = "btn btn-info" id="acciones" ><span class="fui-new"></span></a>';
+        $acciones .= ' <a href="./eliminarUsuario.php?idCuenta={{id}}" title="Eliminar Usuario" onclick ="return confirm();" class="btn btn-danger" id="acciones"><span class="fui-trash"></span></a></center>';
         
 
       
         $variables['listaUsuarios'] = $utilidades->convertirTabla($listaUsuarios, $encabezado, $acciones);
-        $variables['id'] = $listaUsuarios[0]['id'];
-        /*
-         * Mostramos la pagina en el navegador         
-         * 
-         * creamos una variable en sesion para controlar que la accion se ejecute una sola vez
-         */
+        
+
         $sesion->agregarVariableSesion('permisoAccionesUsuario', '1');
         $plantilla->verPagina('listaUsuarios', $variables);
     }
@@ -183,7 +179,7 @@ class Usuario {
         else
             $utilidades->mostrarMensaje('Lo sentimos, algo ha salido mal. Por favor intenta de nuevo.');
         
-        $utilidades->Redireccionar('controladores/usuarios_admin.php');
+        $plantilla->verPagina();
     }
     
 
@@ -204,7 +200,7 @@ class Usuario {
         else
             $utilidades->mostrarMensaje('Lo sentimos, algo ha salido mal. Por favor intenta de nuevo.');
         
-        $utilidades->Redireccionar('controladores/usuarios_admin.php');
+        $plantilla->verPagina();
     }
 
 
@@ -219,17 +215,25 @@ class Usuario {
         $utilidades = new Utilidades();
         
         $newpass = $datosContraAdmin['newpass'];
+        $oldPass = $datosContraAdmin['oldpass'];
         $tabla = 'cuenta';
         $cambio = 'Password ="'.$newpass.'"';
         $where = 'idCuenta = 1';
         
-        $resultado = $mysql->modificarRegistro($tabla, $cambio, $where);
         
-        if ($resultado)
-            $utilidades->mostrarMensaje('¡La contraseña se cambió satisfactoriamente!');
-        else
-            $utilidades->mostrarMensaje('Lo sentimos, algo ha salido mal. Por favor intenta de nuevo.');
-        
+        $query = 'SELECT Password FROM cuenta WHERE idCuenta = 1';
+        $check = $mysql->consulta($query);
+        $verificar = $check[0]['Password'];
+            if( $oldPass == $verificar){    
+                $resultado = $mysql->modificarRegistro($tabla, $cambio, $where);
+                if ($resultado)
+                    $utilidades->mostrarMensaje('¡La contraseña se cambió satisfactoriamente!');
+                else
+                    $utilidades->mostrarMensaje('Lo sentimos, algo ha salido mal. Por favor intenta de nuevo.');
+            }else
+                 $utilidades->mostrarMensaje('Lo sentimos, las contraseñas no coinciden, verifique los datos.');
+
+            
         $plantilla->verPagina();  
     }
     
@@ -249,13 +253,19 @@ class Usuario {
         $cambio = 'Password ="'.$newpass.'"';
         $where = 'idCuenta ="'.$id.'"';
             
-        $resultado = $mysql->modificarRegistro($tabla, $cambio, $where);
-        
-        if ($resultado)
-            $utilidades->mostrarMensaje('¡La contraseña se cambió satisfactoriamente!');
-        else
-            $utilidades->mostrarMensaje('Lo sentimos, algo ha salido mal. Por favor intenta de nuevo.');
-        
+        $query = 'SELECT Password FROM cuenta WHERE idCuenta ='.$id;
+        $check = $mysql->consulta($query);
+        $verificar = $check[0]['Password'];
+            if( $oldPass == $verificar){    
+                $resultado = $mysql->modificarRegistro($tabla, $cambio, $where);
+                if ($resultado)
+                    $utilidades->mostrarMensaje('¡La contraseña se cambió satisfactoriamente!');
+                else
+                    $utilidades->mostrarMensaje('Lo sentimos, algo ha salido mal. Por favor intenta de nuevo.');
+            }else
+                 $utilidades->mostrarMensaje('Lo sentimos, las contraseñas no coinciden, verifique los datos.');
+
+            
         $plantilla->verPagina();  
     }
       public function mostrarFormularioCambiarContTrabajador(){
@@ -274,13 +284,19 @@ class Usuario {
         $cambio = 'Password ="'.$newpass.'"';
         $where = 'idCuenta ="'.$id.'"';
         
-        $resultado = $mysql->modificarRegistro($tabla, $cambio, $where);
-        
-        if ($resultado)
-            $utilidades->mostrarMensaje('¡La contraseña se cambió satisfactoriamente!');
-        else
-            $utilidades->mostrarMensaje('Lo sentimos, algo ha salido mal. Por favor intenta de nuevo.');
-        
+        $query = 'SELECT Password FROM cuenta WHERE idCuenta ='.$id;
+        $check = $mysql->consulta($query);
+        $verificar = $check[0]['Password'];
+            if( $oldPass == $verificar){    
+                $resultado = $mysql->modificarRegistro($tabla, $cambio, $where);
+                if ($resultado)
+                    $utilidades->mostrarMensaje('¡La contraseña se cambió satisfactoriamente!');
+                else
+                    $utilidades->mostrarMensaje('Lo sentimos, algo ha salido mal. Por favor intenta de nuevo.');
+            }else
+                 $utilidades->mostrarMensaje('Lo sentimos, las contraseñas no coinciden, verifique los datos.');
+
+            
         $plantilla->verPagina();  
     }
         private function validarNombreUnico($nombreUsuario) {
@@ -311,13 +327,19 @@ class Usuario {
         $cambio = 'Password ="'.$newpass.'"';
         $where = 'idCuenta ="'.$id.'"';
         
-        $resultado = $mysql->modificarRegistro($tabla, $cambio, $where);
-        
-        if ($resultado)
-            $utilidades->mostrarMensaje('¡La contraseña se cambió satisfactoriamente!');
-        else
-            $utilidades->mostrarMensaje('Lo sentimos, algo ha salido mal. Por favor intenta de nuevo.');
-        
+        $query = 'SELECT Password FROM cuenta WHERE idCuenta ='.$id;
+        $check = $mysql->consulta($query);
+        $verificar = $check[0]['Password'];
+            if( $oldPass == $verificar){    
+                $resultado = $mysql->modificarRegistro($tabla, $cambio, $where);
+                if ($resultado)
+                    $utilidades->mostrarMensaje('¡La contraseña se cambió satisfactoriamente!');
+                else
+                    $utilidades->mostrarMensaje('Lo sentimos, algo ha salido mal. Por favor intenta de nuevo.');
+            }else
+                 $utilidades->mostrarMensaje('Lo sentimos, las contraseñas no coinciden, verifique los datos.');
+
+            
         $plantilla->verPagina();  
     }
      public function VerUsuarios() {

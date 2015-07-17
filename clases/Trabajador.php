@@ -23,8 +23,8 @@ class Trabajador {
         
         $cuenta = $sesion->obtenerVariableSesion('idUsuario');
         $tipo='3';
-        $usuario=$datosTrabajador['user'];
-        $mail=$datosTrabajador['email'];
+        $usuario=str_replace(' ','',$datosTrabajador['user']);
+        $mail=trim($datosTrabajador['email']);
         $pass=$datosTrabajador['pass'];
         $repass=$datosTrabajador['repass'];
         $img = 'default.jpg';

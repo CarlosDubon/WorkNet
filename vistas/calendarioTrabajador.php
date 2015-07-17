@@ -46,7 +46,7 @@
 
 <center>
     <div id="clanedary" class="row">
-        <div class="col-md-7">
+        <div class="col-md-7" id="de">
         <div class="panel panel-primary">
           <div class="panel-heading">
             <h3 class="panel-title">Calendario</h3>

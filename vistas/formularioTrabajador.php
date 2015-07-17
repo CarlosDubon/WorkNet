@@ -8,7 +8,7 @@
           <div class="col-lg-6">
             <div class="form-group">
                 <label for="Usuario">Usuario:</label>
-                <input type="text" class="form-control login-field" id="usuario" name="user" placeholder="Usuario" required />
+                <input type="text" class="form-control login-field" id="usuario" maxlength="10" name="user" placeholder="Usuario" required />
             </div>
           </div>
           <div class="col-lg-6">

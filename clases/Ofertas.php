@@ -34,12 +34,10 @@ class Ofertas {
 
         $valores = '"'.$idCuenta.'","'.$titulo.'","'.$detalle.'","'.$genero.'","'.$salario.'","'.$direccion.'","'.$cargo.'","'.$edad.'","'.$requisitos.'"';
 
-        if($edad >= '18')
+        if($edad > '17'){
             $resultado = $bd->insertarRegistro($tabla, $columnas, $valores);
-
-        if (isset($resultado))
             $utilidades->mostrarMensaje('La oferta de trabjado se creo correctamente!');
-        else
+        }else
             $utilidades->mostrarMensaje('Lo sentimos!,Ocurrio un error, por favor intente de nuevo.');
 
         $utilidades->Redireccionar('controladores/formOfertas.php');

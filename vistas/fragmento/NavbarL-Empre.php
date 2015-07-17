@@ -7,6 +7,7 @@
 <a href="./crearPortafolio.php" class="list-group-item"><span class="fui-clip"></span> Portafolio</a>
 <a href="./formOfertas.php" class="list-group-item"><span class="fui-document"></span> Crear Oferta de Trabajo</a>
 <a href="./ofertas_empre.php" class="list-group-item"><span class="fui-document"></span> Ofertas de Trabajo</a>
+<a href="./tiposReporteEmpre.php" class="list-group-item"><i class="fa fa-file-pdf-o"></i> Reportes</a>
 <a href="./logout.php" class="list-group-item"><span class="fui-power"></span> Cerrar Sesión</a>
 <!--<script type="text/javascript" src="http://www.skypeassets.com/i/scom/js/skype-uri.js"></script>
 <div id="SkypeButton_Call_CarlosDubon_1">
