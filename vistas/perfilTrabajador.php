@@ -30,7 +30,7 @@
             <b>Nombre:</b> {{Nombre}}<br>
             <b>Empresa:</b> {{Empresa}}<br>
             <b>Apellido: </b> {{Apellido}}<br>
-            <b>E-mail:</b> {{Correo}}<br>
+            <b>Email:</b> {{Correo}}<br>
             <b>Fecha Nacimiento:</b> {{Nac}}<br>
           </div>
     </div>

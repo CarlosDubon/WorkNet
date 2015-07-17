@@ -13,7 +13,7 @@ class Amigos {
         $consulta = 'select idCuenta as id,Usuario,Nombre,Apellido,Empresa from cuenta '
                 . ' where idCuenta not in( select idCuentaAmigo from Amigo where idCuenta =' . $idUsuario . ' )';
         $listaUsuarios = $mysql->consulta($consulta);
-        $encabezado = array('ID', 'User', 'Name', 'Surname', 'Enterprise');
+        $encabezado = array('ID', 'Usuario', 'Nombre', 'Apellido', 'Empresa');
 
         $acciones = '<a href="./agregarAmigo.php?idCuenta={{id}}"><i class="fa fa-user-plus"></i></a>';
         $acciones .= '<a href="./verPerfilAmigo.php?idCuenta={{id}}"> &nbsp Perfil</a>';
@@ -43,7 +43,7 @@ class Amigos {
                 $valores = $sesion->obtenerVariableSesion('idUsuario') . ',' . $id;
                 $resultado = $mysql->insertarRegistro($tabla, $columnas, $valores);
                 if ($resultado){
-                    $utilidades->mostrarMensaje('You are now following this User!');
+                    $utilidades->mostrarMensaje('Tu estas siguiendo a este usuario!');
                             $new = 'SELECT new_count FROM cuenta WHERE idCuenta ='.$id;
                             $count = $mysql->consulta($new);
 
@@ -66,7 +66,7 @@ class Amigos {
                             $consuLta= $mysql ->insertarRegistro($tabla3,$columnas3,$valores3);
                 }
                 else
-                    $utilidades->mostrarMensaje('Sorry! There was a problem. Please try again.');
+                    $utilidades->mostrarMensaje('Lo sentimos!, ocurrio un problema por favor vuelva a intentar.');
             }
         }
 
@@ -105,7 +105,7 @@ class Amigos {
 
         $listaAmigos = $mysql->consulta($consulta);
 
-        $encabezado = array('ID', 'User', 'Name', 'Surname');
+        $encabezado = array('ID', 'Usuario', 'Nombre', 'Apellido');
 
         $acciones = '<a href="./chatear.php?idCuenta={{id}}"><span class="fui-chat"> </span></a>';
         $acciones .= '<a href="./eliminarAmigo.php?idCuenta={{id}}" id="textRed"><span class="fui-trash"></span></a>';
@@ -128,19 +128,13 @@ class Amigos {
         $resultado = $db->eliminarRegistro($tabla, $where);
 
         if($resultado){
-            $utilidades->mostrarMensaje('You are not following this user any more.');
+            $utilidades->mostrarMensaje('Ya no sigues a este usuario.');
             $utilidades->redireccionar('controladores/mensajes.php');
         }else
-            $utilidades->mostrarMensaje('Sorry! There was a problem. Please try again.');
+            $utilidades->mostrarMensaje('Lo sentimos! ocurrio un problema por favor intente de nuevo.');
 
 
     }
-    
-    public function verificarAmigos(){
-        $db = new MySQL();
-        $sesion = new Sesion();
-        
-        
-    }
+
 
 }

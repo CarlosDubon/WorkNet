@@ -44,16 +44,16 @@ class Evento {
         if($FechaIni <= $FechaFin){
             $resultado = $bd->insertarRegistro($tabla, $columnas, $valores);
         }else{
-            $utilidades->mostrarMensaje('Sorry! The event can not start before the end date.');
+            $utilidades->mostrarMensaje('Lo sentimos, el evento no puede empezar antes de que finalice');
         }
             }else{
-                    $utilidades->mostrarMensaje('Sorry! Please verify the dates.');
+                    $utilidades->mostrarMensaje('Lo sentimos, Por favor verifique las fechas y horas ingresadas.');
             }
 
         if (isset($resultado))
-            $utilidades->mostrarMensaje('The event was successfully created.');
+            $utilidades->mostrarMensaje('El evento se creo correctamente.');
         else
-            $utilidades->mostrarMensaje('Sorry! There was an error. Please try again.');
+            $utilidades->mostrarMensaje('Lo sentimos, ocurrio un problema, por favor intente de nuevo.');
 
         $utilidades->Redireccionar('controladores/formEventos.php');
      }
@@ -90,14 +90,14 @@ class Evento {
         if($FechaIni <= $FechaFin){
             $resultado = $bd->insertarRegistro($tabla, $columnas, $valores);
         }else{
-            $utilidades->mostrarMensaje('Sorry! The event can not start before the end date.');
+            $utilidades->mostrarMensaje('Lo sentimos, el evento no puede empezar antes de que finalice');
         }
             }else{
-                    $utilidades->mostrarMensaje('Sorry! Please verify the dates.');
+                    $utilidades->mostrarMensaje('Lo sentimos, Por favor verifique las fechas y horas ingresadas.');
             }
 
         if (isset($resultado)){
-            $utilidades->mostrarMensaje('The event was successfully created.');
+            $utilidades->mostrarMensaje('El evento se creó correctamente.');
 
             $consulta1= 'SELECT cuenta_cuenta FROM cuenta WHERE idCuenta ='.$idCuenta;
             $producto = $bd->consulta($consulta1);
@@ -124,7 +124,7 @@ class Evento {
                             $consuLta= $bd ->insertarRegistro($tabla3,$columnas3,$valores3);
         }
         else
-            $utilidades->mostrarMensaje('Sorry! There was an error. Please try again.');
+            $utilidades->mostrarMensaje('Lo sentimos, ocurrio un problema, por favor intente de nuevo.');
 
         $utilidades->Redireccionar('controladores/formEventos.php');
      }

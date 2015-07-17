@@ -28,7 +28,7 @@
             <b>Empresa:</b> {{Empresa}}<br>
             <b>Email:</b> {{Correo}} <small id="de"><a href =""  data-toggle="modal" data-target="#ChangeE-mail">Editar<i class="fa fa-pencil"> </i></a></small><br>
             <b>Usuario:</b> {{Usuario}} <br>
-            <b>Web Site:</b> {{Web}} <small id="de"><a href =""  data-toggle="modal" data-target="#ChangeWeb">Editar<i class="fa fa-pencil"> </i></a></small><br>
+            <b>Sitio Web:</b> {{Web}} <small id="de"><a href =""  data-toggle="modal" data-target="#ChangeWeb">Editar<i class="fa fa-pencil"> </i></a></small><br>
             <b>Fecha de fundación:</b> {{Fun}}<br>
             <b>Categoría:</b> {{Categoria}} <small id="de"><a href =""  data-toggle="modal" data-target="#ChangeCat">Editar<i class="fa fa-pencil"> </i></a></small>
 

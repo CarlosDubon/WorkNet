@@ -21,7 +21,6 @@
                                 
 <a href='../controladores/perfil_Mostrar.php' class='list-group-item active'>Perfil<br>    </a>
 <a href="../controladores/mensajes.php" class="list-group-item"><span class="fui-chat"></span>Mensajes</a>
-<a href="#" class="list-group-item"><span class="fui-video"></span>Videoconferencia</a>
 <a href="../controladores/creartrabajador.php" class="list-group-item"><span class="fui-plus"></span>Crear trabajador</a>
 <a href="../controladores/usuarios_empre.php" class="list-group-item"><span class="fui-user"></span>Cuentas</a>
 <a href="../controladores/formEventos.php" class="list-group-item"><span class="fui-calendar-solid"></span>Crear evento</a>

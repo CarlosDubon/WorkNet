@@ -122,6 +122,81 @@ class Usuario {
         $plantilla->verPagina('listaUsuarios', $variables);
     }
     
+    public function mostrarListaEmpresarios(){
+        $plantilla = new Plantilla();
+        $mysql = new MySQL();
+        $sesion = new Sesion();
+        $utilidades = new Utilidades();
+        
+        $consulta = 'select idCuenta as id,Usuario,Nombre,Apellido,if(Estado = 1,"Activo","Inactivo") as Estado from cuenta where Tipo=2';
+        $listaUsuarios = $mysql->consulta($consulta);
+        $encabezado = array('ID', 'Usuario', 'Nombre', 'Apellido', 'Estado');
+        
+        $acciones = '<center><a href="./activarUsuario.php?idCuenta={{id}}" title="Activar Usuario" onclick ="return confirm();" class="btn btn-success" id="acciones"><span class="fui-check"></span></a>';
+        $acciones .= ' <a href="./desactivarUsuario.php?idCuenta={{id}}" title="Desactivar Usuario" onclick ="return confirm();" class = "btn btn-danger" id="acciones"><span class="fui-cross"></span></a>';
+        $acciones .= ' <a  href="./recuperarClave.php?idCuenta={{id}}" title="Restablecer Contraseña" onclick ="return confirm();" class = "btn btn-info" id="acciones" ><span class="fui-new"></span></a>';
+        $acciones .= ' <a href="./eliminarUsuario.php?idCuenta={{id}}" title="Eliminar Usuario" onclick ="return confirm();" class="btn btn-danger" id="acciones"><span class="fui-trash"></span></a>';
+        $acciones .= ' <a href="./verTrabajadores_admin.php?idCuenta={{id}}" title="Ver trabajadores" class="btn btn-warning"><i class="fa fa-male"></i></a></center>';
+        
+
+      
+        $variables['listaUsuarios'] = $utilidades->convertirTabla($listaUsuarios, $encabezado, $acciones);
+        
+
+        $sesion->agregarVariableSesion('permisoAccionesUsuario', '1');
+        $plantilla->verPagina('listaUsuarios', $variables);
+    }
+    
+        public function mostrarListaUsuariosAdmin(){
+        $plantilla = new Plantilla();
+        $mysql = new MySQL();
+        $sesion = new Sesion();
+        $utilidades = new Utilidades();
+        
+
+        $consulta = 'select idCuenta as id,Usuario,Nombre,Apellido,if(Estado = 1,"Activo","Inactivo") as Estado from cuenta where Tipo=4';
+        $listaUsuarios = $mysql->consulta($consulta);
+        $encabezado = array('ID', 'Usuario', 'Nombre', 'Apellido', 'Estado');
+        
+        $acciones = '<center><a href="./activarUsuario.php?idCuenta={{id}}" title="Activar Usuario" onclick ="return confirm();" class="btn btn-success" id="acciones"><span class="fui-check"></span></a>';
+        $acciones .= ' <a href="./desactivarUsuario.php?idCuenta={{id}}" title="Desactivar Usuario" onclick ="return confirm();" class = "btn btn-danger" id="acciones"><span class="fui-cross"></span></a>';
+        $acciones .= ' <a  href="./recuperarClave.php?idCuenta={{id}}" title="Restablecer Contraseña" onclick ="return confirm();" class = "btn btn-info" id="acciones" ><span class="fui-new"></span></a>';
+        $acciones .= ' <a href="./eliminarUsuario.php?idCuenta={{id}}" title="Eliminar Usuario" onclick ="return confirm();" class="btn btn-danger" id="acciones"><span class="fui-trash"></span></a></center>';
+        
+
+      
+        $variables['listaUsuarios'] = $utilidades->convertirTabla($listaUsuarios, $encabezado, $acciones);
+        
+
+        $sesion->agregarVariableSesion('permisoAccionesUsuario', '1');
+        $plantilla->verPagina('listaUsuarios', $variables);
+    }
+    
+    public function verTrabajadoresAdmin($id){
+        $bd = new MySQL();
+        $sesion = new Sesion();
+        $utilidades = new Utilidades();
+        $plantilla = new Plantilla();
+        
+        $query ='select idCuenta as id,Usuario,Nombre,Apellido,if(Estado = 1,"Activo","Inactivo") as Estado from cuenta WHERE Tipo=3 AND cuenta_cuenta ='.$id;
+        $resultado = $bd->consulta($query);
+        
+        $encabezado = array('ID', 'Usuario', 'Nombre', 'Apellido', 'Estado');
+        
+        $acciones = '<center><a href="./activarUsuario.php?idCuenta={{id}}" title="Activar Usuario" onclick ="return confirm();" class="btn btn-success" id="acciones"><span class="fui-check"></span></a>';
+        $acciones .= ' <a href="./desactivarUsuario.php?idCuenta={{id}}" title="Desactivar Usuario" onclick ="return confirm();" class = "btn btn-danger" id="acciones"><span class="fui-cross"></span></a>';
+        $acciones .= ' <a  href="./recuperarClave.php?idCuenta={{id}}" title="Restablecer Contraseña" onclick ="return confirm();" class = "btn btn-info" id="acciones" ><span class="fui-new"></span></a>';
+        $acciones .= ' <a href="./eliminarUsuario.php?idCuenta={{id}}" title="Eliminar Usuario" onclick ="return confirm();" class="btn btn-danger" id="acciones"><span class="fui-trash"></span></a></center>';
+        
+
+      
+        $variables['listaTrabajadores'] = $utilidades->convertirTabla($resultado, $encabezado, $acciones);
+        
+
+        $sesion->agregarVariableSesion('permisoAccionesUsuario', '1');
+        $plantilla->verPagina('listaTrabajadores', $variables);
+    }
+    
     public function activarUsuario($id){
         $mysql = new MySQL();
         $sesion = new Sesion();
@@ -139,7 +214,7 @@ class Usuario {
         else
             $utilidades->mostrarMensaje('Lo sentimos, algo ha salido mal. Por favor intenta de nuevo.');
         
-        $utilidades->Redireccionar('controladores/usuarios_admin.php');
+        $plantilla->verPagina();
     }
     
     public function desactivarUsuario($id){
@@ -159,7 +234,7 @@ class Usuario {
         else
             $utilidades->mostrarMensaje('Lo sentimos, algo ha salido mal. Por favor intenta de nuevo.');
         
-        $utilidades->Redireccionar('controladores/usuarios_admin.php');
+        $plantilla->verPagina();
     }
     
     public function recuperarClave($id){

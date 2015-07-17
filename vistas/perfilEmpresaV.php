@@ -33,7 +33,7 @@
             <b>Empresa:</b> {{Empresa}}<br>
             <b>Mail:</b> {{Correo}}<br>
             <b>Fecha de fundación:</b> {{Fun}}<br>
-            <b>Web Site:</b> {{Web}}<br>
+            <b>Sitio Web:</b> {{Web}}<br>
             <b>Categoria:</b> {{Categoria}}
           </div>
     </div>

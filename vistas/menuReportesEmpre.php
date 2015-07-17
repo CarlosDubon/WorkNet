@@ -18,7 +18,7 @@
     <div class="panel panel-default" id="RpEventos">
          <div class="panel-body">
              <label><h6>Reporte de archivos</h6></label><br>
-             <a href="reporteArchivos.php" class="btn btn-success">Generar</a>
+             <a href="reporteArchivosEmpre.php" class="btn btn-success">Generar</a>
         </div>
   </div>
 </div>

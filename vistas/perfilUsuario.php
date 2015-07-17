@@ -29,7 +29,7 @@
             <b>DUI:</b> {{DUI}}<br>
             <b>Nombre:</b> {{Nombre}}<br>
               <b>Apellido: </b> {{Apellido}}<br>
-            <b>E-mail:</b> {{Correo}} <small id="de"><a href =""  data-toggle="modal" data-target="#ChangeE-mail">Editar<i class="fa fa-pencil"> </i></a></small><br>
+            <b>Email:</b> {{Correo}} <small id="de"><a href =""  data-toggle="modal" data-target="#ChangeE-mail">Editar<i class="fa fa-pencil"> </i></a></small><br>
           </div>
     </div>
     
