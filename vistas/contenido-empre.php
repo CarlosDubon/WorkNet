@@ -29,7 +29,7 @@
       </div>
         <form action="./denunciar.php" method="POST">
       <div class="modal-body">
-          <h6>Por favor escriba la razon de su denuncia</h6><input type="hidden" name="id" value="{{id}}">
+          <h6>Por favor escriba la razón de su denuncia</h6><input type="hidden" name="id" value="{{id}}">
            <div class="form-group">
                 <div class="col-lg-10">
                     <textarea required class="form-control" name="razon" rows="3" id="publicacion" id="textArea"></textarea>

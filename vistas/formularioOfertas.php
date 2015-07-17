@@ -14,7 +14,7 @@
                 <input type="text" class="form-control login-field" name="cargo" placeholder="Cargo" required />
                 <label for="Info">Edad:</label>
                 <input type="text" id="edad" onkeydown="return validarNumeros(event)" class="form-control login-field" name="edad" placeholder="Edad" maxlength="2" required />
-                <label for="Genero">Genero:</label>
+                <label for="Genero">Género:</label>
                 <select name="genero" class="form-control" id="select">
                     <option value="M">Masculino</option>
                     <option value="F">Femenino</option>

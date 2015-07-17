@@ -1,6 +1,6 @@
 <div class="panel panel-primary">
   <div class="panel-heading">
-    <h3 class="panel-title">Crear Curriculum</h3>
+    <h3 class="panel-title">Crear Currículum</h3>
   </div>
  <form method="POST" action="../controladores/editarCurriculum.php">
     <div class="panel-body">
@@ -10,19 +10,19 @@
     <div class="row">
         <div class="col-lg-6">
             <div class="panel-body">
-                <label>Numero de Telefono</label>
+                <label>Número de Teléfono</label>
                 <input type="tel" name="tel" onkeydown="mascara(this,'-',patronCel,true)" maxlength="9" class="form-control" value="{{Telefono}}">
             </div>
         </div>
         <div class="col-lg-6">
             <div class="panel-body">
-                <label>Numero de Celular</label>
+                <label>Número de Celular</label>
                 <input type="tel" name="cel" maxlength="9"  onkeydown="mascara(this,'-',patronCel,true)" class="form-control" value="{{Celular}}">
             </div>
         </div>
     </div>
     <div class="panel-body">
-        <label>Direccion</label>
+        <label>Dirección</label>
         <input type="text" class="form-control" name="dic" value="{{Direccion}}" required>
     </div>
     <div class="panel-body">
@@ -42,7 +42,7 @@
         </div>
         <div class="col-lg-6">
             <div class="panel-body">
-                <label>Numero de Telefono</label>
+                <label>Número de Teléfono</label>
                 <input type="tel" name="tel1" class="form-control"  onkeydown="mascara(this,'-',patronCel,true)"value="{{T1}}" maxlength="9">
             </div>
         </div>
@@ -56,7 +56,7 @@
         </div>
         <div class="col-lg-6">
             <div class="panel-body">
-                <label>Numero de Telefono</label>
+                <label>Número de Teléfono</label>
                 <input type="tel" name="tel2" class="form-control"  onkeydown="mascara(this,'-',patronCel,true)" value="{{T2}}" maxlength="9">
             </div>
         </div>
@@ -70,7 +70,7 @@
         </div>
         <div class="col-lg-6">
             <div class="panel-body">
-                <label>Numero de Telefono</label>
+                <label>Número de Teléfono</label>
                 <input type="tel" name="tel3" class="form-control"  onkeydown="mascara(this,'-',patronCel,true)"  value="{{T3}}" maxlength="9">
             </div>
         </div>

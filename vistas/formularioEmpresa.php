@@ -55,14 +55,14 @@
                 </div>
                 <div class="row">
                     <div class="col-lg-6">
-                    <label for="email">E-mail:</label><br>
+                    <label for="email">Email:</label><br>
                     <div class='form-group'>
-                    <input type='email' id="email" class='form-control login-field' name='email' placeholder='E-mail' required /><br>
+                    <input type='email' id="email" class='form-control login-field' name='email' placeholder='Email' required /><br>
                     </div>
                     </div>
                     <div class="col-lg-6">
-                    <label for="web">Web Site(opcional):</label><br>
-                    <input type='url' class='form-control login-field' name='site' placeholder='Web Site' /><br>
+                    <label for="web">Website (opcional):</label><br>
+                    <input type='url' class='form-control login-field' name='site' placeholder='Website' /><br>
                     </div>
                 </div>
                 <div class="row">
@@ -76,7 +76,7 @@
                     </div>
                 </div>
                 <div class="form-group">
-                    <label for="control-label">Categoria</label><br>
+                    <label for="control-label">Categoría</label><br>
                     <select class="form-control" id="select" name="categoria" required>
                     <option value="">Seleccione una categoría</option>
                         {{opciones}}

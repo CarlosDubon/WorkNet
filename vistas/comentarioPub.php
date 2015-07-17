@@ -24,10 +24,10 @@
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title" id="myModalLabel">Aviso!</h4>
+        <h4 class="modal-title" id="myModalLabel">¡Aviso!</h4>
       </div>
       <div class="modal-body">
-        Esta seguro que quiere eliminar la publicacion seleccionada? 
+        ¿Está seguro que quiere eliminar la publicación seleccionada?
           <span class="help-block">La siguiente acción no se podra revertir</span>
         </div>
       <div class="modal-footer">
